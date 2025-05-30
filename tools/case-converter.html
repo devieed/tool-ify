@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Converter | Change Text Case to UPPERCASE, lowercase, Title Case | Tool-ify</title>
+    <meta name="description" content="Convert text case to UPPERCASE, lowercase, Title Case, Sentence case, and more with this free online text case converter. No login or installation required.">
+    <meta name="keywords" content="case converter, text case, uppercase, lowercase, title case, sentence case, text transformation, format text">
+    <link rel="canonical" href="https://tool-ify.com/tools/case-converter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Case Converter",
+        "url": "https://tool-ify.com/tools/case-converter.html",
+        "description": "Convert text to UPPERCASE, lowercase, Title Case and more",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 修复布局，确保页面至少占满整个视口高度 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+        
+        .textarea-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">Case Converter</h1>
+                <p id="tool-description">Convert text to UPPERCASE, lowercase, Title Case, and more</p>
+                
+                <div class="textarea-container">
+                    <textarea id="text-input" placeholder="Paste or type your text here..."></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button id="uppercase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="uppercase-text">UPPERCASE</span>
+                    </button>
+                    <button id="lowercase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="lowercase-text">lowercase</span>
+                    </button>
+                    <button id="titlecase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="titlecase-text">Title Case</span>
+                    </button>
+                    <button id="sentencecase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="sentencecase-text">Sentence case</span>
+                    </button>
+                    <button id="alternatingcase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="alternatingcase-text">aLtErNaTiNg cAsE</span>
+                    </button>
+                    <button id="inversecase-btn" class="secondary">
+                        <i class="fas fa-font"></i> <span id="inversecase-text">InVeRsE CaSe</span>
+                    </button>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="copy-btn">
+                        <i class="fas fa-copy"></i> <span id="copy-text">Copy</span>
+                    </button>
+                    <button id="clear-btn" class="secondary">
+                        <i class="fas fa-trash"></i> <span id="clear-text">Clear</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Copied to clipboard!</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text-input');
+            const uppercaseBtn = document.getElementById('uppercase-btn');
+            const lowercaseBtn = document.getElementById('lowercase-btn');
+            const titlecaseBtn = document.getElementById('titlecase-btn');
+            const sentencecaseBtn = document.getElementById('sentencecase-btn');
+            const alternatingcaseBtn = document.getElementById('alternatingcase-btn');
+            const inversecaseBtn = document.getElementById('inversecase-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const notification = document.getElementById('notification');
+            
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 更新按钮文本
+                    updateButtonTexts();
+                    
+                    // 更新占位符文本
+                    updatePlaceholders();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 更新按钮文本
+            function updateButtonTexts() {
+                if (window.translations && window.translations.ui) {
+                    // 复制按钮
+                    if (window.translations.ui.copy) {
+                        const copyBtnText = copyBtn.querySelector('span');
+                        if (copyBtnText) {
+                            copyBtnText.textContent = window.translations.ui.copy;
+                        }
+                    }
+                    
+                    // 清除按钮
+                    if (window.translations.ui.clear) {
+                        const clearBtnText = clearBtn.querySelector('span');
+                        if (clearBtnText) {
+                            clearBtnText.textContent = window.translations.ui.clear;
+                        }
+                    }
+                    
+                    // 转换按钮
+                    const caseTranslations = {
+                        'uppercase-text': window.translations.ui.uppercase || 'UPPERCASE',
+                        'lowercase-text': window.translations.ui.lowercase || 'lowercase',
+                        'titlecase-text': window.translations.ui.titlecase || 'Title Case',
+                        'sentencecase-text': window.translations.ui.sentencecase || 'Sentence case',
+                        'alternatingcase-text': window.translations.ui.alternatingcase || 'aLtErNaTiNg cAsE',
+                        'inversecase-text': window.translations.ui.inversecase || 'InVeRsE CaSe'
+                    };
+                    
+                    for (const [id, translation] of Object.entries(caseTranslations)) {
+                        const element = document.getElementById(id);
+                        if (element && translation) {
+                            element.textContent = translation;
+                        }
+                    }
+                }
+            }
+            
+            // 更新占位符
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    // 更新文本输入框的占位符
+                    if (window.translations.placeholders.enter_text) {
+                        textInput.placeholder = window.translations.placeholders.enter_text;
+                    }
+                }
+            }
+            
+            // 获取翻译文本
+            function getTranslatedText(key, defaultText) {
+                // 首先尝试从隐藏元素获取
+                const hiddenElement = document.getElementById(`ui-${key}`) || 
+                                      document.getElementById(`notification-${key}`);
+                
+                if (hiddenElement) {
+                    return hiddenElement.textContent;
+                }
+                
+                // 其次尝试从window.translations中获取
+                if (window.translations && window.translations.ui && window.translations.ui[key]) {
+                    return window.translations.ui[key];
+                }
+                
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                
+                // 如果没找到翻译，返回默认文本
+                return defaultText;
+            }
+            
+            // Convert to UPPERCASE
+            uppercaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value.toUpperCase();
+            });
+            
+            // Convert to lowercase
+            lowercaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value.toLowerCase();
+            });
+            
+            // Convert to Title Case
+            titlecaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value
+                    .toLowerCase()
+                    .split(' ')
+                    .map(word => {
+                        return word.charAt(0).toUpperCase() + word.slice(1);
+                    })
+                    .join(' ');
+            });
+            
+            // Convert to Sentence case
+            sentencecaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value.toLowerCase()
+                    .replace(/(^\s*\w|[.!?]\s*\w)/g, function(c) {
+                        return c.toUpperCase();
+                    });
+            });
+            
+            // Convert to aLtErNaTiNg cAsE
+            alternatingcaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value
+                    .split('')
+                    .map((char, index) => {
+                        return index % 2 === 0 ? char.toLowerCase() : char.toUpperCase();
+                    })
+                    .join('');
+            });
+            
+            // Convert to InVeRsE CaSe
+            inversecaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value
+                    .split('')
+                    .map(char => {
+                        if (char === char.toUpperCase()) {
+                            return char.toLowerCase();
+                        }
+                        return char.toUpperCase();
+                    })
+                    .join('');
+            });
+            
+            // Copy text
+            copyBtn.addEventListener('click', function() {
+                textInput.select();
+                document.execCommand('copy');
+                
+                // 显示已复制提示
+                showNotification(getTranslatedText('copied_clipboard', 'Copied to clipboard!'), 'success');
+            });
+            
+            // Clear text
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+            });
+            
+            // 显示通知
+            function showNotification(message, type) {
+                if (!notification) return;
+                
+                notification.textContent = message;
+                notification.className = 'notification ' + (type || '');
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

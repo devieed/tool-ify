@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Formatter | Format and Minify CSS Code | Tool-ify</title>
+    <meta name="description" content="Format and minify CSS code online for free. Beautify messy CSS with this easy-to-use browser-based CSS formatter and compressor tool.">
+    <meta name="keywords" content="css formatter, css beautifier, css minifier, css compressor, format css, minify css, css code formatter">
+    <link rel="canonical" href="https://tool-ify.com/tools/css-formatter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CSS Formatter",
+        "url": "https://tool-ify.com/tools/css-formatter.html",
+        "description": "Format and compress CSS code",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .formatter-container {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .editor-container {
+                flex-direction: row;
+            }
+            
+            .editor-input, .editor-output {
+                flex: 1;
+            }
+        }
+        
+        .editor-input, .editor-output {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .editor-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .textarea-container {
+            position: relative;
+            flex-grow: 1;
+        }
+        
+        .css-textarea {
+            width: 100%;
+            height: 400px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: none;
+            tab-size: 2;
+        }
+        
+        .css-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .textarea-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 2px;
+        }
+        
+        .textarea-action {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .textarea-action:hover {
+            color: var(--accent-color);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .options-container {
+                flex-direction: row;
+            }
+        }
+        
+        .option-group {
+            flex: 1;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .option-group-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .option-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .option-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .option-label {
+            flex: 1;
+            font-size: 14px;
+        }
+        
+        .option-input {
+            margin-left: 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .action-button {
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .primary-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .secondary-btn {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: var(--border-color);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .statistics {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            flex: 1;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .info-text code {
+            background-color: var(--bg-color);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">CSS Formatter</h1>
+                <p id="tool-description">Format and compress CSS code</p>
+                
+                <div class="formatter-container">
+                    <div class="editor-container">
+                        <div class="editor-input">
+                            <div class="editor-label">
+                                <span>Input CSS</span>
+                                <span id="input-char-count">0 characters</span>
+                            </div>
+                            <div class="textarea-container">
+                                <textarea id="input-css" class="css-textarea" placeholder="Paste your CSS code here..."></textarea>
+                                <div class="textarea-actions">
+                                    <button id="input-clear" class="textarea-action" title="Clear">
+                                        <i class="fas fa-trash"></i> Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="editor-output">
+                            <div class="editor-label">
+                                <span>Formatted CSS</span>
+                                <span id="output-char-count">0 characters</span>
+                            </div>
+                            <div class="textarea-container">
+                                <textarea id="output-css" class="css-textarea" placeholder="Formatted CSS will appear here..." readonly></textarea>
+                                <div class="textarea-actions">
+                                    <button id="output-copy" class="textarea-action" title="Copy to clipboard">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="options-container">
+                        <div class="option-group">
+                            <div class="option-group-title">Formatting Options</div>
+                            
+                            <div class="option-row">
+                                <label class="option-label" for="indent-size">Indentation Size:</label>
+                                <select id="indent-size" class="option-input">
+                                    <option value="2">2 spaces</option>
+                                    <option value="4" selected>4 spaces</option>
+                                    <option value="tab">Tab</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="option-label" for="brace-style">Brace Style:</label>
+                                <select id="brace-style" class="option-input">
+                                    <option value="same-line" selected>Same line</option>
+                                    <option value="new-line">New line</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <div class="option-group-title">Minification Options</div>
+                            
+                            <div class="option-row">
+                                <label class="option-label" for="remove-comments">Remove Comments:</label>
+                                <input type="checkbox" id="remove-comments" class="option-input" checked>
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="option-label" for="remove-whitespace">Remove Whitespace:</label>
+                                <input type="checkbox" id="remove-whitespace" class="option-input" checked>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="format-button" class="action-button primary-btn">
+                            <i class="fas fa-magic"></i> Format CSS
+                        </button>
+                        <button id="minify-button" class="action-button primary-btn">
+                            <i class="fas fa-compress-alt"></i> Minify CSS
+                        </button>
+                        <button id="upload-button" class="action-button secondary-btn">
+                            <i class="fas fa-upload"></i> Upload CSS File
+                        </button>
+                        <input type="file" id="file-input" class="file-input" accept=".css">
+                        <button id="download-button" class="action-button secondary-btn" disabled>
+                            <i class="fas fa-download"></i> Download Result
+                        </button>
+                    </div>
+                    
+                    <div class="statistics" id="statistics-container" style="display: none;">
+                        <div class="stat-item">
+                            <div class="stat-label">Original Size</div>
+                            <div id="original-size" class="stat-value">0 KB</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Processed Size</div>
+                            <div id="processed-size" class="stat-value">0 KB</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Size Reduction</div>
+                            <div id="size-reduction" class="stat-value">0%</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Processing Time</div>
+                            <div id="processing-time" class="stat-value">0 ms</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="info-title">About CSS Formatter</h2>
+                    <div class="info-text">
+                        <p>The CSS Formatter tool helps you clean up and organize your CSS code, making it more readable and maintainable. It can also minify your CSS to reduce file size for production environments.</p>
+                        
+                        <h3>Formatting Features</h3>
+                        <ul>
+                            <li><strong>Indentation</strong>: Apply consistent indentation using spaces or tabs</li>
+                            <li><strong>Brace Placement</strong>: Format braces on same line or new line based on your preference</li>
+                            <li><strong>Property Sorting</strong>: Organize properties in a consistent order</li>
+                            <li><strong>Whitespace</strong>: Add proper spacing around selectors, properties, and values</li>
+                        </ul>
+                        
+                        <h3>Minification Features</h3>
+                        <ul>
+                            <li><strong>Comment Removal</strong>: Strip out comments to reduce file size</li>
+                            <li><strong>Whitespace Removal</strong>: Eliminate unnecessary spaces, tabs, and line breaks</li>
+                            <li><strong>Semicolon Removal</strong>: Remove the last semicolon in each rule when possible</li>
+                        </ul>
+                        
+                        <h3>Example</h3>
+                        <p>Unformatted CSS:</p>
+                        <code>
+.header{color:#333; background-color: #f5f5f5;padding: 20px;
+    margin-bottom:30px;}
+.nav-link{
+    display:inline-block;padding:10px 15px;
+color: #007bff;text-decoration: none;
+}
+                        </code>
+                        
+                        <p>Formatted CSS:</p>
+                        <code>
+.header {
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+                        </code>
+                        
+                        <p>Minified CSS:</p>
+                        <code>.header{color:#333;background-color:#f5f5f5;padding:20px;margin-bottom:30px}.nav-link{display:inline-block;padding:10px 15px;color:#007bff;text-decoration:none}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for translations to load
+            function applyTranslations() {
+                if (window.translations) {
+                    // Update page elements with translations
+                    updateTexts();
+                    
+                    // Update placeholders
+                    updatePlaceholders();
+                    
+                    // Setup notification translation
+                    setupNotifications();
+                    
+                    // Force re-render all translated elements
+                    document.body.style.zoom = "1.00001";
+                    setTimeout(function() {
+                        document.body.style.zoom = "1";
+                    }, 10);
+                } else {
+                    // If translations not loaded yet, try again after a short delay
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // Start trying to apply translations
+            applyTranslations();
+            
+            // Update UI text elements with translations
+            function updateTexts() {
+                if (window.translations) {
+                    // Update back link
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // Update UI text elements
+                    if (window.translations.ui) {
+                        // CSS Formatter UI elements
+                        const uiElements = {
+                            'tool-title': 'css_formatter_title',
+                            'tool-description': 'css_formatter_description',
+                            'input-clear': 'clear',
+                            'output-copy': 'copy',
+                            'format-button': 'format_css',
+                            'minify-button': 'minify_css',
+                            'upload-button': 'upload_css_file',
+                            'download-button': 'download_result'
+                        };
+                        
+                        for (const [id, key] of Object.entries(uiElements)) {
+                            const element = document.getElementById(id);
+                            if (element && window.translations.ui[key]) {
+                                // Special case for buttons with icons
+                                if (id === 'format-button') {
+                                    element.innerHTML = '<i class="fas fa-magic"></i> ' + window.translations.ui[key];
+                                } else if (id === 'minify-button') {
+                                    element.innerHTML = '<i class="fas fa-compress-alt"></i> ' + window.translations.ui[key];
+                                } else if (id === 'upload-button') {
+                                    element.innerHTML = '<i class="fas fa-upload"></i> ' + window.translations.ui[key];
+                                } else if (id === 'download-button') {
+                                    element.innerHTML = '<i class="fas fa-download"></i> ' + window.translations.ui[key];
+                                } else if (id === 'input-clear') {
+                                    element.innerHTML = '<i class="fas fa-trash"></i> ' + window.translations.ui[key];
+                                } else if (id === 'output-copy') {
+                                    element.innerHTML = '<i class="fas fa-copy"></i> ' + window.translations.ui[key];
+                                } else {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                        
+                        // Update editor labels
+                        const editorLabels = document.querySelectorAll('.editor-label > span:first-child');
+                        editorLabels.forEach(label => {
+                            if (label.textContent === 'Input CSS' && window.translations.ui.input_css) {
+                                label.textContent = window.translations.ui.input_css;
+                            } else if (label.textContent === 'Formatted CSS' && window.translations.ui.formatted_css) {
+                                label.textContent = window.translations.ui.formatted_css;
+                            }
+                        });
+                        
+                        // Update option group titles
+                        const optionGroupTitles = document.querySelectorAll('.option-group-title');
+                        optionGroupTitles.forEach(title => {
+                            if (title.textContent === 'Formatting Options' && window.translations.ui.formatting_options) {
+                                title.textContent = window.translations.ui.formatting_options;
+                            } else if (title.textContent === 'Minification Options' && window.translations.ui.minification_options) {
+                                title.textContent = window.translations.ui.minification_options;
+                            }
+                        });
+                        
+                        // Update option labels
+                        const optionLabels = document.querySelectorAll('.option-label');
+                        optionLabels.forEach(label => {
+                            const forAttr = label.getAttribute('for');
+                            if (forAttr === 'indent-size' && window.translations.ui.indentation_size) {
+                                label.textContent = window.translations.ui.indentation_size + ':';
+                            } else if (forAttr === 'brace-style' && window.translations.ui.brace_style) {
+                                label.textContent = window.translations.ui.brace_style + ':';
+                            } else if (forAttr === 'remove-comments' && window.translations.ui.remove_comments) {
+                                label.textContent = window.translations.ui.remove_comments + ':';
+                            } else if (forAttr === 'remove-whitespace' && window.translations.ui.remove_whitespace) {
+                                label.textContent = window.translations.ui.remove_whitespace + ':';
+                            }
+                        });
+                        
+                        // Update select options
+                        const indentSizeSelect = document.getElementById('indent-size');
+                        if (indentSizeSelect && window.translations.ui.spaces && window.translations.ui.tab) {
+                            Array.from(indentSizeSelect.options).forEach(option => {
+                                if (option.text === '2 spaces' && window.translations.ui.spaces) {
+                                    option.text = '2 ' + window.translations.ui.spaces;
+                                } else if (option.text === '4 spaces' && window.translations.ui.spaces) {
+                                    option.text = '4 ' + window.translations.ui.spaces;
+                                } else if (option.text === 'Tab' && window.translations.ui.tab) {
+                                    option.text = window.translations.ui.tab;
+                                }
+                            });
+                        }
+                        
+                        const braceStyleSelect = document.getElementById('brace-style');
+                        if (braceStyleSelect && window.translations.ui.same_line && window.translations.ui.new_line) {
+                            Array.from(braceStyleSelect.options).forEach(option => {
+                                if (option.text === 'Same line' && window.translations.ui.same_line) {
+                                    option.text = window.translations.ui.same_line;
+                                } else if (option.text === 'New line' && window.translations.ui.new_line) {
+                                    option.text = window.translations.ui.new_line;
+                                }
+                            });
+                        }
+                        
+                        // Update statistics labels
+                        const statLabels = document.querySelectorAll('.stat-label');
+                        statLabels.forEach(label => {
+                            if (label.textContent === 'Original Size' && window.translations.ui.original_size) {
+                                label.textContent = window.translations.ui.original_size;
+                            } else if (label.textContent === 'Processed Size' && window.translations.ui.processed_size) {
+                                label.textContent = window.translations.ui.processed_size;
+                            } else if (label.textContent === 'Size Reduction' && window.translations.ui.size_reduction) {
+                                label.textContent = window.translations.ui.size_reduction;
+                            } else if (label.textContent === 'Processing Time' && window.translations.ui.processing_time) {
+                                label.textContent = window.translations.ui.processing_time;
+                            }
+                        });
+                        
+                        // Update info box content
+                        if (window.translations.css_formatter_info) {
+                            const infoTitle = document.querySelector('.info-title');
+                            if (infoTitle && window.translations.css_formatter_info.title) {
+                                infoTitle.textContent = window.translations.css_formatter_info.title;
+                            }
+                            
+                            const infoText = document.querySelector('.info-text');
+                            if (infoText && window.translations.css_formatter_info.content) {
+                                // Main description paragraph
+                                const mainDesc = infoText.querySelector('p:first-child');
+                                if (mainDesc && window.translations.css_formatter_info.content.main_desc) {
+                                    mainDesc.textContent = window.translations.css_formatter_info.content.main_desc;
+                                }
+                                
+                                // Update section headers
+                                const h3Elements = infoText.querySelectorAll('h3');
+                                h3Elements.forEach(h3 => {
+                                    if (h3.textContent === 'Formatting Features' && window.translations.css_formatter_info.content.formatting_features_title) {
+                                        h3.textContent = window.translations.css_formatter_info.content.formatting_features_title;
+                                    } else if (h3.textContent === 'Minification Features' && window.translations.css_formatter_info.content.minification_features_title) {
+                                        h3.textContent = window.translations.css_formatter_info.content.minification_features_title;
+                                    } else if (h3.textContent === 'Example' && window.translations.css_formatter_info.content.example_title) {
+                                        h3.textContent = window.translations.css_formatter_info.content.example_title;
+                                    }
+                                });
+                                
+                                // Update list items for formatting features
+                                if (window.translations.css_formatter_info.content.formatting_features && Array.isArray(window.translations.css_formatter_info.content.formatting_features)) {
+                                    const formattingItems = infoText.querySelectorAll('h3:nth-of-type(1) + ul li');
+                                    
+                                    for (let i = 0; i < Math.min(formattingItems.length, window.translations.css_formatter_info.content.formatting_features.length); i++) {
+                                        const item = formattingItems[i];
+                                        const feature = window.translations.css_formatter_info.content.formatting_features[i];
+                                        
+                                        // Store the existing strong element
+                                        const strong = item.querySelector('strong');
+                                        
+                                        // Update the item with new text
+                                        if (strong && feature.title && feature.description) {
+                                            // Update strong text
+                                            strong.textContent = feature.title;
+                                            
+                                            // Clear the item and add back the strong element
+                                            item.textContent = '';
+                                            item.appendChild(strong);
+                                            
+                                            // Add the description
+                                            item.appendChild(document.createTextNode(': ' + feature.description));
+                                        }
+                                    }
+                                }
+                                
+                                // Update list items for minification features
+                                if (window.translations.css_formatter_info.content.minification_features && Array.isArray(window.translations.css_formatter_info.content.minification_features)) {
+                                    const minificationItems = infoText.querySelectorAll('h3:nth-of-type(2) + ul li');
+                                    
+                                    for (let i = 0; i < Math.min(minificationItems.length, window.translations.css_formatter_info.content.minification_features.length); i++) {
+                                        const item = minificationItems[i];
+                                        const feature = window.translations.css_formatter_info.content.minification_features[i];
+                                        
+                                        // Store the existing strong element
+                                        const strong = item.querySelector('strong');
+                                        
+                                        // Update the item with new text
+                                        if (strong && feature.title && feature.description) {
+                                            // Update strong text
+                                            strong.textContent = feature.title;
+                                            
+                                            // Clear the item and add back the strong element
+                                            item.textContent = '';
+                                            item.appendChild(strong);
+                                            
+                                            // Add the description
+                                            item.appendChild(document.createTextNode(': ' + feature.description));
+                                        }
+                                    }
+                                }
+                                
+                                // Update example section text
+                                const exampleTexts = infoText.querySelectorAll('h3:nth-of-type(3) + p, h3:nth-of-type(3) + p + code + p');
+                                exampleTexts.forEach(p => {
+                                    if (p.textContent === 'Unformatted CSS:' && window.translations.css_formatter_info.content.unformatted_css) {
+                                        p.textContent = window.translations.css_formatter_info.content.unformatted_css;
+                                    } else if (p.textContent === 'Formatted CSS:' && window.translations.css_formatter_info.content.formatted_css) {
+                                        p.textContent = window.translations.css_formatter_info.content.formatted_css;
+                                    } else if (p.textContent === 'Minified CSS:' && window.translations.css_formatter_info.content.minified_css) {
+                                        p.textContent = window.translations.css_formatter_info.content.minified_css;
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Update character count text
+            function updateCharCount(textarea, countElement) {
+                const count = textarea.value.length;
+                if (window.translations && window.translations.ui && window.translations.ui.characters) {
+                    const charText = window.translations.ui.characters.toLowerCase();
+                    countElement.textContent = `${count} ${count !== 1 ? charText : charText.slice(0, -1)}`;
+                } else {
+                    countElement.textContent = `${count} character${count !== 1 ? 's' : ''}`;
+                }
+            }
+            
+            // Update placeholder text
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    // Update input placeholder
+                    const inputCss = document.getElementById('input-css');
+                    if (inputCss && window.translations.placeholders.enter_css) {
+                        inputCss.placeholder = window.translations.placeholders.enter_css;
+                    }
+                    
+                    // Update output placeholder
+                    const outputCss = document.getElementById('output-css');
+                    if (outputCss && window.translations.placeholders.formatted_css_placeholder) {
+                        outputCss.placeholder = window.translations.placeholders.formatted_css_placeholder;
+                    }
+                }
+            }
+            
+            // Setup notification message translation
+            function setupNotifications() {
+                // Save original showNotification function reference
+                const originalShowNotification = window.showNotification || showNotification;
+                
+                // Redefine showNotification function
+                window.showNotification = function(message, type) {
+                    // Try to get translated message
+                    let translatedMessage = getTranslatedNotification(message);
+                    
+                    // Call original function with translated message
+                    originalShowNotification(translatedMessage, type);
+                };
+            }
+            
+            // Get translated notification message
+            function getTranslatedNotification(message) {
+                if (window.translations && window.translations.notifications) {
+                    if (message === 'Copied to clipboard' && window.translations.notifications.copied_clipboard) {
+                        return window.translations.notifications.copied_clipboard;
+                    } else if (message === 'Failed to copy' && window.translations.notifications.copy_failed) {
+                        return window.translations.notifications.copy_failed;
+                    } else if (message === 'No CSS to copy' && window.translations.notifications.no_css_to_copy) {
+                        return window.translations.notifications.no_css_to_copy;
+                    } else if (message === 'Please enter CSS to format' && window.translations.notifications.enter_css_to_format) {
+                        return window.translations.notifications.enter_css_to_format;
+                    } else if (message === 'Please enter CSS to minify' && window.translations.notifications.enter_css_to_minify) {
+                        return window.translations.notifications.enter_css_to_minify;
+                    } else if (message === 'CSS file loaded successfully' && window.translations.notifications.css_file_loaded) {
+                        return window.translations.notifications.css_file_loaded;
+                    } else if (message === 'Error reading file' && window.translations.notifications.file_read_error) {
+                        return window.translations.notifications.file_read_error;
+                    } else if (message === 'Please select a CSS file' && window.translations.notifications.select_css_file) {
+                        return window.translations.notifications.select_css_file;
+                    } else if (message === 'CSS file downloaded' && window.translations.notifications.css_file_downloaded) {
+                        return window.translations.notifications.css_file_downloaded;
+                    } else if (message === 'No CSS to download' && window.translations.notifications.no_css_to_download) {
+                        return window.translations.notifications.no_css_to_download;
+                    } else if (message === 'CSS formatted successfully' && window.translations.notifications.css_formatted) {
+                        return window.translations.notifications.css_formatted;
+                    } else if (message === 'CSS minified successfully' && window.translations.notifications.css_minified) {
+                        return window.translations.notifications.css_minified;
+                    }
+                }
+                return message;
+            }
+            
+            // DOM elements
+            const inputCss = document.getElementById('input-css');
+            const outputCss = document.getElementById('output-css');
+            const inputClear = document.getElementById('input-clear');
+            const outputCopy = document.getElementById('output-copy');
+            const inputCharCount = document.getElementById('input-char-count');
+            const outputCharCount = document.getElementById('output-char-count');
+            
+            const indentSize = document.getElementById('indent-size');
+            const braceStyle = document.getElementById('brace-style');
+            const removeComments = document.getElementById('remove-comments');
+            const removeWhitespace = document.getElementById('remove-whitespace');
+            
+            const formatButton = document.getElementById('format-button');
+            const minifyButton = document.getElementById('minify-button');
+            const uploadButton = document.getElementById('upload-button');
+            const fileInput = document.getElementById('file-input');
+            const downloadButton = document.getElementById('download-button');
+            
+            const statisticsContainer = document.getElementById('statistics-container');
+            const originalSize = document.getElementById('original-size');
+            const processedSize = document.getElementById('processed-size');
+            const sizeReduction = document.getElementById('size-reduction');
+            const processingTime = document.getElementById('processing-time');
+            
+            const notification = document.getElementById('notification');
+            
+            // Initial setup
+            updateCharCount(inputCss, inputCharCount);
+            updateCharCount(outputCss, outputCharCount);
+            
+            // Event listeners
+            inputCss.addEventListener('input', function() {
+                updateCharCount(inputCss, inputCharCount);
+            });
+            
+            inputClear.addEventListener('click', function() {
+                inputCss.value = '';
+                outputCss.value = '';
+                updateCharCount(inputCss, inputCharCount);
+                updateCharCount(outputCss, outputCharCount);
+                statisticsContainer.style.display = 'none';
+                downloadButton.disabled = true;
+            });
+            
+            outputCopy.addEventListener('click', function() {
+                if (outputCss.value) {
+                    navigator.clipboard.writeText(outputCss.value)
+                        .then(() => {
+                            showNotification('Copied to clipboard', 'success');
+                        })
+                        .catch(err => {
+                            showNotification('Failed to copy', 'error');
+                        });
+                } else {
+                    showNotification('No CSS to copy', 'error');
+                }
+            });
+            
+            formatButton.addEventListener('click', function() {
+                if (inputCss.value) {
+                    const startTime = performance.now();
+                    const original = inputCss.value;
+                    const formatted = formatCSS(original);
+                    outputCss.value = formatted;
+                    const endTime = performance.now();
+                    
+                    updateCharCount(outputCss, outputCharCount);
+                    updateStatistics(original, formatted, endTime - startTime);
+                    downloadButton.disabled = false;
+                    
+                    showNotification('CSS formatted successfully', 'success');
+                } else {
+                    showNotification('Please enter CSS to format', 'error');
+                }
+            });
+            
+            minifyButton.addEventListener('click', function() {
+                if (inputCss.value) {
+                    const startTime = performance.now();
+                    const original = inputCss.value;
+                    const minified = minifyCSS(original);
+                    outputCss.value = minified;
+                    const endTime = performance.now();
+                    
+                    updateCharCount(outputCss, outputCharCount);
+                    updateStatistics(original, minified, endTime - startTime);
+                    downloadButton.disabled = false;
+                    
+                    showNotification('CSS minified successfully', 'success');
+                } else {
+                    showNotification('Please enter CSS to minify', 'error');
+                }
+            });
+            
+            uploadButton.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    
+                    if (file.type === 'text/css' || file.name.endsWith('.css')) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(event) {
+                            inputCss.value = event.target.result;
+                            updateCharCount(inputCss, inputCharCount);
+                            showNotification('CSS file loaded successfully', 'success');
+                        };
+                        
+                        reader.onerror = function() {
+                            showNotification('Error reading file', 'error');
+                        };
+                        
+                        reader.readAsText(file);
+                    } else {
+                        showNotification('Please select a CSS file', 'error');
+                    }
+                }
+            });
+            
+            downloadButton.addEventListener('click', function() {
+                if (outputCss.value) {
+                    const blob = new Blob([outputCss.value], { type: 'text/css' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'formatted.css';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    showNotification('CSS file downloaded', 'success');
+                } else {
+                    showNotification('No CSS to download', 'error');
+                }
+            });
+            
+            // Format CSS function
+            function formatCSS(css) {
+                // Remove comments if option is selected
+                if (removeComments.checked) {
+                    css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+                }
+                
+                // Define indentation
+                let indent = '';
+                if (indentSize.value === 'tab') {
+                    indent = '\t';
+                } else {
+                    indent = ' '.repeat(parseInt(indentSize.value));
+                }
+                
+                // Format the CSS
+                let formatted = '';
+                let level = 0;
+                
+                // Split by brackets and other delimiters
+                const tokens = css.split(/([{}:;])/);
+                
+                for (let i = 0; i < tokens.length; i++) {
+                    let token = tokens[i].trim();
+                    
+                    if (!token) continue;
+                    
+                    // Handle different tokens
+                    if (token === '{') {
+                        if (braceStyle.value === 'same-line') {
+                            formatted += ' {';
+                        } else {
+                            formatted += '\n{';
+                        }
+                        formatted += '\n';
+                        level++;
+                        
+                    } else if (token === '}') {
+                        formatted += '\n';
+                        level--;
+                        formatted += indent.repeat(level) + '}';
+                        formatted += '\n\n';
+                        
+                    } else if (token === ':') {
+                        formatted += ': ';
+                        
+                    } else if (token === ';') {
+                        formatted += ';\n';
+                        
+                    } else {
+                        // Handle selectors and properties
+                        if (i > 0 && tokens[i-1] === ';' || tokens[i-1] === '{') {
+                            formatted += indent.repeat(level) + token;
+                        } else {
+                            formatted += token;
+                        }
+                    }
+                }
+                
+                return formatted.trim();
+            }
+            
+            // Minify CSS function
+            function minifyCSS(css) {
+                // Remove comments if option is selected
+                if (removeComments.checked) {
+                    css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+                }
+                
+                // Remove whitespace if option is selected
+                if (removeWhitespace.checked) {
+                    // Remove line breaks
+                    css = css.replace(/[\n\r]/g, '');
+                    
+                    // Remove spaces around brackets, colons, semicolons
+                    css = css.replace(/\s*([{}:;,])\s*/g, '$1');
+                    
+                    // Remove trailing semicolons
+                    css = css.replace(/;}/g, '}');
+                    
+                    // Remove spaces after commas in selectors
+                    css = css.replace(/,\s+/g, ',');
+                    
+                    // Compact multiple spaces
+                    css = css.replace(/\s+/g, ' ');
+                    
+                    // Remove space after combinators
+                    css = css.replace(/([+>~])\s/g, '$1');
+                }
+                
+                return css.trim();
+            }
+            
+            // Update statistics
+            function updateStatistics(original, processed, time) {
+                const originalBytes = new Blob([original]).size;
+                const processedBytes = new Blob([processed]).size;
+                const reduction = originalBytes > 0 ? ((originalBytes - processedBytes) / originalBytes) * 100 : 0;
+                
+                originalSize.textContent = formatBytes(originalBytes);
+                processedSize.textContent = formatBytes(processedBytes);
+                sizeReduction.textContent = `${reduction.toFixed(2)}%`;
+                processingTime.textContent = `${time.toFixed(2)} ms`;
+                
+                statisticsContainer.style.display = 'flex';
+            }
+            
+            // Format bytes to KB/MB
+            function formatBytes(bytes) {
+                if (bytes < 1024) {
+                    return `${bytes} B`;
+                } else if (bytes < 1024 * 1024) {
+                    return `${(bytes / 1024).toFixed(2)} KB`;
+                } else {
+                    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+                }
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

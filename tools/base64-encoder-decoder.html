@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base64 Encoder/Decoder | Convert Text & Files to Base64 | Tool-ify</title>
+    <meta name="description" content="Free online Base64 encoder and decoder. Convert text and files to Base64 encoding or decode Base64 strings back to text. No installation required.">
+    <meta name="keywords" content="base64 encoder, base64 decoder, base64 converter, encode to base64, decode base64, base64 text, base64 image, base64 file">
+    <link rel="canonical" href="https://tool-ify.com/tools/base64-encoder-decoder.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Base64 Encoder/Decoder",
+        "url": "https://tool-ify.com/tools/base64-encoder-decoder.html",
+        "description": "Convert text and files to Base64 encoding or decode Base64 strings",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        /* 修复布局，确保页面至少占满整个视口高度 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+        
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            margin-right: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .encoder-container, .decoder-container, .file-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .file-input-container {
+            margin-bottom: 20px;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .file-input-button {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .file-name {
+            margin-left: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: none;
+            margin-bottom: 15px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .option-label {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .option-label input[type="checkbox"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">Base64 Encoder/Decoder</h1>
+                <p id="tool-description">Convert text and files to Base64 encoding or decode Base64 strings</p>
+                
+                <div class="tabs">
+                    <div class="tab active" id="tab-encode-text" data-tab="text-encoder"><span id="tab-encode-text-span">Encode Text</span></div>
+                    <div class="tab" id="tab-decode-text" data-tab="text-decoder"><span id="tab-decode-text-span">Decode Text</span></div>
+                    <div class="tab" id="tab-encode-file" data-tab="file-encoder"><span id="tab-encode-file-span">Encode File</span></div>
+                </div>
+                
+                <!-- Text Encoder Tab -->
+                <div class="tab-content active" id="text-encoder">
+                    <div class="encoder-container">
+                        <textarea id="text-input" placeholder="Enter the text you want to encode to Base64..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="encode-btn">
+                                <i class="fas fa-code"></i> <span id="encode-btn-text">Encode to Base64</span>
+                            </button>
+                            <button id="copy-encoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> <span id="copy-encoded-text">Copy Result</span>
+                            </button>
+                            <button id="clear-encoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> <span id="clear-encoded-text">Clear</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="encoded-output" placeholder="Base64 encoded result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- Text Decoder Tab -->
+                <div class="tab-content" id="text-decoder">
+                    <div class="decoder-container">
+                        <textarea id="base64-input" placeholder="Enter the Base64 string you want to decode..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="decode-btn">
+                                <i class="fas fa-code"></i> <span id="decode-btn-text">Decode from Base64</span>
+                            </button>
+                            <button id="copy-decoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> <span id="copy-decoded-text">Copy Result</span>
+                            </button>
+                            <button id="clear-decoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> <span id="clear-decoded-text">Clear</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="decoded-output" placeholder="Decoded result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- File Encoder Tab -->
+                <div class="tab-content" id="file-encoder">
+                    <div class="file-container">
+                        <div class="file-input-container">
+                            <div class="file-input-wrapper">
+                                <input type="file" id="file-input" class="file-input">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> <span id="choose-file-text">Choose File</span>
+                                </div>
+                            </div>
+                            <span id="file-name" class="file-name">No file chosen</span>
+                        </div>
+                        
+                        <img id="image-preview" class="image-preview">
+                        
+                        <div class="button-group">
+                            <button id="encode-file-btn">
+                                <i class="fas fa-code"></i> <span id="convert-base64-text">Convert to Base64</span>
+                            </button>
+                            <button id="copy-file-encoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> <span id="copy-file-text">Copy Result</span>
+                            </button>
+                            <button id="download-data-url-btn" class="secondary">
+                                <i class="fas fa-download"></i> <span id="download-data-url-text">Download as Data URL</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="file-encoded-output" placeholder="Base64 encoded file result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 更新按钮文本和标签
+                    updateTexts();
+                    
+                    // 更新占位符文本
+                    updatePlaceholders();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 更新按钮文本和标签
+            function updateTexts() {
+                if (window.translations) {
+                    // 更新返回链接
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // 更新标签页
+                    if (window.translations.ui) {
+                        // 编码文本标签页
+                        if (window.translations.ui.encode_text) {
+                            const tabEncodeText = document.getElementById('tab-encode-text-span');
+                            if (tabEncodeText) {
+                                tabEncodeText.textContent = window.translations.ui.encode_text;
+                            }
+                        }
+                        
+                        // 解码文本标签页
+                        if (window.translations.ui.decode_text) {
+                            const tabDecodeText = document.getElementById('tab-decode-text-span');
+                            if (tabDecodeText) {
+                                tabDecodeText.textContent = window.translations.ui.decode_text;
+                            }
+                        }
+                        
+                        // 编码文件标签页
+                        if (window.translations.ui.encode_file) {
+                            const tabEncodeFile = document.getElementById('tab-encode-file-span');
+                            if (tabEncodeFile) {
+                                tabEncodeFile.textContent = window.translations.ui.encode_file;
+                            }
+                        }
+                        
+                        // 编码按钮
+                        if (window.translations.ui.encode_to_base64) {
+                            const encodeBtn = document.getElementById('encode-btn-text');
+                            if (encodeBtn) {
+                                encodeBtn.textContent = window.translations.ui.encode_to_base64;
+                            }
+                        }
+                        
+                        // 解码按钮
+                        if (window.translations.ui.decode_from_base64) {
+                            const decodeBtn = document.getElementById('decode-btn-text');
+                            if (decodeBtn) {
+                                decodeBtn.textContent = window.translations.ui.decode_from_base64;
+                            }
+                        }
+                        
+                        // 复制结果按钮
+                        if (window.translations.ui.copy_result) {
+                            const copyTexts = document.querySelectorAll('#copy-encoded-text, #copy-decoded-text, #copy-file-text');
+                            copyTexts.forEach(element => {
+                                element.textContent = window.translations.ui.copy_result;
+                            });
+                        }
+                        
+                        // 清除按钮
+                        if (window.translations.ui.clear) {
+                            const clearTexts = document.querySelectorAll('#clear-encoded-text, #clear-decoded-text');
+                            clearTexts.forEach(element => {
+                                element.textContent = window.translations.ui.clear;
+                            });
+                        }
+                        
+                        // 选择文件按钮
+                        if (window.translations.ui.choose_file) {
+                            const chooseFileText = document.getElementById('choose-file-text');
+                            if (chooseFileText) {
+                                chooseFileText.textContent = window.translations.ui.choose_file;
+                            }
+                        }
+                        
+                        // 转换为Base64按钮
+                        if (window.translations.ui.convert_to_base64) {
+                            const convertBase64Text = document.getElementById('convert-base64-text');
+                            if (convertBase64Text) {
+                                convertBase64Text.textContent = window.translations.ui.convert_to_base64;
+                            }
+                        }
+                        
+                        // 下载为Data URL按钮
+                        if (window.translations.ui.download_data_url) {
+                            const downloadDataUrlText = document.getElementById('download-data-url-text');
+                            if (downloadDataUrlText) {
+                                downloadDataUrlText.textContent = window.translations.ui.download_data_url;
+                            }
+                        }
+                        
+                        // 无文件选择文本
+                        if (window.translations.ui.no_file) {
+                            const fileName = document.getElementById('file-name');
+                            if (fileName && fileName.textContent === 'No file chosen') {
+                                fileName.textContent = window.translations.ui.no_file;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 更新占位符
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    const placeholders = {
+                        'text-input': window.translations.placeholders.enter_text_to_encode,
+                        'encoded-output': window.translations.placeholders.encoded_result,
+                        'base64-input': window.translations.placeholders.enter_base64,
+                        'decoded-output': window.translations.placeholders.decoded_result,
+                        'file-encoded-output': window.translations.placeholders.file_encoded_result
+                    };
+                    
+                    for (const [id, text] of Object.entries(placeholders)) {
+                        if (text) {
+                            const element = document.getElementById(id);
+                            if (element) {
+                                element.placeholder = text;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 获取翻译文本
+            function getTranslatedText(key, defaultText) {
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                
+                return defaultText;
+            }
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Text Encoder
+            const textInput = document.getElementById('text-input');
+            const encodedOutput = document.getElementById('encoded-output');
+            const encodeBtn = document.getElementById('encode-btn');
+            const copyEncodedBtn = document.getElementById('copy-encoded-btn');
+            const clearEncodedBtn = document.getElementById('clear-encoded-btn');
+            
+            // Text Decoder
+            const base64Input = document.getElementById('base64-input');
+            const decodedOutput = document.getElementById('decoded-output');
+            const decodeBtn = document.getElementById('decode-btn');
+            const copyDecodedBtn = document.getElementById('copy-decoded-btn');
+            const clearDecodedBtn = document.getElementById('clear-decoded-btn');
+            
+            // File Encoder
+            const fileInput = document.getElementById('file-input');
+            const fileName = document.getElementById('file-name');
+            const imagePreview = document.getElementById('image-preview');
+            const encodeFileBtn = document.getElementById('encode-file-btn');
+            const fileEncodedOutput = document.getElementById('file-encoded-output');
+            const copyFileEncodedBtn = document.getElementById('copy-file-encoded-btn');
+            const downloadDataUrlBtn = document.getElementById('download-data-url-btn');
+            
+            // Notification
+            const notification = document.getElementById('notification');
+            
+            // Encode text to Base64
+            encodeBtn.addEventListener('click', function() {
+                try {
+                    const text = textInput.value;
+                    if (!text) {
+                        showNotification(getTranslatedText('text_required', 'Please enter text to encode'), 'error');
+                        return;
+                    }
+                    
+                    // Encode to Base64
+                    const encodedText = btoa(encodeURIComponent(text).replace(/%([0-9A-F]{2})/g,
+                        function toSolidBytes(match, p1) {
+                            return String.fromCharCode('0x' + p1);
+                        }));
+                    
+                    encodedOutput.value = encodedText;
+                    showNotification(getTranslatedText('encode_success', 'Text encoded successfully'), 'success');
+                } catch (error) {
+                    showNotification(getTranslatedText('encode_error', 'Error encoding text: ') + error.message, 'error');
+                }
+            });
+            
+            // Decode Base64 to text
+            decodeBtn.addEventListener('click', function() {
+                try {
+                    const base64 = base64Input.value.trim();
+                    if (!base64) {
+                        showNotification(getTranslatedText('base64_required', 'Please enter Base64 text to decode'), 'error');
+                        return;
+                    }
+                    
+                    // Decode from Base64
+                    const decodedText = decodeURIComponent(atob(base64).split('').map(function(c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                    
+                    decodedOutput.value = decodedText;
+                    showNotification(getTranslatedText('decode_success', 'Text decoded successfully'), 'success');
+                } catch (error) {
+                    showNotification(getTranslatedText('invalid_base64', 'Error decoding Base64: Invalid Base64 string'), 'error');
+                }
+            });
+            
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                fileName.textContent = file.name;
+                
+                // Preview image if it's an image file
+                if (file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.style.display = 'none';
+                }
+            });
+            
+            // Encode file to Base64
+            encodeFileBtn.addEventListener('click', function() {
+                const file = fileInput.files[0];
+                if (!file) {
+                    showNotification(getTranslatedText('file_required', 'Please select a file to encode'), 'error');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    const base64 = dataUrl.split(',')[1];
+                    fileEncodedOutput.value = base64;
+                    showNotification(getTranslatedText('file_encode_success', 'File encoded successfully'), 'success');
+                };
+                reader.onerror = function() {
+                    showNotification(getTranslatedText('file_read_error', 'Error reading file'), 'error');
+                };
+                reader.readAsDataURL(file);
+            });
+            
+            // Copy and clear functions
+            copyEncodedBtn.addEventListener('click', function() {
+                copyToClipboard(encodedOutput);
+            });
+            
+            clearEncodedBtn.addEventListener('click', function() {
+                textInput.value = '';
+                encodedOutput.value = '';
+            });
+            
+            copyDecodedBtn.addEventListener('click', function() {
+                copyToClipboard(decodedOutput);
+            });
+            
+            clearDecodedBtn.addEventListener('click', function() {
+                base64Input.value = '';
+                decodedOutput.value = '';
+            });
+            
+            copyFileEncodedBtn.addEventListener('click', function() {
+                copyToClipboard(fileEncodedOutput);
+            });
+            
+            // Download as Data URL
+            downloadDataUrlBtn.addEventListener('click', function() {
+                if (!fileInput.files[0]) {
+                    showNotification(getTranslatedText('file_required', 'Please select a file first'), 'error');
+                    return;
+                }
+                
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const dataUrl = e.target.result;
+                    const link = document.createElement('a');
+                    link.href = dataUrl;
+                    link.download = 'data-url-' + file.name;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    showNotification(getTranslatedText('download_started', 'Data URL downloaded'), 'success');
+                };
+                
+                reader.onerror = function() {
+                    showNotification(getTranslatedText('operation_failed', 'Error creating data URL'), 'error');
+                };
+                
+                reader.readAsDataURL(file);
+            });
+            
+            // Helper functions
+            function copyToClipboard(element) {
+                if (!element.value) {
+                    showNotification(getTranslatedText('nothing_to_copy', 'Nothing to copy'), 'error');
+                    return;
+                }
+                
+                element.select();
+                document.execCommand('copy');
+                showNotification(getTranslatedText('copied_clipboard', 'Copied to clipboard'), 'success');
+            }
+            
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

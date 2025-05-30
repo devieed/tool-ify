@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator | Create QR Codes from Text or URLs | Tool-ify</title>
+    <meta name="description" content="Generate QR codes online for free. Create custom QR codes from text, URLs, contact details, and more with this easy-to-use QR code generator tool.">
+    <meta name="keywords" content="qr code, qr code generator, qr maker, create qr code, qr generator, scan qr code, url to qr code">
+    <link rel="canonical" href="https://tool-ify.com/tools/qr-code-generator.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "QR Code Generator",
+        "url": "https://tool-ify.com/tools/qr-code-generator.html",
+        "description": "Generate QR codes from text or URLs",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .generator-container {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .qr-form {
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 15px;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .options-container {
+                flex-direction: row;
+            }
+            
+            .option-group {
+                flex: 1;
+            }
+        }
+        
+        .option-group {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .option-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        
+        .option-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .option-row .input-label {
+            margin-right: 10px;
+            flex-shrink: 0;
+            min-width: 120px;
+        }
+        
+        .option-select, .option-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        .color-input {
+            padding: 0;
+            width: 40px;
+            height: 30px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .range-slider {
+            flex-grow: 1;
+            height: 5px;
+            background-color: var(--border-color);
+            outline: none;
+            border-radius: 5px;
+            -webkit-appearance: none;
+        }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .range-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .range-value {
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .tabs-container {
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .action-button {
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .primary-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .primary-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .secondary-btn {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .secondary-btn:hover {
+            background-color: var(--border-color);
+        }
+        
+        .qr-preview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            padding: 30px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .qr-preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 500px;
+            background-color: white;
+            margin: 25px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow: hidden;
+            padding: 10px;
+        }
+        
+        .qr-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-download-link {
+            margin-top: 10px;
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .qr-download-link:hover {
+            text-decoration: underline;
+        }
+        
+        .info-box {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .range-slider#qr-size {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">QR Code Generator</h1>
+                <p id="tool-description">Generate QR codes from text or URLs</p>
+                
+                <div class="generator-container">
+                    <div class="tabs-container">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="text">Text / URL</div>
+                            <div class="tab" data-tab="vcard">vCard (Contact)</div>
+                            <div class="tab" data-tab="wifi">WiFi Network</div>
+                        </div>
+                        
+                        <!-- Text/URL Tab -->
+                        <div class="tab-content active" id="text">
+                            <div class="input-group">
+                                <label class="input-label" for="text-input">Enter Text or URL</label>
+                                <input type="text" id="text-input" class="input-field" placeholder="https://example.com or any text...">
+                            </div>
+                        </div>
+                        
+                        <!-- vCard Tab -->
+                        <div class="tab-content" id="vcard">
+                            <div class="input-group">
+                                <label class="input-label" for="vcard-name">Full Name</label>
+                                <input type="text" id="vcard-name" class="input-field" placeholder="John Doe">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="vcard-company">Company (Optional)</label>
+                                <input type="text" id="vcard-company" class="input-field" placeholder="Company Inc.">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="vcard-phone">Phone Number</label>
+                                <input type="tel" id="vcard-phone" class="input-field" placeholder="+1 123 456 7890">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="vcard-email">Email</label>
+                                <input type="email" id="vcard-email" class="input-field" placeholder="john@example.com">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="vcard-website">Website (Optional)</label>
+                                <input type="url" id="vcard-website" class="input-field" placeholder="https://example.com">
+                            </div>
+                        </div>
+                        
+                        <!-- WiFi Tab -->
+                        <div class="tab-content" id="wifi">
+                            <div class="input-group">
+                                <label class="input-label" for="wifi-ssid">Network Name (SSID)</label>
+                                <input type="text" id="wifi-ssid" class="input-field" placeholder="My WiFi Network">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="wifi-encryption">Encryption Type</label>
+                                <select id="wifi-encryption" class="option-select">
+                                    <option value="WPA">WPA/WPA2</option>
+                                    <option value="WEP">WEP</option>
+                                    <option value="nopass">None</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group" id="wifi-password-group">
+                                <label class="input-label" for="wifi-password">Password</label>
+                                <input type="text" id="wifi-password" class="input-field" placeholder="WiFi Password">
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label" for="wifi-hidden">Hidden Network</label>
+                                <select id="wifi-hidden" class="option-select">
+                                    <option value="false">No</option>
+                                    <option value="true">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="options-container">
+                        <div class="option-group">
+                            <div class="option-title">Appearance</div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-size">Size</label>
+                                <div class="range-container">
+                                    <input type="range" id="qr-size" class="range-slider" min="100" max="450" step="10" value="200">
+                                    <span id="qr-size-value" class="range-value">200px</span>
+                                </div>
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-margin">Margin</label>
+                                <div class="range-container">
+                                    <input type="range" id="qr-margin" class="range-slider" min="0" max="5" step="1" value="1">
+                                    <span id="qr-margin-value" class="range-value">1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-color">Foreground Color</label>
+                                <input type="color" id="qr-color" class="color-input" value="#000000">
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-bg-color">Background Color</label>
+                                <input type="color" id="qr-bg-color" class="color-input" value="#FFFFFF">
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <div class="option-title">Format & Error Correction</div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-format">Format</label>
+                                <select id="qr-format" class="option-select">
+                                    <option value="png" selected>PNG</option>
+                                    <option value="svg">SVG</option>
+                                    <option value="jpeg">JPEG</option>
+                                </select>
+                            </div>
+                            
+                            <div class="option-row">
+                                <label class="input-label" for="qr-error-correction">Error Correction Level</label>
+                                <select id="qr-error-correction" class="option-select">
+                                    <option value="L">Low (7%)</option>
+                                    <option value="M" selected>Medium (15%)</option>
+                                    <option value="Q">Quartile (25%)</option>
+                                    <option value="H">High (30%)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="generate-btn" class="action-button primary-btn">
+                            <i class="fas fa-qrcode"></i> Generate QR Code
+                        </button>
+                        <button id="reset-btn" class="action-button secondary-btn">
+                            <i class="fas fa-undo"></i> Reset
+                        </button>
+                    </div>
+                    
+                    <div class="qr-preview" id="qr-preview" style="display: none;">
+                        <h3>Your QR Code</h3>
+                        <div class="qr-preview-container">
+                            <img id="qr-image" class="qr-image" alt="Generated QR Code">
+                        </div>
+                        <div class="action-buttons">
+                            <a id="download-btn" class="action-button primary-btn" download="qrcode.png">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                            <button id="share-btn" class="action-button secondary-btn">
+                                <i class="fas fa-share-alt"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="info-title">About QR Codes</h2>
+                    <div class="info-text">
+                        <p>QR (Quick Response) codes are two-dimensional barcodes that can be scanned by smartphone cameras and other devices to quickly access information or perform actions.</p>
+                        
+                        <h3>Common Uses for QR Codes</h3>
+                        <ul>
+                            <li><strong>Website URLs</strong>: Direct users to your website without typing a URL</li>
+                            <li><strong>Contact Information</strong>: Share contact details that can be saved directly to a phone</li>
+                            <li><strong>WiFi Access</strong>: Allow quick connection to WiFi networks without typing passwords</li>
+                            <li><strong>Product Information</strong>: Link to product details, manuals, or authenticity verification</li>
+                            <li><strong>Marketing Materials</strong>: Use on business cards, flyers, posters, and packaging</li>
+                            <li><strong>Digital Payments</strong>: Facilitate easy payment methods</li>
+                        </ul>
+                        
+                        <h3>QR Code Types</h3>
+                        <p>This tool supports several QR code types:</p>
+                        <ul>
+                            <li><strong>Text/URL</strong>: Standard text or website links</li>
+                            <li><strong>vCard</strong>: Contact information that can be added to address books</li>
+                            <li><strong>WiFi</strong>: Network connection details for easy WiFi access</li>
+                        </ul>
+                        
+                        <h3>Error Correction Levels</h3>
+                        <p>QR codes include error correction capabilities that allow them to be readable even if partially damaged or obscured:</p>
+                        <ul>
+                            <li><strong>L (Low)</strong>: 7% of data can be restored</li>
+                            <li><strong>M (Medium)</strong>: 15% of data can be restored</li>
+                            <li><strong>Q (Quartile)</strong>: 25% of data can be restored</li>
+                            <li><strong>H (High)</strong>: 30% of data can be restored</li>
+                        </ul>
+                        <p>Higher error correction levels make the QR code more reliable but also more complex (with more modules/pixels).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for translations to load
+            function applyTranslations() {
+                if (window.translations) {
+                    // Update page elements with translations
+                    updateTexts();
+                    
+                    // Update placeholders
+                    updatePlaceholders();
+                    
+                    // Setup notification translation
+                    setupNotifications();
+                    
+                    // Force re-render all translated elements
+                    document.body.style.zoom = "1.00001";
+                    setTimeout(function() {
+                        document.body.style.zoom = "1";
+                    }, 10);
+                } else {
+                    // If translations not loaded yet, try again after a short delay
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // Start trying to apply translations
+            applyTranslations();
+            
+            // Update UI text elements with translations
+            function updateTexts() {
+                if (window.translations) {
+                    // Update back link
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // Update UI text elements
+                    if (window.translations.ui) {
+                        // QR Code Generator UI elements
+                        const uiElements = {
+                            'tool-title': 'qr_code_generator_title',
+                            'tool-description': 'qr_code_generator_description',
+                            'generate-btn': 'generate_qr_code',
+                            'reset-btn': 'reset',
+                            'download-btn': 'download',
+                            'share-btn': 'share'
+                        };
+                        
+                        for (const [id, key] of Object.entries(uiElements)) {
+                            const element = document.getElementById(id);
+                            if (element && window.translations.ui[key]) {
+                                // Special case for buttons with icons
+                                if (id === 'generate-btn') {
+                                    element.innerHTML = '<i class="fas fa-qrcode"></i> ' + window.translations.ui[key];
+                                } else if (id === 'reset-btn') {
+                                    element.innerHTML = '<i class="fas fa-undo"></i> ' + window.translations.ui[key];
+                                } else if (id === 'download-btn') {
+                                    element.innerHTML = '<i class="fas fa-download"></i> ' + window.translations.ui[key];
+                                } else if (id === 'share-btn') {
+                                    element.innerHTML = '<i class="fas fa-share-alt"></i> ' + window.translations.ui[key];
+                                } else {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                        
+                        // Update tab texts
+                        const tabs = document.querySelectorAll('.tab');
+                        tabs.forEach(tab => {
+                            const tabId = tab.getAttribute('data-tab');
+                            if (tabId === 'text' && window.translations.ui.text_url) {
+                                tab.textContent = window.translations.ui.text_url;
+                            } else if (tabId === 'vcard' && window.translations.ui.vcard_contact) {
+                                tab.textContent = window.translations.ui.vcard_contact;
+                            } else if (tabId === 'wifi' && window.translations.ui.wifi_network) {
+                                tab.textContent = window.translations.ui.wifi_network;
+                            }
+                        });
+                        
+                        // Update input labels
+                        const textInputLabel = document.querySelector('label[for="text-input"]');
+                        if (textInputLabel && window.translations.ui.enter_text_or_url) {
+                            textInputLabel.textContent = window.translations.ui.enter_text_or_url;
+                        }
+                        
+                        const vcardLabels = {
+                            'vcard-name': 'full_name',
+                            'vcard-company': 'company_optional',
+                            'vcard-phone': 'phone_number',
+                            'vcard-email': 'email',
+                            'vcard-website': 'website_optional'
+                        };
+                        
+                        for (const [id, key] of Object.entries(vcardLabels)) {
+                            const label = document.querySelector(`label[for="${id}"]`);
+                            if (label && window.translations.ui[key]) {
+                                label.textContent = window.translations.ui[key];
+                            }
+                        }
+                        
+                        const wifiLabels = {
+                            'wifi-ssid': 'network_name_ssid',
+                            'wifi-encryption': 'encryption_type',
+                            'wifi-password': 'password',
+                            'wifi-hidden': 'hidden_network'
+                        };
+                        
+                        for (const [id, key] of Object.entries(wifiLabels)) {
+                            const label = document.querySelector(`label[for="${id}"]`);
+                            if (label && window.translations.ui[key]) {
+                                label.textContent = window.translations.ui[key];
+                            }
+                        }
+                        
+                        // Update WiFi encryption options
+                        const wifiEncryption = document.getElementById('wifi-encryption');
+                        if (wifiEncryption) {
+                            Array.from(wifiEncryption.options).forEach(option => {
+                                if (option.value === 'WPA' && window.translations.ui.wpa_wpa2) {
+                                    option.textContent = window.translations.ui.wpa_wpa2;
+                                } else if (option.value === 'WEP' && window.translations.ui.wep) {
+                                    option.textContent = window.translations.ui.wep;
+                                } else if (option.value === 'nopass' && window.translations.ui.none) {
+                                    option.textContent = window.translations.ui.none;
+                                }
+                            });
+                        }
+                        
+                        // Update WiFi hidden options
+                        const wifiHidden = document.getElementById('wifi-hidden');
+                        if (wifiHidden) {
+                            Array.from(wifiHidden.options).forEach(option => {
+                                if (option.value === 'false' && window.translations.ui.no) {
+                                    option.textContent = window.translations.ui.no;
+                                } else if (option.value === 'true' && window.translations.ui.yes) {
+                                    option.textContent = window.translations.ui.yes;
+                                }
+                            });
+                        }
+                        
+                        // Update option titles
+                        const optionTitles = document.querySelectorAll('.option-title');
+                        optionTitles.forEach(title => {
+                            if (title.textContent === 'Appearance' && window.translations.ui.appearance) {
+                                title.textContent = window.translations.ui.appearance;
+                            } else if (title.textContent === 'Format & Error Correction' && window.translations.ui.format_error_correction) {
+                                title.textContent = window.translations.ui.format_error_correction;
+                            }
+                        });
+                        
+                        // Update option labels
+                        const optionLabels = {
+                            'qr-size': 'size',
+                            'qr-margin': 'margin',
+                            'qr-color': 'foreground_color',
+                            'qr-bg-color': 'background_color',
+                            'qr-format': 'format',
+                            'qr-error-correction': 'error_correction_level'
+                        };
+                        
+                        for (const [id, key] of Object.entries(optionLabels)) {
+                            const label = document.querySelector(`label[for="${id}"]`);
+                            if (label && window.translations.ui[key]) {
+                                label.textContent = window.translations.ui[key];
+                            }
+                        }
+                        
+                        // Update format options
+                        const qrFormat = document.getElementById('qr-format');
+                        if (qrFormat && window.translations.ui.png && window.translations.ui.svg && window.translations.ui.jpeg) {
+                            Array.from(qrFormat.options).forEach(option => {
+                                if (option.value === 'png' && window.translations.ui.png) {
+                                    option.textContent = window.translations.ui.png;
+                                } else if (option.value === 'svg' && window.translations.ui.svg) {
+                                    option.textContent = window.translations.ui.svg;
+                                } else if (option.value === 'jpeg' && window.translations.ui.jpeg) {
+                                    option.textContent = window.translations.ui.jpeg;
+                                }
+                            });
+                        }
+                        
+                        // Update error correction options
+                        const qrErrorCorrection = document.getElementById('qr-error-correction');
+                        if (qrErrorCorrection) {
+                            Array.from(qrErrorCorrection.options).forEach(option => {
+                                if (option.value === 'L' && window.translations.ui.error_correction_low) {
+                                    option.textContent = window.translations.ui.error_correction_low;
+                                } else if (option.value === 'M' && window.translations.ui.error_correction_medium) {
+                                    option.textContent = window.translations.ui.error_correction_medium;
+                                } else if (option.value === 'Q' && window.translations.ui.error_correction_quartile) {
+                                    option.textContent = window.translations.ui.error_correction_quartile;
+                                } else if (option.value === 'H' && window.translations.ui.error_correction_high) {
+                                    option.textContent = window.translations.ui.error_correction_high;
+                                }
+                            });
+                        }
+                        
+                        // Update QR preview title
+                        const qrPreviewTitle = document.querySelector('.qr-preview h3');
+                        if (qrPreviewTitle && window.translations.ui.your_qr_code) {
+                            qrPreviewTitle.textContent = window.translations.ui.your_qr_code;
+                        }
+                        
+                        // Update info box content
+                        if (window.translations.qr_code_info) {
+                            const infoTitle = document.querySelector('.info-title');
+                            if (infoTitle && window.translations.qr_code_info.title) {
+                                infoTitle.textContent = window.translations.qr_code_info.title;
+                            }
+                            
+                            const infoText = document.querySelector('.info-text');
+                            if (infoText && window.translations.qr_code_info.content) {
+                                // Main description paragraph
+                                const mainDesc = infoText.querySelector('p:first-child');
+                                if (mainDesc && window.translations.qr_code_info.content.main_desc) {
+                                    mainDesc.textContent = window.translations.qr_code_info.content.main_desc;
+                                }
+                                
+                                // Update section headers
+                                const h3Elements = infoText.querySelectorAll('h3');
+                                h3Elements.forEach(h3 => {
+                                    if (h3.textContent === 'Common Uses for QR Codes' && window.translations.qr_code_info.content.common_uses_title) {
+                                        h3.textContent = window.translations.qr_code_info.content.common_uses_title;
+                                    } else if (h3.textContent === 'QR Code Types' && window.translations.qr_code_info.content.qr_code_types_title) {
+                                        h3.textContent = window.translations.qr_code_info.content.qr_code_types_title;
+                                    } else if (h3.textContent === 'Error Correction Levels' && window.translations.qr_code_info.content.error_correction_title) {
+                                        h3.textContent = window.translations.qr_code_info.content.error_correction_title;
+                                    }
+                                });
+                                
+                                // Update common uses list
+                                if (window.translations.qr_code_info.content.common_uses && Array.isArray(window.translations.qr_code_info.content.common_uses)) {
+                                    const commonUsesList = infoText.querySelectorAll('h3:nth-of-type(1) + ul li');
+                                    
+                                    for (let i = 0; i < Math.min(commonUsesList.length, window.translations.qr_code_info.content.common_uses.length); i++) {
+                                        const item = commonUsesList[i];
+                                        const commonUse = window.translations.qr_code_info.content.common_uses[i];
+                                        
+                                        // Store the existing strong element
+                                        const strong = item.querySelector('strong');
+                                        
+                                        // Update the item with new text
+                                        if (strong && commonUse.title && commonUse.description) {
+                                            // Update strong text
+                                            strong.textContent = commonUse.title;
+                                            
+                                            // Clear the item and add back the strong element
+                                            item.textContent = '';
+                                            item.appendChild(strong);
+                                            
+                                            // Add the description
+                                            item.appendChild(document.createTextNode(': ' + commonUse.description));
+                                        }
+                                    }
+                                }
+                                
+                                // Update QR code types
+                                if (window.translations.qr_code_info.content.qr_code_types_desc) {
+                                    const qrTypesDesc = infoText.querySelector('h3:nth-of-type(2) + p');
+                                    if (qrTypesDesc) {
+                                        qrTypesDesc.textContent = window.translations.qr_code_info.content.qr_code_types_desc;
+                                    }
+                                }
+                                
+                                // Update QR code types list
+                                if (window.translations.qr_code_info.content.qr_code_types && Array.isArray(window.translations.qr_code_info.content.qr_code_types)) {
+                                    const qrTypesList = infoText.querySelectorAll('h3:nth-of-type(2) + p + ul li');
+                                    
+                                    for (let i = 0; i < Math.min(qrTypesList.length, window.translations.qr_code_info.content.qr_code_types.length); i++) {
+                                        const item = qrTypesList[i];
+                                        const qrType = window.translations.qr_code_info.content.qr_code_types[i];
+                                        
+                                        // Store the existing strong element
+                                        const strong = item.querySelector('strong');
+                                        
+                                        // Update the item with new text
+                                        if (strong && qrType.title && qrType.description) {
+                                            // Update strong text
+                                            strong.textContent = qrType.title;
+                                            
+                                            // Clear the item and add back the strong element
+                                            item.textContent = '';
+                                            item.appendChild(strong);
+                                            
+                                            // Add the description
+                                            item.appendChild(document.createTextNode(': ' + qrType.description));
+                                        }
+                                    }
+                                }
+                                
+                                // Update error correction desc
+                                if (window.translations.qr_code_info.content.error_correction_desc) {
+                                    const errorCorrectionDesc = infoText.querySelector('h3:nth-of-type(3) + p');
+                                    if (errorCorrectionDesc) {
+                                        errorCorrectionDesc.textContent = window.translations.qr_code_info.content.error_correction_desc;
+                                    }
+                                }
+                                
+                                // Update error correction levels list
+                                if (window.translations.qr_code_info.content.error_correction_levels && Array.isArray(window.translations.qr_code_info.content.error_correction_levels)) {
+                                    const errorCorrectionList = infoText.querySelectorAll('h3:nth-of-type(3) + p + ul li');
+                                    
+                                    for (let i = 0; i < Math.min(errorCorrectionList.length, window.translations.qr_code_info.content.error_correction_levels.length); i++) {
+                                        const item = errorCorrectionList[i];
+                                        const errorLevel = window.translations.qr_code_info.content.error_correction_levels[i];
+                                        
+                                        // Store the existing strong element
+                                        const strong = item.querySelector('strong');
+                                        
+                                        // Update the item with new text
+                                        if (strong && errorLevel.title && errorLevel.description) {
+                                            // Update strong text
+                                            strong.textContent = errorLevel.title;
+                                            
+                                            // Clear the item and add back the strong element
+                                            item.textContent = '';
+                                            item.appendChild(strong);
+                                            
+                                            // Add the description
+                                            item.appendChild(document.createTextNode(': ' + errorLevel.description));
+                                        }
+                                    }
+                                }
+                                
+                                // Update error correction final note
+                                if (window.translations.qr_code_info.content.error_correction_note) {
+                                    const errorCorrectionNote = infoText.querySelector('h3:nth-of-type(3) + p + ul + p');
+                                    if (errorCorrectionNote) {
+                                        errorCorrectionNote.textContent = window.translations.qr_code_info.content.error_correction_note;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Update placeholder text
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    // Text/URL placeholder
+                    const textInput = document.getElementById('text-input');
+                    if (textInput && window.translations.placeholders.text_url_placeholder) {
+                        textInput.placeholder = window.translations.placeholders.text_url_placeholder;
+                    }
+                    
+                    // vCard placeholders
+                    const vcardPlaceholders = {
+                        'vcard-name': 'vcard_name_placeholder',
+                        'vcard-company': 'vcard_company_placeholder',
+                        'vcard-phone': 'vcard_phone_placeholder',
+                        'vcard-email': 'vcard_email_placeholder',
+                        'vcard-website': 'vcard_website_placeholder'
+                    };
+                    
+                    for (const [id, key] of Object.entries(vcardPlaceholders)) {
+                        const input = document.getElementById(id);
+                        if (input && window.translations.placeholders[key]) {
+                            input.placeholder = window.translations.placeholders[key];
+                        }
+                    }
+                    
+                    // WiFi placeholders
+                    const wifiPlaceholders = {
+                        'wifi-ssid': 'wifi_ssid_placeholder',
+                        'wifi-password': 'wifi_password_placeholder'
+                    };
+                    
+                    for (const [id, key] of Object.entries(wifiPlaceholders)) {
+                        const input = document.getElementById(id);
+                        if (input && window.translations.placeholders[key]) {
+                            input.placeholder = window.translations.placeholders[key];
+                        }
+                    }
+                }
+            }
+            
+            // Setup notification message translation
+            function setupNotifications() {
+                // Save original showNotification function reference
+                const originalShowNotification = window.showNotification || showNotification;
+                
+                // Redefine showNotification function
+                window.showNotification = function(message, type) {
+                    // Try to get translated message
+                    let translatedMessage = getTranslatedNotification(message);
+                    
+                    // Call original function with translated message
+                    originalShowNotification(translatedMessage, type);
+                };
+            }
+            
+            // Get translated notification message
+            function getTranslatedNotification(message) {
+                if (window.translations && window.translations.notifications) {
+                    if (message === 'Please enter some text or URL' && window.translations.notifications.enter_text_or_url) {
+                        return window.translations.notifications.enter_text_or_url;
+                    } else if (message === 'Please fill in all required vCard fields' && window.translations.notifications.fill_required_vcard_fields) {
+                        return window.translations.notifications.fill_required_vcard_fields;
+                    } else if (message === 'Please fill in all required WiFi fields' && window.translations.notifications.fill_required_wifi_fields) {
+                        return window.translations.notifications.fill_required_wifi_fields;
+                    } else if (message === 'QR code generated successfully' && window.translations.notifications.qr_code_generated) {
+                        return window.translations.notifications.qr_code_generated;
+                    } else if (message === 'Form reset' && window.translations.notifications.form_reset) {
+                        return window.translations.notifications.form_reset;
+                    } else if (message === 'No QR code to share' && window.translations.notifications.no_qr_code_to_share) {
+                        return window.translations.notifications.no_qr_code_to_share;
+                    } else if (message === 'Shared successfully' && window.translations.notifications.shared_successfully) {
+                        return window.translations.notifications.shared_successfully;
+                    } else if (message === 'Failed to share' && window.translations.notifications.failed_to_share) {
+                        return window.translations.notifications.failed_to_share;
+                    } else if (message === 'Sharing not supported on this browser' && window.translations.notifications.sharing_not_supported) {
+                        return window.translations.notifications.sharing_not_supported;
+                    }
+                }
+                return message;
+            }
+            
+            // DOM elements - tabs
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // DOM elements - inputs
+            const textInput = document.getElementById('text-input');
+            const vcardName = document.getElementById('vcard-name');
+            const vcardCompany = document.getElementById('vcard-company');
+            const vcardPhone = document.getElementById('vcard-phone');
+            const vcardEmail = document.getElementById('vcard-email');
+            const vcardWebsite = document.getElementById('vcard-website');
+            const wifiSsid = document.getElementById('wifi-ssid');
+            const wifiEncryption = document.getElementById('wifi-encryption');
+            const wifiPassword = document.getElementById('wifi-password');
+            const wifiPasswordGroup = document.getElementById('wifi-password-group');
+            const wifiHidden = document.getElementById('wifi-hidden');
+            
+            // DOM elements - options
+            const qrSize = document.getElementById('qr-size');
+            const qrSizeValue = document.getElementById('qr-size-value');
+            const qrMargin = document.getElementById('qr-margin');
+            const qrMarginValue = document.getElementById('qr-margin-value');
+            const qrColor = document.getElementById('qr-color');
+            const qrBgColor = document.getElementById('qr-bg-color');
+            const qrFormat = document.getElementById('qr-format');
+            const qrErrorCorrection = document.getElementById('qr-error-correction');
+            
+            // DOM elements - buttons and display
+            const generateBtn = document.getElementById('generate-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const qrPreview = document.getElementById('qr-preview');
+            const qrImage = document.getElementById('qr-image');
+            const downloadBtn = document.getElementById('download-btn');
+            const shareBtn = document.getElementById('share-btn');
+            const notification = document.getElementById('notification');
+            
+            // QR code instance
+            let qrCode = null;
+            
+            // Set up event listeners
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            qrSize.addEventListener('input', function() {
+                qrSizeValue.textContent = this.value + 'px';
+            });
+            
+            qrMargin.addEventListener('input', function() {
+                qrMarginValue.textContent = this.value;
+            });
+            
+            wifiEncryption.addEventListener('change', function() {
+                if (this.value === 'nopass') {
+                    wifiPasswordGroup.style.display = 'none';
+                } else {
+                    wifiPasswordGroup.style.display = 'block';
+                }
+            });
+            
+            generateBtn.addEventListener('click', generateQRCode);
+            resetBtn.addEventListener('click', resetForm);
+            shareBtn.addEventListener('click', shareQRCode);
+            
+            // Generate QR code
+            function generateQRCode() {
+                // Get active tab
+                const activeTab = document.querySelector('.tab.active').getAttribute('data-tab');
+                
+                // Get QR code text based on active tab
+                let qrText = '';
+                
+                if (activeTab === 'text') {
+                    qrText = textInput.value.trim();
+                    if (!qrText) {
+                        showNotification('Please enter some text or URL', 'error');
+                        return;
+                    }
+                } else if (activeTab === 'vcard') {
+                    if (!vcardName.value.trim() || !vcardPhone.value.trim() || !vcardEmail.value.trim()) {
+                        showNotification('Please fill in all required vCard fields', 'error');
+                        return;
+                    }
+                    
+                    qrText = generateVCardText(
+                        vcardName.value.trim(),
+                        vcardCompany.value.trim(),
+                        vcardPhone.value.trim(),
+                        vcardEmail.value.trim(),
+                        vcardWebsite.value.trim()
+                    );
+                } else if (activeTab === 'wifi') {
+                    if (!wifiSsid.value.trim() || (wifiEncryption.value !== 'nopass' && !wifiPassword.value.trim())) {
+                        showNotification('Please fill in all required WiFi fields', 'error');
+                        return;
+                    }
+                    
+                    qrText = generateWiFiText(
+                        wifiSsid.value.trim(),
+                        wifiEncryption.value,
+                        wifiPassword.value.trim(),
+                        wifiHidden.value === 'true'
+                    );
+                }
+                
+                // Get options
+                const size = parseInt(qrSize.value);
+                const margin = parseInt(qrMargin.value);
+                const color = qrColor.value;
+                const bgColor = qrBgColor.value;
+                const errorCorrectionLevel = qrErrorCorrection.value;
+                
+                // Clear previous QR code if exists
+                const qrContainer = document.querySelector('.qr-preview-container');
+                qrContainer.innerHTML = '';
+                
+                // Create new QR code
+                qrCode = new QRCode(qrContainer, {
+                    text: qrText,
+                    width: size,
+                    height: size,
+                    colorDark: color,
+                    colorLight: bgColor,
+                    correctLevel: QRCode.CorrectLevel[errorCorrectionLevel],
+                    margin: margin
+                });
+                
+                // Show preview
+                qrPreview.style.display = 'flex';
+                
+                // Set download link
+                setTimeout(() => {
+                    const img = qrContainer.querySelector('img');
+                    if (img) {
+                        qrImage.src = img.src;
+                        downloadBtn.href = img.src;
+                        downloadBtn.download = `qrcode.${qrFormat.value}`;
+                    }
+                }, 100);
+                
+                showNotification('QR code generated successfully', 'success');
+            }
+            
+            // Generate vCard text
+            function generateVCardText(name, company, phone, email, website) {
+                let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
+                vcard += `FN:${name}\n`;
+                
+                if (company) {
+                    vcard += `ORG:${company}\n`;
+                }
+                
+                vcard += `TEL:${phone}\n`;
+                vcard += `EMAIL:${email}\n`;
+                
+                if (website) {
+                    vcard += `URL:${website}\n`;
+                }
+                
+                vcard += 'END:VCARD';
+                return vcard;
+            }
+            
+            // Generate WiFi text
+            function generateWiFiText(ssid, encryption, password, hidden) {
+                let wifi = 'WIFI:';
+                wifi += `S:${ssid};`;
+                wifi += `T:${encryption};`;
+                
+                if (encryption !== 'nopass') {
+                    wifi += `P:${password};`;
+                }
+                
+                if (hidden) {
+                    wifi += 'H:true;';
+                }
+                
+                wifi += ';';
+                return wifi;
+            }
+            
+            // Reset form
+            function resetForm() {
+                // Reset text inputs
+                textInput.value = '';
+                vcardName.value = '';
+                vcardCompany.value = '';
+                vcardPhone.value = '';
+                vcardEmail.value = '';
+                vcardWebsite.value = '';
+                wifiSsid.value = '';
+                wifiPassword.value = '';
+                
+                // Reset options
+                qrSize.value = 200;
+                qrSizeValue.textContent = '200px';
+                qrMargin.value = 1;
+                qrMarginValue.textContent = '1';
+                qrColor.value = '#000000';
+                qrBgColor.value = '#FFFFFF';
+                qrFormat.value = 'png';
+                qrErrorCorrection.value = 'M';
+                wifiEncryption.value = 'WPA';
+                wifiHidden.value = 'false';
+                wifiPasswordGroup.style.display = 'block';
+                
+                // Hide QR code preview
+                qrPreview.style.display = 'none';
+                
+                // Switch to first tab
+                tabs[0].click();
+                
+                showNotification('Form reset', 'success');
+            }
+            
+            // Share QR code
+            function shareQRCode() {
+                if (!qrImage.src) {
+                    showNotification('No QR code to share', 'error');
+                    return;
+                }
+                
+                // Check if Web Share API is available
+                if (navigator.share) {
+                    fetch(qrImage.src)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            const file = new File([blob], 'qrcode.png', { type: 'image/png' });
+                            
+                            navigator.share({
+                                title: 'QR Code from Tool-ify',
+                                text: 'Check out this QR code I generated with Tool-ify!',
+                                files: [file]
+                            })
+                                .then(() => showNotification('Shared successfully', 'success'))
+                                .catch(error => {
+                                    console.error('Error sharing:', error);
+                                    showNotification('Failed to share', 'error');
+                                });
+                        });
+                } else {
+                    showNotification('Sharing not supported on this browser', 'error');
+                }
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

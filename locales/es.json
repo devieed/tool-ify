@@ -1,0 +1,913 @@
+{
+    "hero": {
+        "title": "Herramientas en línea simples para tareas cotidianas",
+        "subtitle": "Utilidades gratuitas, rápidas y fáciles de usar — sin instalación requerida"
+    },
+    "categories": {
+        "text": "Herramientas de procesamiento de texto",
+        "image": "Herramientas de procesamiento de imágenes",
+        "dev": "Herramientas para desarrolladores y diseñadores",
+        "utility": "Herramientas de utilidad"
+    },
+    "tools": {
+        "word-counter": {
+            "name": "Contador de palabras",
+            "description": "Cuenta caracteres, palabras y líneas en tu texto"
+        },
+        "case-converter": {
+            "name": "Conversor de mayúsculas y minúsculas",
+            "description": "Convierte texto a MAYÚSCULAS, minúsculas, Tipo Título"
+        },
+        "json-formatter": {
+            "name": "Formateador de JSON",
+            "description": "Formatea y valida tus datos JSON"
+        },
+        "base64-encoder-decoder": {
+            "name": "Codificador/Decodificador Base64",
+            "description": "Codifica o decodifica texto desde/hacia Base64"
+        },
+        "url-encoder-decoder": {
+            "name": "Codificador/Decodificador URL",
+            "description": "Codifica o decodifica parámetros URL"
+        },
+        "html-entity-converter": {
+            "name": "Conversor de entidades HTML",
+            "description": "Convierte entre entidades HTML y caracteres"
+        },
+        "hash-generator": {
+            "name": "Generador de Hash",
+            "description": "Genera hashes MD5, SHA-1, SHA-256"
+        },
+        "image-converter": {
+            "name": "Conversor de imágenes",
+            "description": "Convierte entre formatos JPG, PNG, WebP"
+        },
+        "image-compressor": {
+            "name": "Compresor de imágenes",
+            "description": "Reduce el tamaño de archivo sin perder calidad"
+        },
+        "image-to-base64": {
+            "name": "Imagen a Base64",
+            "description": "Convierte imágenes a codificación Base64"
+        },
+        "image-resizer": {
+            "name": "Redimensionador de imágenes",
+            "description": "Redimensiona y escala imágenes fácilmente"
+        },
+        "color-converter": {
+            "name": "Conversor de colores",
+            "description": "Convierte entre HEX, RGB, HSL, CMYK"
+        },
+        "password-generator": {
+            "name": "Generador de contraseñas",
+            "description": "Genera contraseñas aleatorias seguras"
+        },
+        "uuid-generator": {
+            "name": "Generador de UUID",
+            "description": "Genera UUIDs/GUIDs aleatorios"
+        },
+        "unix-timestamp-converter": {
+            "name": "Conversor de marca de tiempo Unix",
+            "description": "Convierte entre marcas de tiempo Unix y fechas"
+        },
+        "css-formatter": {
+            "name": "Formateador de CSS",
+            "description": "Formatea y comprime código CSS"
+        },
+        "qr-code-generator": {
+            "name": "Generador de códigos QR",
+            "description": "Genera códigos QR desde texto o URLs"
+        },
+        "unit-converter": {
+            "name": "Conversor de unidades",
+            "description": "Convierte entre diferentes unidades de medida"
+        },
+        "timer-stopwatch": {
+            "name": "Temporizador y cronómetro",
+            "description": "Mide el tiempo con precisión"
+        }
+    },
+    "ui": {
+        "copy": "Copiar",
+        "download": "Descargar",
+        "clear": "Limpiar",
+        "copied": "¡Copiado!",
+        "error": "Error",
+        "success": "Éxito",
+        "convert": "Convertir",
+        "generate": "Generar",
+        "encode": "Codificar",
+        "decode": "Decodificar",
+        "format": "Formatear",
+        "validate": "Validar",
+        "minify": "Minimizar",
+        "upload": "Subir",
+        "choose_file": "Elegir archivo",
+        "reset": "Restablecer",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "apply": "Aplicar",
+        "close": "Cerrar",
+        "settings": "Configuración",
+        "options": "Opciones",
+        "output_format": "Formato de salida",
+        "quality": "Calidad",
+        "no_file": "Ningún archivo seleccionado",
+        "original_image": "Imagen original",
+        "converted_image": "Imagen convertida",
+        "compressed_image": "Imagen comprimida",
+        "original_text": "Texto original",
+        "converted_text": "Texto convertido",
+        "drag_drop": "Arrastra y suelta un archivo aquí o",
+        "choose_image": "Elegir imagen",
+        "enter_text": "Introduce tu texto aquí...",
+        "result": "Resultado",
+        "copy_result": "Copiar resultado",
+        "clear_all": "Limpiar todo",
+        "processing": "Procesando...",
+        "back_to_tools": "Volver a herramientas",
+        "characters": "Caracteres",
+        "characters_no_spaces": "Caracteres (sin espacios)",
+        "words": "Palabras",
+        "lines": "Líneas",
+        "paragraphs": "Párrafos",
+        "start": "Iniciar",
+        "pause": "Pausar",
+        "resume": "Reanudar",
+        "stop": "Detener",
+        "lap": "Vuelta",
+        "timer": "Temporizador",
+        "stopwatch": "Cronómetro",
+        "hours": "Horas",
+        "minutes": "Minutos",
+        "seconds": "Segundos",
+        "milliseconds": "Milisegundos",
+        "hours_short": "h",
+        "minutes_short": "min",
+        "seconds_short": "seg",
+        "milliseconds_short": "ms",
+        "hour": "Hora",
+        "minute": "Minuto",
+        "second": "Segundo",
+        "encode_url": "Codificar URL",
+        "decode_url": "Decodificar URL",
+        "url_parser": "Analizador URL",
+        "parse": "Analizar",
+        "laps": "Vueltas",
+        "clear_laps": "Borrar vueltas",
+        "no_laps": "No hay vueltas registradas",
+        "encode_component_label": "encodeURIComponent (Codifica todos los caracteres especiales)",
+        "encode_uri_label": "encodeURI (Preserva estructura URI)",
+        "decode_component_label": "decodeURIComponent (Decodifica todos los caracteres codificados)",
+        "decode_uri_label": "decodeURI (Preserva estructura URI)",
+        "protocol_label": "Protocolo:",
+        "hostname_label": "Nombre del host:",
+        "port_label": "Puerto:",
+        "pathname_label": "Ruta:",
+        "parameters_label": "Parámetros:",
+        "hash_label": "Hash/Fragmento:",
+        "preset_1min": "1 minuto",
+        "preset_5min": "5 minutos",
+        "preset_10min": "10 minutos",
+        "preset_30min": "30 minutos",
+        "preset_1hour": "1 hora",
+        "sound_option_text": "Reproducir sonido cuando finalice el temporizador",
+        "timer_time_label": "Horas : Minutos : Segundos",
+        "stopwatch_time_label": "Horas : Minutos : Segundos . Milisegundos",
+        "uppercase": "MAYÚSCULAS",
+        "lowercase": "minúsculas",
+        "titlecase": "Título",
+        "sentencecase": "Oración",
+        "alternatingcase": "AlTeRnAdO",
+        "inversecase": "InVeRtIdO",
+        "indent_size": "Tamaño de indentación",
+        "encode_text": "Codificar texto",
+        "decode_text": "Decodificar texto",
+        "encode_file": "Codificar archivo",
+        "encode_to_base64": "Codificar a Base64",
+        "decode_from_base64": "Decodificar desde Base64",
+        "convert_to_base64": "Convertir a Base64",
+        "download_data_url": "Descargar como Data URL",
+        "encode_html": "Codificar HTML",
+        "decode_html": "Decodificar HTML",
+        "entity_reference": "Referencia de Entidades",
+        "encode_to_entities": "Codificar a Entidades HTML",
+        "decode_from_entities": "Decodificar Entidades HTML",
+        "encode_quotes": "Codificar Comillas (' y \")",
+        "encode_apostrophes": "Codificar Apóstrofes (')",
+        "encode_basic_latin": "Codificar Caracteres Latinos Básicos",
+        "character": "Carácter",
+        "entity_name": "Nombre de Entidad",
+        "entity_number": "Número de Entidad",
+        "description": "Descripción",
+        "generate_hash": "Generar Hash",
+        "md5": "MD5",
+        "sha1": "SHA-1",
+        "sha256": "SHA-256",
+        "sha512": "SHA-512",
+        "uppercase_output": "Salida en MAYÚSCULAS",
+        "about_crypto_hashes": "Acerca de los Hashes Criptográficos",
+        "crypto_hash_description": "Una función hash criptográfica es un algoritmo matemático que mapea datos de tamaño arbitrario a una cadena de bits de tamaño fijo. Está diseñada para ser una función de un solo sentido, imposible de invertir.",
+        "common_uses": "Usos comunes de los hashes criptográficos incluyen:",
+        "password_storage": "Almacenamiento de contraseñas (usando algoritmos seguros de hash para contraseñas)",
+        "file_integrity": "Verificación de integridad de archivos",
+        "digital_signatures": "Firmas digitales",
+        "message_authentication": "Códigos de autenticación de mensajes",
+        "security_note": "Nota: Para aplicaciones sensibles a la seguridad, utilice siempre la función hash más fuerte disponible (p. ej., SHA-256 o SHA-512) e implemente técnicas adecuadas de salting para el almacenamiento de contraseñas.",
+        "convert_image": "Convertir imagen",
+        "batch_convert_coming_soon": "Conversión por lotes (Próximamente)",
+        "conversion_options": "Opciones de conversión",
+        "download_result": "Descargar resultado",
+        "batch_conversion_coming_soon": "Conversión por lotes próximamente",
+        "feature_under_development": "Esta función está actualmente en desarrollo",
+        "compression_options": "Opciones de compresión",
+        "max_width": "Ancho máximo (px, opcional)",
+        "format_auto": "Auto (Igual que la entrada)",
+        "compress_image": "Comprimir imagen",
+        "download_compressed_image": "Descargar imagen comprimida",
+        "original_size": "Tamaño original",
+        "compressed_size": "Tamaño comprimido",
+        "size_reduction": "Reducción de tamaño",
+        "original_dimensions": "Dimensiones originales",
+        "compressed_dimensions": "Dimensiones comprimidas",
+        "options": "Opciones",
+        "base64_string_only": "Solo cadena Base64",
+        "data_url_with_mime": "Data URL (con tipo MIME)",
+        "include_html_example": "Incluir ejemplo de código HTML",
+        "include_css_example": "Incluir ejemplo de código CSS",
+        "html_preview": "Vista previa HTML (usando Base64)",
+        "embedded_image_info": "La imagen de arriba está incrustada usando datos Base64",
+        "base64_output": "Salida Base64",
+        "html_code_example": "Ejemplo de código HTML",
+        "css_code_example": "Ejemplo de código CSS",
+        "why_use_base64": "¿Por qué usar imágenes Base64?",
+        "base64_explanation": "La codificación Base64 permite incrustar imágenes directamente en archivos HTML, CSS o JavaScript sin requerir peticiones HTTP adicionales. Esto puede ser útil para:",
+        "use_case_icons": "Iconos pequeños y elementos de UI",
+        "use_case_http": "Reducir peticiones HTTP para mejor rendimiento",
+        "use_case_single_file": "Incrustar imágenes en aplicaciones de un solo archivo",
+        "use_case_json": "Incluir imágenes en datos JSON",
+        "usage_examples": "Ejemplos de uso",
+        "html": "HTML",
+        "css": "CSS",
+        "javascript": "JavaScript",
+        "resize_options": "Opciones de redimensionado",
+        "by_dimensions": "Por dimensiones",
+        "by_percentage": "Por porcentaje",
+        "presets": "Preajustes",
+        "width_px": "Ancho (px)",
+        "height_px": "Alto (px)",
+        "maintain_aspect_ratio": "Mantener relación de aspecto",
+        "scale_percent": "Escala (%)",
+        "quality_range": "Calidad (1-100)",
+        "resize_image": "Redimensionar imagen",
+        "resized_image": "Imagen redimensionada",
+        "preset_fullhd": "Full HD (1920×1080)",
+        "preset_hd": "HD (1280×720)",
+        "preset_svga": "SVGA (800×600)",
+        "preset_vga": "VGA (640×480)",
+        "preset_qvga": "QVGA (320×240)",
+        "preset_instagram": "Instagram (1080×1080)",
+        "preset_facebook": "Facebook (1200×630)",
+        "preset_twitter": "Encabezado Twitter (1500×500)",
+        "pick_a_color": "Elegir un color",
+        "hex": "HEX",
+        "rgb": "RGB",
+        "hsl": "HSL",
+        "cmyk": "CMYK",
+        "format_jpg": "JPG",
+        "format_png": "PNG",
+        "format_webp": "WebP",
+        "color_schemes": "Esquemas de color",
+        "monochromatic": "Monocromático",
+        "complementary": "Complementario",
+        "analogous": "Análogo",
+        "triadic": "Triádico",
+        "password_generator_title": "Generador de Contraseñas",
+        "password_generator_description": "Genera contraseñas aleatorias seguras",
+        "password_length": "Longitud de la contraseña",
+        "password_strength": "Fortaleza de la contraseña",
+        "include_uppercase": "Incluir mayúsculas (A-Z)",
+        "include_lowercase": "Incluir minúsculas (a-z)",
+        "include_numbers": "Incluir números (0-9)",
+        "include_symbols": "Incluir símbolos (!@#$%^&*)",
+        "exclude_similar": "Excluir caracteres similares (i, l, 1, L, o, 0, O)",
+        "exclude_ambiguous": "Excluir símbolos ambiguos ({ } [ ] ( ) / \\ ' \" ` ~ , ; : . < >)",
+        "password_security_tips": "Consejos de seguridad para contraseñas",
+        "recently_generated_passwords": "Contraseñas generadas recientemente",
+        "generate_password": "Generar Contraseña",
+        "weak": "Débil",
+        "moderate": "Moderada",
+        "strong": "Fuerte",
+        "very_strong": "Muy Fuerte",
+        "no_password_generated": "Aún no se ha generado ninguna contraseña",
+        "no_passwords_generated": "Aún no se han generado contraseñas",
+        "uuid_generator_title": "Generador de UUID",
+        "uuid_generator_description": "Generar UUIDs/GUIDs aleatorios",
+        "uuid_version": "Versión UUID",
+        "uuid_count": "Número de UUIDs",
+        "format_options": "Opciones de formato",
+        "uppercase": "Mayúsculas",
+        "add_braces": "Añadir llaves { }",
+        "include_hyphens": "Incluir guiones",
+        "generate_uuids": "Generar UUIDs",
+        "copy_all": "Copiar todo",
+        "generated_uuids": "UUIDs generados",
+        "uuid_count_single": "1 UUID",
+        "uuid_count_multiple": "{count} UUIDs",
+        "what_is_uuid": "¿Qué es un UUID/GUID?",
+        "uuid_version_4_random": "Versión 4 (Aleatorio) - Recomendado",
+        "uuid_version_1_time": "Versión 1 (Basado en tiempo)",
+        "unix_timestamp_converter_title": "Conversor de Marca de Tiempo Unix",
+        "unix_timestamp_converter_description": "Convierte entre marcas de tiempo Unix y fechas",
+        "current_unix_timestamp": "Marca de Tiempo Unix Actual",
+        "current_date_time_utc": "Fecha y Hora Actual (UTC)",
+        "current_date_time_local": "Fecha y Hora Actual (Local)",
+        "timestamp_to_date": "De Timestamp a Fecha",
+        "date_to_timestamp": "De Fecha a Timestamp",
+        "unix_timestamp_input": "Timestamp Unix (segundos desde 1 de Enero de 1970)",
+        "timezone": "Zona horaria",
+        "utc": "UTC",
+        "local_timezone": "Zona horaria local",
+        "date_format": "Formato de fecha",
+        "convert_to_date": "Convertir a fecha",
+        "convert_to_timestamp": "Convertir a timestamp",
+        "date": "Fecha",
+        "time": "Hora",
+        "converted_date": "Fecha convertida:",
+        "unix_timestamp_seconds": "Timestamp Unix (segundos):",
+        "recent_conversions": "Conversiones recientes",
+        "no_recent_conversions": "No hay conversiones recientes",
+        "clear_history": "Borrar historial",
+        "css_formatter_title": "Formateador de CSS",
+        "css_formatter_description": "Formatear y comprimir código CSS",
+        "format_css": "Formatear CSS",
+        "minify_css": "Minimizar CSS",
+        "upload_css_file": "Subir archivo CSS",
+        "input_css": "CSS de entrada",
+        "formatted_css": "CSS formateado",
+        "formatting_options": "Opciones de formato",
+        "minification_options": "Opciones de minimización",
+        "indentation_size": "Tamaño de indentación",
+        "brace_style": "Estilo de llaves",
+        "remove_comments": "Eliminar comentarios",
+        "remove_whitespace": "Eliminar espacios en blanco",
+        "spaces": "espacios",
+        "tab": "Tab",
+        "same_line": "Misma línea",
+        "new_line": "Nueva línea",
+        "processed_size": "Tamaño procesado",
+        "processing_time": "Tiempo de procesamiento",
+        "qr_code_generator_title": "Generador de Códigos QR",
+        "qr_code_generator_description": "Genera códigos QR a partir de texto o URLs",
+        "generate_qr_code": "Generar Código QR",
+        "share": "Compartir",
+        "text_url": "Texto / URL",
+        "vcard_contact": "vCard (Contacto)",
+        "wifi_network": "Red WiFi",
+        "enter_text_or_url": "Introduce Texto o URL",
+        "full_name": "Nombre Completo",
+        "company_optional": "Empresa (Opcional)",
+        "phone_number": "Número de Teléfono",
+        "email": "Correo Electrónico",
+        "website_optional": "Sitio Web (Opcional)",
+        "network_name_ssid": "Nombre de Red (SSID)",
+        "encryption_type": "Tipo de Cifrado",
+        "password": "Contraseña",
+        "hidden_network": "Red Oculta",
+        "wpa_wpa2": "WPA/WPA2",
+        "wep": "WEP",
+        "none": "Ninguno",
+        "yes": "Sí",
+        "no": "No",
+        "appearance": "Apariencia",
+        "format_error_correction": "Formato y Corrección de Errores",
+        "size": "Tamaño",
+        "margin": "Margen",
+        "foreground_color": "Color del Primer Plano",
+        "background_color": "Color de Fondo",
+        "format": "Formato",
+        "error_correction_level": "Nivel de Corrección de Errores",
+        "png": "PNG",
+        "svg": "SVG",
+        "jpeg": "JPEG",
+        "error_correction_low": "Bajo (7%)",
+        "error_correction_medium": "Medio (15%)",
+        "error_correction_quartile": "Cuartil (25%)",
+        "error_correction_high": "Alto (30%)",
+        "your_qr_code": "Tu Código QR",
+        "unit_converter_title": "Conversor de Unidades",
+        "unit_converter_description": "Convierte entre diferentes unidades de medida",
+        "value": "Valor",
+        "from_unit": "De Unidad",
+        "to_unit": "A Unidad",
+        "conversion_formula": "Fórmula de conversión:",
+        "category_length": "Longitud",
+        "category_area": "Área",
+        "category_volume": "Volumen",
+        "category_weight": "Peso / Masa",
+        "category_temperature": "Temperatura",
+        "category_speed": "Velocidad",
+        "category_time": "Tiempo",
+        "category_data": "Datos Digitales",
+        "invalid_input": "Entrada inválida"
+    },
+    "footer": {
+        "copyright": "© 2024 Tool-ify.com - Todas las herramientas son gratuitas y funcionan en tu navegador",
+        "contact": "Contacto",
+        "privacy": "Política de privacidad",
+        "terms": "Términos de uso",
+        "back": "Volver a herramientas"
+    },
+    "contact": {
+        "title": "Contacto",
+        "description": "¡Gracias por usar Tool-ify! Valoramos tus comentarios y sugerencias para ayudarnos a mejorar nuestros servicios.",
+        "contact_heading": "Ponte en contacto",
+        "contact_intro": "Si tienes preguntas, sugerencias o comentarios sobre nuestras herramientas, no dudes en contactarnos por correo electrónico:",
+        "response_time": "Nos esforzamos por responder a todas las consultas dentro de las 48 horas.",
+        "about_heading": "Acerca de Tool-ify",
+        "about_text1": "Tool-ify es una colección de herramientas de utilidad en línea gratuitas diseñadas para ayudar con tareas cotidianas. Nuestras herramientas funcionan completamente en tu navegador - sin instalaciones, sin recopilación de datos y sin necesidad de crear una cuenta.",
+        "about_text2": "Constantemente añadimos nuevas herramientas y mejoramos las existentes. Si tienes ideas para herramientas que te gustaría ver añadidas a nuestra colección, ¡háznoslo saber!"
+    },
+    "privacy": {
+        "title": "Política de Privacidad",
+        "highlight_title": "Nuestro Compromiso con la Privacidad",
+        "highlight_text": "Tool-ify está diseñado con tu privacidad como prioridad. Nuestras herramientas operan completamente dentro de tu navegador, y no recolectamos, almacenamos ni procesamos ninguno de tus datos personales o el contenido que ingresas en nuestras herramientas."
+    },
+    "terms": {
+        "title": "Términos de Uso",
+        "highlight_title": "Resumen",
+        "highlight_text": "Tool-ify proporciona herramientas gratuitas basadas en navegador sin requerir registro de usuario. Si bien nuestras herramientas están disponibles para uso personal y profesional, te pedimos que las uses de manera responsable y de acuerdo con las leyes aplicables."
+    },
+    "notifications": {
+        "copied_clipboard": "¡Copiado al portapapeles!",
+        "conversion_success": "¡Conversión exitosa!",
+        "file_required": "Por favor selecciona un archivo primero",
+        "text_required": "Por favor ingresa algún texto primero",
+        "invalid_format": "Formato inválido",
+        "invalid_json": "Formato JSON inválido",
+        "json_formatted": "JSON formateado con éxito",
+        "json_minified": "JSON minimizado con éxito",
+        "invalid_base64": "Cadena Base64 inválida",
+        "empty_input": "La entrada no puede estar vacía",
+        "image_converted": "Imagen convertida con éxito",
+        "image_compressed": "Imagen comprimida con éxito",
+        "original_used": "Se usó la imagen original - la compresión habría aumentado el tamaño del archivo",
+        "size_increased": "Imagen procesada pero el tamaño del archivo aumentó ligeramente",
+        "download_started": "Descarga iniciada",
+        "operation_failed": "Operación fallida",
+        "timer_complete": "¡Temporizador completado!",
+        "please_enter_time": "Por favor ingresa un tiempo mayor a cero",
+        "qr_code_generated": "Código QR generado con éxito",
+        "uuid_generated": "UUID generado con éxito",
+        "password_generated": "Contraseña generada con éxito",
+        "time_converted": "Tiempo convertido con éxito",
+        "css_formatted": "CSS formateado con éxito",
+        "css_minified": "CSS minimizado con éxito",
+        "image_resized": "Imagen redimensionada con éxito",
+        "encode_success": "Texto codificado con éxito",
+        "decode_success": "Texto decodificado con éxito",
+        "encode_error": "Error de codificación: ",
+        "base64_required": "Por favor ingresa texto Base64 para decodificar",
+        "file_encode_success": "Archivo codificado con éxito",
+        "file_read_error": "Error al leer el archivo",
+        "nothing_to_copy": "No hay nada para copiar",
+        "html_encoded": "HTML codificado con éxito",
+        "html_decoded": "HTML decodificado con éxito",
+        "html_required": "Por favor ingresa entidades HTML para decodificar",
+        "decode_error": "Error de decodificación: ",
+        "hash_generated": "Hashes generados con éxito",
+        "algorithm_required": "Por favor selecciona al menos un algoritmo hash",
+        "nothing_to_download": "No hay imagen convertida para descargar",
+        "max_width_limit": "El ancho máximo no puede exceder el ancho de la imagen original",
+        "max_width_adjusted": "Ancho máximo ajustado para coincidir con el ancho de la imagen original",
+        "copy_failed": "Error al copiar",
+        "password_copied": "¡Contraseña copiada al portapapeles!",
+        "no_password_to_copy": "No hay contraseña para copiar",
+        "one_char_type_required": "Debe seleccionar al menos un tipo de carácter",
+        "no_chars_available": "No hay caracteres disponibles con la configuración actual",
+        "password_history_cleared": "Historial de contraseñas borrado",
+        "uuid_copied": "UUID copiado al portapapeles",
+        "uuids_copied": "{count} UUIDs copiados al portapapeles",
+        "no_uuids_to_copy": "No hay UUIDs para copiar",
+        "enter_number_between": "Por favor ingrese un número entre 1 y 100",
+        "enter_valid_timestamp": "Por favor ingrese un timestamp válido",
+        "enter_date": "Por favor ingrese una fecha",
+        "conversion_history_cleared": "Historial de conversiones borrado",
+        "no_css_to_copy": "No hay CSS para copiar",
+        "enter_css_to_format": "Por favor ingrese CSS para formatear",
+        "enter_css_to_minify": "Por favor ingrese CSS para minimizar",
+        "css_file_loaded": "Archivo CSS cargado con éxito",
+        "css_file_downloaded": "Archivo CSS descargado",
+        "no_css_to_download": "No hay CSS para descargar",
+        "select_css_file": "Por favor seleccione un archivo CSS",
+        "enter_text_or_url": "Por favor introduce algún texto o URL",
+        "fill_required_vcard_fields": "Por favor completa todos los campos requeridos de vCard",
+        "fill_required_wifi_fields": "Por favor completa todos los campos requeridos de WiFi",
+        "form_reset": "Formulario restablecido",
+        "no_qr_code_to_share": "No hay código QR para compartir",
+        "shared_successfully": "Compartido con éxito",
+        "failed_to_share": "Error al compartir",
+        "sharing_not_supported": "Compartir no es compatible con este navegador"
+    },
+    "placeholders": {
+        "enter_text": "Introduce texto aquí...",
+        "enter_json": "Introduce tu JSON aquí...",
+        "enter_base64": "Introduce texto Base64 aquí...",
+        "enter_url": "Introduce URL aquí...",
+        "result_placeholder": "El resultado aparecerá aquí...",
+        "url_input": "Introduce el texto que quieres codificar para URL...",
+        "encoded_output": "El resultado codificado aparecerá aquí...",
+        "encoded_input": "Introduce el texto codificado URL que quieres decodificar...",
+        "decoded_output": "El resultado decodificado aparecerá aquí...",
+        "url_to_parse": "Introduce una URL para analizar...",
+        "enter_text_to_encode": "Introduce aquí el texto que quieres codificar en Base64...",
+        "encoded_result": "El resultado codificado en Base64 aparecerá aquí...",
+        "decoded_result": "El resultado decodificado aparecerá aquí...",
+        "file_encoded_result": "El resultado del archivo codificado en Base64 aparecerá aquí...",
+        "enter_html_to_encode": "Introduce HTML o texto con caracteres especiales para codificar...",
+        "enter_html_to_decode": "Introduce entidades HTML para decodificar...",
+        "search_entity": "Buscar una entidad o carácter...",
+        "enter_text_to_hash": "Introduce el texto que quieres convertir a hash...",
+        "original_width": "Ancho original",
+        "enter_width": "Introducir ancho",
+        "enter_height": "Introducir alto",
+        "enter_percentage": "Introducir porcentaje",
+        "hex_placeholder": "#RRGGBB",
+        "rgb_placeholder": "rgb(R, G, B)",
+        "hsl_placeholder": "hsl(H, S%, L%)",
+        "cmyk_placeholder": "cmyk(C%, M%, Y%, K%)",
+        "enter_timestamp": "Introduce timestamp Unix (ej., 1609459200)",
+        "enter_css": "Pega tu código CSS aquí...",
+        "formatted_css_placeholder": "El CSS formateado aparecerá aquí...",
+        "text_url_placeholder": "https://ejemplo.com o cualquier texto...",
+        "vcard_name_placeholder": "Juan Pérez",
+        "vcard_company_placeholder": "Empresa S.A.",
+        "vcard_phone_placeholder": "+34 123 456 789",
+        "vcard_email_placeholder": "juan@ejemplo.com",
+        "vcard_website_placeholder": "https://ejemplo.com",
+        "wifi_ssid_placeholder": "Mi Red WiFi",
+        "wifi_password_placeholder": "Contraseña WiFi"
+    },
+    "timer_stopwatch": {
+        "about_tool_title": "Acerca del Temporizador y Cronómetro",
+        "about_tool_intro": "La herramienta de Temporizador y Cronómetro ofrece dos funciones esenciales de seguimiento del tiempo:",
+        
+        "about_timer_title": "Temporizador",
+        "about_timer_desc": "Un temporizador de cuenta regresiva te permite establecer un intervalo de tiempo específico y recibir una notificación cuando expire. Usos comunes incluyen:",
+        "about_timer_uses": [
+            "Cocinar y hornear",
+            "Sesiones de trabajo utilizando técnicas como el método Pomodoro",
+            "Intervalos de ejercicio",
+            "Cronometrar presentaciones o discursos",
+            "Establecer recordatorios para tareas cortas"
+        ],
+        "about_timer_features_intro": "Las características del temporizador incluyen:",
+        "about_timer_features": [
+            "Configuración de horas, minutos y segundos",
+            "Preajustes de tiempo comunes",
+            "Capacidad de pausa y reanudación",
+            "Alerta de sonido opcional cuando finaliza el temporizador"
+        ],
+        
+        "about_stopwatch_title": "Cronómetro",
+        "about_stopwatch_desc": "Un cronómetro mide el tiempo transcurrido con alta precisión. Usos comunes incluyen:",
+        "about_stopwatch_uses": [
+            "Cronometrar actividades físicas y entrenamientos",
+            "Experimentos científicos",
+            "Pruebas de rendimiento",
+            "Cronometraje competitivo",
+            "Seguimiento de productividad"
+        ],
+        "about_stopwatch_features_intro": "Las características del cronómetro incluyen:",
+        "about_stopwatch_features": [
+            "Cronometraje de alta precisión con milisegundos",
+            "Registro de vueltas para seguir múltiples intervalos",
+            "Capacidad de pausa y reanudación",
+            "Tiempos divididos entre vueltas"
+        ]
+    },
+    "password_tips": {
+        "tips": [
+            "<strong>Use contraseñas largas</strong> - Procure que tengan al menos 12 caracteres. Las contraseñas más largas suelen ser más seguras.",
+            "<strong>Use una mezcla de caracteres</strong> - Combine letras mayúsculas, minúsculas, números y símbolos.",
+            "<strong>Evite información personal</strong> - No use nombres, fechas de nacimiento o palabras comunes que puedan ser fácilmente adivinadas.",
+            "<strong>Use contraseñas diferentes</strong> - Cada cuenta debe tener una contraseña única para evitar múltiples brechas si una contraseña se ve comprometida.",
+            "<strong>Use un gestor de contraseñas</strong> - Almacene sus contraseñas complejas de forma segura en un gestor de contraseñas confiable.",
+            "<strong>Habilite la autenticación de dos factores</strong> - Cuando esté disponible, use 2FA para una capa adicional de seguridad más allá de su contraseña."
+        ]
+    },
+    "uuid_info": {
+        "intro": "UUID (Identificador Único Universal) o GUID (Identificador Único Global) es un identificador de 128 bits que es único tanto en el espacio como en el tiempo. Se utilizan comúnmente en desarrollo de software para:",
+        "uses": [
+            "Claves primarias en bases de datos",
+            "Comunicación en sistemas distribuidos",
+            "Identificadores de sesión",
+            "Identificadores únicos de recursos"
+        ],
+        "versions_title": "Versiones de UUID",
+        "version_4_desc": "Versión 4 (Aleatorio): Generado usando números aleatorios. Esta es la versión más común y es adecuada para la mayoría de aplicaciones donde se requiere unicidad.",
+        "version_1_desc": "Versión 1 (Basado en tiempo): Generado usando la marca de tiempo actual y la dirección MAC del ordenador. Esta versión puede potencialmente exponer información sobre cuándo y dónde se creó el UUID.",
+        "examples_title": "Ejemplos de código",
+        "js_example_title": "Generar UUID en JavaScript:",
+        "python_example_title": "Generar UUID en Python:"
+    },
+    "timestamp_info": {
+        "title": "¿Qué es una Marca de Tiempo Unix?",
+        "content": {
+            "intro": "Una marca de tiempo Unix (también conocida como tiempo Epoch, tiempo POSIX o tiempo Unix) es un sistema para describir un punto en el tiempo. Es el número de segundos transcurridos desde el 1 de enero de 1970 (medianoche UTC/GMT), sin contar los segundos bisiestos.",
+            "reasons_intro": "Las marcas de tiempo Unix se utilizan ampliamente en sistemas informáticos y programación por varias razones:",
+            "reasons": [
+                "Son fáciles de almacenar como un solo número",
+                "Son independientes de zona horaria (siempre en UTC)",
+                "La aritmética de fechas se convierte en simple suma y resta",
+                "Son universales en diferentes sistemas operativos y lenguajes de programación"
+            ],
+            "uses_intro": "Usos comunes para marcas de tiempo Unix incluyen:",
+            "uses": [
+                "Marcas de tiempo en registros de bases de datos",
+                "Tiempos de modificación de archivos",
+                "Tiempos de expiración de sesiones",
+                "Programación de eventos",
+                "Intercambio de datos en APIs"
+            ],
+            "representations_intro": "Nota que las marcas de tiempo Unix pueden representarse de diferentes maneras:",
+            "representations": [
+                {
+                    "title": "Segundos",
+                    "description": "La marca de tiempo Unix estándar (ej., 1609459200)"
+                },
+                {
+                    "title": "Milisegundos",
+                    "description": "Usado en JavaScript/Java (ej., 1609459200000)"
+                },
+                {
+                    "title": "Microsegundos",
+                    "description": "Usado en algunos sistemas de bases de datos"
+                },
+                {
+                    "title": "Nanosegundos",
+                    "description": "Usado en aplicaciones de alta precisión"
+                }
+            ],
+            "conclusion": "Esta herramienta trabaja principalmente con marcas de tiempo Unix basadas en segundos."
+        }
+    },
+    "css_formatter_info": {
+        "title": "Acerca del Formateador de CSS",
+        "content": {
+            "main_desc": "La herramienta Formateador de CSS te ayuda a limpiar y organizar tu código CSS, haciéndolo más legible y mantenible. También puede minimizar tu CSS para reducir el tamaño del archivo en entornos de producción.",
+            "formatting_features_title": "Características de Formateo",
+            "formatting_features": [
+                {
+                    "title": "Indentación",
+                    "description": "Aplica indentación consistente usando espacios o tabulaciones"
+                },
+                {
+                    "title": "Colocación de llaves",
+                    "description": "Formatea llaves en la misma línea o en una nueva línea según tu preferencia"
+                },
+                {
+                    "title": "Ordenación de propiedades",
+                    "description": "Organiza las propiedades en un orden consistente"
+                },
+                {
+                    "title": "Espacios en blanco",
+                    "description": "Añade el espaciado adecuado alrededor de selectores, propiedades y valores"
+                }
+            ],
+            "minification_features_title": "Características de Minimización",
+            "minification_features": [
+                {
+                    "title": "Eliminación de comentarios",
+                    "description": "Elimina comentarios para reducir el tamaño del archivo"
+                },
+                {
+                    "title": "Eliminación de espacios en blanco",
+                    "description": "Elimina espacios, tabulaciones y saltos de línea innecesarios"
+                },
+                {
+                    "title": "Eliminación de punto y coma",
+                    "description": "Elimina el último punto y coma en cada regla cuando es posible"
+                }
+            ],
+            "example_title": "Ejemplo",
+            "unformatted_css": "CSS sin formatear:",
+            "formatted_css": "CSS formateado:",
+            "minified_css": "CSS minimizado:"
+        }
+    },
+    "qr_code_info": {
+        "title": "Acerca de los Códigos QR",
+        "content": {
+            "main_desc": "Los códigos QR (Respuesta Rápida) son códigos de barras bidimensionales que pueden ser escaneados por cámaras de smartphones y otros dispositivos para acceder rápidamente a información o realizar acciones.",
+            "common_uses_title": "Usos Comunes de los Códigos QR",
+            "common_uses": [
+                {
+                    "title": "URLs de Sitios Web",
+                    "description": "Dirige a los usuarios a tu sitio web sin necesidad de escribir una URL"
+                },
+                {
+                    "title": "Información de Contacto",
+                    "description": "Comparte detalles de contacto que pueden guardarse directamente en un teléfono"
+                },
+                {
+                    "title": "Acceso WiFi",
+                    "description": "Permite una conexión rápida a redes WiFi sin escribir contraseñas"
+                },
+                {
+                    "title": "Información de Productos",
+                    "description": "Enlaza a detalles de productos, manuales o verificación de autenticidad"
+                },
+                {
+                    "title": "Materiales de Marketing",
+                    "description": "Úsalos en tarjetas de visita, folletos, pósters y embalajes"
+                },
+                {
+                    "title": "Pagos Digitales",
+                    "description": "Facilita métodos de pago sencillos"
+                }
+            ],
+            "qr_code_types_title": "Tipos de Códigos QR",
+            "qr_code_types_desc": "Esta herramienta soporta varios tipos de códigos QR:",
+            "qr_code_types": [
+                {
+                    "title": "Texto/URL",
+                    "description": "Texto estándar o enlaces a sitios web"
+                },
+                {
+                    "title": "vCard",
+                    "description": "Información de contacto que puede añadirse a las libretas de direcciones"
+                },
+                {
+                    "title": "WiFi",
+                    "description": "Detalles de conexión de red para fácil acceso WiFi"
+                }
+            ],
+            "error_correction_title": "Niveles de Corrección de Errores",
+            "error_correction_desc": "Los códigos QR incluyen capacidades de corrección de errores que les permiten ser legibles incluso si están parcialmente dañados u oscurecidos:",
+            "error_correction_levels": [
+                {
+                    "title": "L (Bajo)",
+                    "description": "7% de los datos pueden ser restaurados"
+                },
+                {
+                    "title": "M (Medio)",
+                    "description": "15% de los datos pueden ser restaurados"
+                },
+                {
+                    "title": "Q (Cuartil)",
+                    "description": "25% de los datos pueden ser restaurados"
+                },
+                {
+                    "title": "H (Alto)",
+                    "description": "30% de los datos pueden ser restaurados"
+                }
+            ],
+            "error_correction_note": "Los niveles de corrección de errores más altos hacen que el código QR sea más fiable pero también más complejo (con más módulos/píxeles)."
+        }
+    },
+    "unit_converter_info": {
+        "title": "Acerca del Conversor de Unidades",
+        "content": {
+            "main_desc": "La herramienta Conversor de Unidades te ayuda a convertir entre diferentes unidades de medida en varias categorías. Ya sea que estés trabajando en un proyecto, estudiando, cocinando o viajando, esta herramienta hace que las conversiones de unidades sean rápidas y sencillas.",
+            "categories_title": "Categorías de Medidas",
+            "categories": [
+                {
+                    "title": "Longitud",
+                    "description": "Convierte entre metros, pies, pulgadas, kilómetros, millas y más"
+                },
+                {
+                    "title": "Área",
+                    "description": "Convierte entre metros cuadrados, pies cuadrados, acres, hectáreas y más"
+                },
+                {
+                    "title": "Volumen",
+                    "description": "Convierte entre litros, galones, metros cúbicos, pies cúbicos y más"
+                },
+                {
+                    "title": "Peso/Masa",
+                    "description": "Convierte entre kilogramos, libras, gramos, onzas, toneladas y más"
+                },
+                {
+                    "title": "Temperatura",
+                    "description": "Convierte entre Celsius, Fahrenheit y Kelvin"
+                },
+                {
+                    "title": "Velocidad",
+                    "description": "Convierte entre millas por hora, kilómetros por hora, metros por segundo y más"
+                },
+                {
+                    "title": "Tiempo",
+                    "description": "Convierte entre segundos, minutos, horas, días, semanas y más"
+                },
+                {
+                    "title": "Datos Digitales",
+                    "description": "Convierte entre bytes, kilobytes, megabytes, gigabytes y más"
+                }
+            ],
+            "systems_title": "Sistemas Métrico e Imperial",
+            "systems_desc": "Este conversor admite tanto unidades métricas (utilizadas en la mayoría de los países) como unidades imperiales/consuetudinarias de EE. UU. (utilizadas principalmente en Estados Unidos). El sistema métrico se basa en potencias de 10, lo que facilita las conversiones dentro del sistema. El sistema imperial/consuetudinario de EE. UU. utiliza varios factores de conversión entre unidades.",
+            "tips_title": "Consejos para Conversiones Precisas",
+            "tips": [
+                "Siempre verifica las unidades entre las que estás convirtiendo",
+                "Ten en cuenta la diferencia entre las medidas de EE. UU. y Reino Unido para algunas unidades (como galones)",
+                "Para trabajos científicos, considera el número de cifras significativas necesarias",
+                "Las conversiones de temperatura utilizan fórmulas diferentes a la multiplicación simple"
+            ]
+        }
+    },
+    "units": {
+        "length": {
+            "nm": "Nanómetro",
+            "um": "Micrómetro",
+            "mm": "Milímetro",
+            "cm": "Centímetro",
+            "m": "Metro",
+            "km": "Kilómetro",
+            "in": "Pulgada",
+            "ft": "Pie",
+            "yd": "Yarda",
+            "mi": "Milla",
+            "nmi": "Milla Náutica"
+        },
+        "area": {
+            "mm2": "Milímetro Cuadrado",
+            "cm2": "Centímetro Cuadrado",
+            "m2": "Metro Cuadrado",
+            "ha": "Hectárea",
+            "km2": "Kilómetro Cuadrado",
+            "in2": "Pulgada Cuadrada",
+            "ft2": "Pie Cuadrado",
+            "yd2": "Yarda Cuadrada",
+            "ac": "Acre",
+            "mi2": "Milla Cuadrada"
+        },
+        "volume": {
+            "ml": "Mililitro",
+            "cl": "Centilitro",
+            "l": "Litro",
+            "m3": "Metro Cúbico",
+            "gal_us": "Galón US",
+            "gal_uk": "Galón UK",
+            "qt_us": "Cuarto US",
+            "pt_us": "Pinta US",
+            "fl_oz_us": "Onza Líquida US",
+            "fl_oz_uk": "Onza Líquida UK",
+            "cup_us": "Taza US",
+            "tbsp_us": "Cucharada US",
+            "tsp_us": "Cucharadita US",
+            "in3": "Pulgada Cúbica",
+            "ft3": "Pie Cúbico"
+        },
+        "weight": {
+            "mcg": "Microgramo",
+            "mg": "Miligramo",
+            "g": "Gramo",
+            "kg": "Kilogramo",
+            "mt": "Tonelada Métrica",
+            "oz": "Onza",
+            "lb": "Libra",
+            "st": "Stone",
+            "ton_us": "Tonelada US",
+            "ton_uk": "Tonelada UK"
+        },
+        "temperature": {
+            "c": "Celsius",
+            "f": "Fahrenheit",
+            "k": "Kelvin"
+        },
+        "speed": {
+            "m_s": "Metros por segundo",
+            "km_h": "Kilómetros por hora",
+            "mph": "Millas por hora",
+            "kn": "Nudo",
+            "ft_s": "Pies por segundo"
+        },
+        "time": {
+            "ns": "Nanosegundo",
+            "us": "Microsegundo",
+            "ms": "Milisegundo",
+            "s": "Segundo",
+            "min": "Minuto",
+            "h": "Hora",
+            "d": "Día",
+            "wk": "Semana",
+            "mo": "Mes (promedio)",
+            "yr": "Año"
+        },
+        "data": {
+            "b": "Bit",
+            "B": "Byte",
+            "KB": "Kilobyte",
+            "MB": "Megabyte",
+            "GB": "Gigabyte",
+            "TB": "Terabyte",
+            "PB": "Petabyte",
+            "KiB": "Kibibyte",
+            "MiB": "Mebibyte",
+            "GiB": "Gibibyte",
+            "TiB": "Tebibyte",
+            "PiB": "Pebibyte"
+        }
+    }
+} 

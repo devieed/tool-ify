@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Timestamp Converter | Convert Unix Time to Date | Tool-ify</title>
+    <meta name="description" content="Convert between Unix timestamps and human-readable dates. Easy online Unix timestamp converter with current time and custom format options.">
+    <meta name="keywords" content="unix timestamp, epoch converter, unix time, timestamp converter, date to unix, unix to date">
+    <link rel="canonical" href="https://tool-ify.com/tools/unix-timestamp-converter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Unix Timestamp Converter",
+        "url": "https://tool-ify.com/tools/unix-timestamp-converter.html",
+        "description": "Convert between Unix timestamps and dates",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .converter-container {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .current-time {
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .time-display {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .time-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+        }
+        
+        .time-value {
+            font-size: 18px;
+            font-weight: 500;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .conversion-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .conversion-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-right: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .conversion-tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .conversion-content {
+            display: none;
+            padding: 10px 0;
+        }
+        
+        .conversion-content.active {
+            display: block;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 15px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .date-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .date-input-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .convert-btn {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .convert-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .copy-btn, .clear-btn {
+            padding: 10px 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copy-btn:hover, .clear-btn:hover {
+            background-color: var(--border-color);
+        }
+        
+        .result-container {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .result-value {
+            font-size: 16px;
+            font-family: 'Courier New', monospace;
+            word-break: break-word;
+        }
+        
+        .timezone-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        .format-options {
+            margin-top: 20px;
+        }
+        
+        .format-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .format-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .format-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .format-preset {
+            font-size: 12px;
+            padding: 6px 10px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .format-preset:hover {
+            background-color: var(--border-color);
+        }
+        
+        .info-box {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .recent-conversions {
+            margin-top: 30px;
+        }
+        
+        .recent-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .clear-history {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .clear-history:hover {
+            color: var(--accent-color);
+        }
+        
+        .conversion-list {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .conversion-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .conversion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .conversion-text {
+            font-size: 13px;
+            color: var(--text-color);
+        }
+        
+        .empty-list {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">Unix Timestamp Converter</h1>
+                <p id="tool-description">Convert between Unix timestamps and dates</p>
+                
+                <div class="converter-container">
+                    <div class="current-time">
+                        <div class="time-display">
+                            <div class="time-label">Current Unix Timestamp</div>
+                            <div id="current-timestamp" class="time-value">1609459200</div>
+                        </div>
+                        <div class="time-display">
+                            <div class="time-label">Current Date & Time (UTC)</div>
+                            <div id="current-date-utc" class="time-value">2021-01-01 00:00:00</div>
+                        </div>
+                        <div class="time-display">
+                            <div class="time-label">Current Date & Time (Local)</div>
+                            <div id="current-date-local" class="time-value">2021-01-01 00:00:00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="conversion-tabs">
+                        <div class="conversion-tab active" data-tab="timestamp-to-date">Timestamp to Date</div>
+                        <div class="conversion-tab" data-tab="date-to-timestamp">Date to Timestamp</div>
+                    </div>
+                    
+                    <!-- Timestamp to Date -->
+                    <div class="conversion-content active" id="timestamp-to-date">
+                        <div class="input-group">
+                            <label class="input-label" for="timestamp-input">Unix Timestamp (seconds since Jan 1, 1970)</label>
+                            <input type="text" id="timestamp-input" class="input-field" placeholder="Enter Unix timestamp (e.g., 1609459200)">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label" for="timezone-select">Timezone</label>
+                            <select id="timezone-select" class="timezone-select">
+                                <option value="UTC">UTC</option>
+                                <option value="local">Local Timezone</option>
+                                <!-- Common timezones will be added by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="format-options">
+                            <label class="format-label" for="date-format">Date Format</label>
+                            <input type="text" id="date-format" class="format-input" value="YYYY-MM-DD HH:mm:ss">
+                            
+                            <div class="format-presets">
+                                <span class="format-preset" data-format="YYYY-MM-DD HH:mm:ss">YYYY-MM-DD HH:mm:ss</span>
+                                <span class="format-preset" data-format="MM/DD/YYYY, hh:mm:ss A">MM/DD/YYYY, hh:mm:ss A</span>
+                                <span class="format-preset" data-format="ddd, DD MMM YYYY HH:mm:ss">ddd, DD MMM YYYY HH:mm:ss</span>
+                                <span class="format-preset" data-format="YYYY-MM-DDTHH:mm:ssZ">ISO 8601</span>
+                                <span class="format-preset" data-format="relative">Relative Time</span>
+                            </div>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button id="timestamp-convert-btn" class="convert-btn">
+                                <i class="fas fa-clock"></i> Convert to Date
+                            </button>
+                            <button id="timestamp-copy-btn" class="copy-btn" disabled>
+                                <i class="fas fa-copy"></i> Copy Result
+                            </button>
+                            <button id="timestamp-clear-btn" class="clear-btn">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                        
+                        <div id="timestamp-result" class="result-container">
+                            <div class="result-label">Converted Date:</div>
+                            <div id="timestamp-result-value" class="result-value"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Date to Timestamp -->
+                    <div class="conversion-content" id="date-to-timestamp">
+                        <div class="date-input-container">
+                            <div class="date-input-group">
+                                <label class="input-label" for="date-input">Date</label>
+                                <input type="date" id="date-input" class="input-field">
+                            </div>
+                            
+                            <div class="date-input-group">
+                                <label class="input-label" for="time-input">Time</label>
+                                <input type="time" id="time-input" class="input-field" step="1">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label" for="date-timezone-select">Timezone</label>
+                            <select id="date-timezone-select" class="timezone-select">
+                                <option value="UTC">UTC</option>
+                                <option value="local">Local Timezone</option>
+                                <!-- Common timezones will be added by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button id="date-convert-btn" class="convert-btn">
+                                <i class="fas fa-clock"></i> Convert to Timestamp
+                            </button>
+                            <button id="date-copy-btn" class="copy-btn" disabled>
+                                <i class="fas fa-copy"></i> Copy Result
+                            </button>
+                            <button id="date-clear-btn" class="clear-btn">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                        
+                        <div id="date-result" class="result-container">
+                            <div class="result-label">Unix Timestamp (seconds):</div>
+                            <div id="date-result-value" class="result-value"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-conversions">
+                        <div class="recent-title">
+                            Recent Conversions
+                            <button id="clear-history-btn" class="clear-history">
+                                <i class="fas fa-trash"></i> Clear History
+                            </button>
+                        </div>
+                        <div id="conversion-list" class="conversion-list">
+                            <div class="empty-list">No recent conversions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="info-title">What is a Unix Timestamp?</h2>
+                    <div class="info-text">
+                        <p>A Unix timestamp (also known as Epoch time, POSIX time, or Unix time) is a system for describing a point in time. It is the number of seconds that have elapsed since January 1, 1970 (midnight UTC/GMT), not counting leap seconds.</p>
+                        
+                        <p>Unix timestamps are widely used in computer systems and programming for various reasons:</p>
+                        <ul>
+                            <li>They are easy to store as a single number</li>
+                            <li>They are timezone-independent (always in UTC)</li>
+                            <li>Date arithmetic becomes simple addition and subtraction</li>
+                            <li>They are universal across different operating systems and programming languages</li>
+                        </ul>
+                        
+                        <p>Common uses for Unix timestamps include:</p>
+                        <ul>
+                            <li>Database record timestamps</li>
+                            <li>File modification times</li>
+                            <li>Session expiration times</li>
+                            <li>Event scheduling</li>
+                            <li>API data interchange</li>
+                        </ul>
+                        
+                        <p>Note that Unix timestamps can be represented in different ways:</p>
+                        <ul>
+                            <li><strong>Seconds</strong>: The standard Unix timestamp (e.g., 1609459200)</li>
+                            <li><strong>Milliseconds</strong>: Used in JavaScript/Java (e.g., 1609459200000)</li>
+                            <li><strong>Microseconds</strong>: Used in some database systems</li>
+                            <li><strong>Nanoseconds</strong>: Used in high-precision applications</li>
+                        </ul>
+                        
+                        <p>This tool primarily works with the standard seconds-based Unix timestamp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for translations to load
+            function applyTranslations() {
+                if (window.translations) {
+                    // Update page elements with translations
+                    updateTexts();
+                    
+                    // Update placeholders
+                    updatePlaceholders();
+                    
+                    // Setup notification translation
+                    setupNotifications();
+                    
+                    // Force re-render all translated elements
+                    document.body.style.zoom = "1.00001";
+                    setTimeout(function() {
+                        document.body.style.zoom = "1";
+                    }, 10);
+                } else {
+                    // If translations not loaded yet, try again after a short delay
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // Start trying to apply translations
+            applyTranslations();
+            
+            // Update UI text elements with translations
+            function updateTexts() {
+                if (window.translations) {
+                    // Update back link
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // Update UI text elements
+                    if (window.translations.ui) {
+                        // Unix Timestamp Converter UI elements
+                        const uiElements = {
+                            'tool-title': 'unix_timestamp_converter_title',
+                            'tool-description': 'unix_timestamp_converter_description',
+                            'timestamp-convert-btn': 'convert_to_date',
+                            'date-convert-btn': 'convert_to_timestamp',
+                            'timestamp-copy-btn': 'copy_result',
+                            'date-copy-btn': 'copy_result',
+                            'timestamp-clear-btn': 'clear',
+                            'date-clear-btn': 'clear',
+                            'clear-history-btn': 'clear_history'
+                        };
+                        
+                        for (const [id, key] of Object.entries(uiElements)) {
+                            const element = document.getElementById(id);
+                            if (element && window.translations.ui[key]) {
+                                // Special case for buttons with icons
+                                if (id === 'timestamp-convert-btn') {
+                                    element.innerHTML = '<i class="fas fa-clock"></i> ' + window.translations.ui[key];
+                                } else if (id === 'date-convert-btn') {
+                                    element.innerHTML = '<i class="fas fa-clock"></i> ' + window.translations.ui[key];
+                                } else if (id === 'timestamp-copy-btn' || id === 'date-copy-btn') {
+                                    element.innerHTML = '<i class="fas fa-copy"></i> ' + window.translations.ui[key];
+                                } else if (id === 'timestamp-clear-btn' || id === 'date-clear-btn') {
+                                    element.innerHTML = '<i class="fas fa-trash"></i> ' + window.translations.ui[key];
+                                } else if (id === 'clear-history-btn') {
+                                    element.innerHTML = '<i class="fas fa-trash"></i> ' + window.translations.ui[key];
+                                } else {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                        
+                        // Update time labels
+                        const timeLabels = document.querySelectorAll('.time-label');
+                        timeLabels.forEach(label => {
+                            if (label.textContent === 'Current Unix Timestamp' && window.translations.ui.current_unix_timestamp) {
+                                label.textContent = window.translations.ui.current_unix_timestamp;
+                            } else if (label.textContent === 'Current Date & Time (UTC)' && window.translations.ui.current_date_time_utc) {
+                                label.textContent = window.translations.ui.current_date_time_utc;
+                            } else if (label.textContent === 'Current Date & Time (Local)' && window.translations.ui.current_date_time_local) {
+                                label.textContent = window.translations.ui.current_date_time_local;
+                            }
+                        });
+                        
+                        // Update conversion tabs
+                        const tabs = document.querySelectorAll('.conversion-tab');
+                        tabs.forEach(tab => {
+                            const tabId = tab.getAttribute('data-tab');
+                            if (tabId === 'timestamp-to-date' && window.translations.ui.timestamp_to_date) {
+                                tab.textContent = window.translations.ui.timestamp_to_date;
+                            } else if (tabId === 'date-to-timestamp' && window.translations.ui.date_to_timestamp) {
+                                tab.textContent = window.translations.ui.date_to_timestamp;
+                            }
+                        });
+                        
+                        // Update input labels
+                        const inputLabels = document.querySelectorAll('.input-label');
+                        inputLabels.forEach(label => {
+                            const forAttr = label.getAttribute('for');
+                            if (forAttr === 'timestamp-input' && window.translations.ui.unix_timestamp_input) {
+                                label.textContent = window.translations.ui.unix_timestamp_input;
+                            } else if ((forAttr === 'timezone-select' || forAttr === 'date-timezone-select') && window.translations.ui.timezone) {
+                                label.textContent = window.translations.ui.timezone;
+                            } else if (forAttr === 'date-format' && window.translations.ui.date_format) {
+                                label.textContent = window.translations.ui.date_format;
+                            } else if (forAttr === 'date-input' && window.translations.ui.date) {
+                                label.textContent = window.translations.ui.date;
+                            } else if (forAttr === 'time-input' && window.translations.ui.time) {
+                                label.textContent = window.translations.ui.time;
+                            }
+                        });
+                        
+                        // Update result labels
+                        const resultLabels = document.querySelectorAll('.result-label');
+                        resultLabels.forEach(label => {
+                            if (label.textContent === 'Converted Date:' && window.translations.ui.converted_date) {
+                                label.textContent = window.translations.ui.converted_date;
+                            } else if (label.textContent === 'Unix Timestamp (seconds):' && window.translations.ui.unix_timestamp_seconds) {
+                                label.textContent = window.translations.ui.unix_timestamp_seconds;
+                            }
+                        });
+                        
+                        // Update recent conversions title
+                        const recentTitle = document.querySelector('.recent-title');
+                        if (recentTitle && window.translations.ui.recent_conversions) {
+                            // Only update the text node, not the button
+                            const textNode = Array.from(recentTitle.childNodes).find(node => 
+                                node.nodeType === Node.TEXT_NODE && node.textContent.trim() === 'Recent Conversions'
+                            );
+                            if (textNode) {
+                                textNode.textContent = window.translations.ui.recent_conversions;
+                            }
+                        }
+                        
+                        // Update empty list text
+                        const emptyList = document.querySelector('.empty-list');
+                        if (emptyList && window.translations.ui.no_recent_conversions) {
+                            emptyList.textContent = window.translations.ui.no_recent_conversions;
+                        }
+                        
+                        // Update timezone options
+                        const timezoneSelects = document.querySelectorAll('.timezone-select');
+                        timezoneSelects.forEach(select => {
+                            if (window.translations.ui.utc && window.translations.ui.local_timezone) {
+                                const options = select.options;
+                                for (let i = 0; i < options.length; i++) {
+                                    if (options[i].value === 'UTC') {
+                                        options[i].textContent = window.translations.ui.utc;
+                                    } else if (options[i].value === 'local') {
+                                        options[i].textContent = window.translations.ui.local_timezone;
+                                    }
+                                }
+                            }
+                        });
+                        
+                        // Update info box content
+                        if (window.translations.timestamp_info) {
+                            const infoTitle = document.querySelector('.info-title');
+                            if (infoTitle && window.translations.timestamp_info.title) {
+                                infoTitle.textContent = window.translations.timestamp_info.title;
+                            }
+                            
+                            // Update paragraphs and lists in the info box
+                            const infoTextElements = document.querySelectorAll('.info-text p, .info-text ul li, .info-text ul li strong');
+                            if (window.translations.timestamp_info.content) {
+                                // First paragraph
+                                const firstPara = document.querySelector('.info-text p:first-child');
+                                if (firstPara && window.translations.timestamp_info.content.intro) {
+                                    firstPara.textContent = window.translations.timestamp_info.content.intro;
+                                }
+                                
+                                // Second paragraph
+                                const secondPara = document.querySelector('.info-text p:nth-child(2)');
+                                if (secondPara && window.translations.timestamp_info.content.reasons_intro) {
+                                    secondPara.textContent = window.translations.timestamp_info.content.reasons_intro;
+                                }
+                                
+                                // Reasons list
+                                if (window.translations.timestamp_info.content.reasons && Array.isArray(window.translations.timestamp_info.content.reasons)) {
+                                    const reasonsItems = document.querySelectorAll('.info-text ul:first-of-type li');
+                                    for (let i = 0; i < Math.min(reasonsItems.length, window.translations.timestamp_info.content.reasons.length); i++) {
+                                        reasonsItems[i].textContent = window.translations.timestamp_info.content.reasons[i];
+                                    }
+                                }
+                                
+                                // Common uses paragraph
+                                const usesPara = document.querySelector('.info-text p:nth-child(4)');
+                                if (usesPara && window.translations.timestamp_info.content.uses_intro) {
+                                    usesPara.textContent = window.translations.timestamp_info.content.uses_intro;
+                                }
+                                
+                                // Uses list
+                                if (window.translations.timestamp_info.content.uses && Array.isArray(window.translations.timestamp_info.content.uses)) {
+                                    const usesItems = document.querySelectorAll('.info-text ul:nth-of-type(2) li');
+                                    for (let i = 0; i < Math.min(usesItems.length, window.translations.timestamp_info.content.uses.length); i++) {
+                                        usesItems[i].textContent = window.translations.timestamp_info.content.uses[i];
+                                    }
+                                }
+                                
+                                // Representation paragraph
+                                const reprPara = document.querySelector('.info-text p:nth-child(6)');
+                                if (reprPara && window.translations.timestamp_info.content.representations_intro) {
+                                    reprPara.textContent = window.translations.timestamp_info.content.representations_intro;
+                                }
+                                
+                                // Update representation list with strong tags
+                                if (window.translations.timestamp_info.content.representations && Array.isArray(window.translations.timestamp_info.content.representations)) {
+                                    const reprItems = document.querySelectorAll('.info-text ul:nth-of-type(3) li');
+                                    for (let i = 0; i < Math.min(reprItems.length, window.translations.timestamp_info.content.representations.length); i++) {
+                                        const item = reprItems[i];
+                                        const rep = window.translations.timestamp_info.content.representations[i];
+                                        
+                                        // Clear existing content
+                                        item.innerHTML = '';
+                                        
+                                        // Create strong element
+                                        const strong = document.createElement('strong');
+                                        strong.textContent = rep.title + ': ';
+                                        
+                                        // Add strong element and text
+                                        item.appendChild(strong);
+                                        item.appendChild(document.createTextNode(rep.description));
+                                    }
+                                }
+                                
+                                // Final paragraph
+                                const finalPara = document.querySelector('.info-text p:last-child');
+                                if (finalPara && window.translations.timestamp_info.content.conclusion) {
+                                    finalPara.textContent = window.translations.timestamp_info.content.conclusion;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Update placeholder text
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    // Update timestamp input placeholder
+                    const timestampInput = document.getElementById('timestamp-input');
+                    if (timestampInput && window.translations.placeholders.enter_timestamp) {
+                        timestampInput.placeholder = window.translations.placeholders.enter_timestamp;
+                    }
+                }
+            }
+            
+            // Setup notification message translation
+            function setupNotifications() {
+                // Save original showNotification function reference
+                const originalShowNotification = window.showNotification || showNotification;
+                
+                // Redefine showNotification function
+                window.showNotification = function(message, type) {
+                    // Try to get translated message
+                    let translatedMessage = getTranslatedNotification(message);
+                    
+                    // Call original function with translated message
+                    originalShowNotification(translatedMessage, type);
+                };
+            }
+            
+            // Get translated notification message
+            function getTranslatedNotification(message) {
+                if (window.translations && window.translations.notifications) {
+                    if (message === 'Copied to clipboard' && window.translations.notifications.copied_clipboard) {
+                        return window.translations.notifications.copied_clipboard;
+                    } else if (message === 'Failed to copy' && window.translations.notifications.copy_failed) {
+                        return window.translations.notifications.copy_failed;
+                    } else if (message === 'Please enter a valid timestamp' && window.translations.notifications.enter_valid_timestamp) {
+                        return window.translations.notifications.enter_valid_timestamp;
+                    } else if (message === 'Please enter a date' && window.translations.notifications.enter_date) {
+                        return window.translations.notifications.enter_date;
+                    } else if (message === 'Conversion history cleared' && window.translations.notifications.conversion_history_cleared) {
+                        return window.translations.notifications.conversion_history_cleared;
+                    }
+                }
+                return message;
+            }
+            
+            // DOM elements
+            const currentTimestamp = document.getElementById('current-timestamp');
+            const currentDateUtc = document.getElementById('current-date-utc');
+            const currentDateLocal = document.getElementById('current-date-local');
+            
+            const conversionTabs = document.querySelectorAll('.conversion-tab');
+            const conversionContents = document.querySelectorAll('.conversion-content');
+            
+            const timestampInput = document.getElementById('timestamp-input');
+            const timezoneSelect = document.getElementById('timezone-select');
+            const dateFormatInput = document.getElementById('date-format');
+            const formatPresets = document.querySelectorAll('.format-preset');
+            const timestampConvertBtn = document.getElementById('timestamp-convert-btn');
+            const timestampCopyBtn = document.getElementById('timestamp-copy-btn');
+            const timestampClearBtn = document.getElementById('timestamp-clear-btn');
+            const timestampResult = document.getElementById('timestamp-result');
+            const timestampResultValue = document.getElementById('timestamp-result-value');
+            
+            const dateInput = document.getElementById('date-input');
+            const timeInput = document.getElementById('time-input');
+            const dateTimezoneSelect = document.getElementById('date-timezone-select');
+            const dateConvertBtn = document.getElementById('date-convert-btn');
+            const dateCopyBtn = document.getElementById('date-copy-btn');
+            const dateClearBtn = document.getElementById('date-clear-btn');
+            const dateResult = document.getElementById('date-result');
+            const dateResultValue = document.getElementById('date-result-value');
+            
+            const conversionList = document.getElementById('conversion-list');
+            const clearHistoryBtn = document.getElementById('clear-history-btn');
+            const notification = document.getElementById('notification');
+            
+            // Initialize timezone dropdowns
+            populateTimezones();
+            
+            // Set default values
+            setCurrentDateTime();
+            setDefaultDateTimeInputs();
+            
+            // Update current time periodically
+            setInterval(setCurrentDateTime, 1000);
+            
+            // Load conversion history
+            loadConversionHistory();
+            
+            // Event listeners
+            conversionTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    conversionTabs.forEach(t => t.classList.remove('active'));
+                    conversionContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            formatPresets.forEach(preset => {
+                preset.addEventListener('click', function() {
+                    const format = this.getAttribute('data-format');
+                    dateFormatInput.value = format;
+                    
+                    // If a timestamp is already entered, convert with the new format
+                    if (timestampInput.value) {
+                        convertTimestampToDate();
+                    }
+                });
+            });
+            
+            timestampConvertBtn.addEventListener('click', convertTimestampToDate);
+            timestampCopyBtn.addEventListener('click', copyTimestampResult);
+            timestampClearBtn.addEventListener('click', clearTimestampForm);
+            
+            dateConvertBtn.addEventListener('click', convertDateToTimestamp);
+            dateCopyBtn.addEventListener('click', copyDateResult);
+            dateClearBtn.addEventListener('click', clearDateForm);
+            
+            clearHistoryBtn.addEventListener('click', clearConversionHistory);
+            
+            // Convert timestamp to date
+            function convertTimestampToDate() {
+                const timestamp = parseInt(timestampInput.value.trim());
+                
+                if (isNaN(timestamp)) {
+                    showNotification('Please enter a valid timestamp', 'error');
+                    return;
+                }
+                
+                const timezone = timezoneSelect.value;
+                const format = dateFormatInput.value;
+                
+                let formattedDate;
+                
+                if (format === 'relative') {
+                    formattedDate = moment.unix(timestamp).fromNow();
+                } else {
+                    if (timezone === 'local') {
+                        formattedDate = moment.unix(timestamp).format(format);
+                    } else if (timezone === 'UTC') {
+                        formattedDate = moment.unix(timestamp).utc().format(format);
+                    } else {
+                        formattedDate = moment.unix(timestamp).tz(timezone).format(format);
+                    }
+                }
+                
+                // Display result
+                timestampResultValue.textContent = formattedDate;
+                timestampResult.style.display = 'block';
+                timestampCopyBtn.disabled = false;
+                
+                // Add to conversion history
+                addToHistory(`${timestamp} → ${formattedDate}`);
+            }
+            
+            // Convert date to timestamp
+            function convertDateToTimestamp() {
+                const dateValue = dateInput.value;
+                const timeValue = timeInput.value || '00:00:00';
+                
+                if (!dateValue) {
+                    showNotification('Please enter a date', 'error');
+                    return;
+                }
+                
+                const timezone = dateTimezoneSelect.value;
+                const dateTimeString = `${dateValue}T${timeValue}`;
+                
+                let timestamp;
+                
+                if (timezone === 'local') {
+                    timestamp = moment(dateTimeString).unix();
+                } else if (timezone === 'UTC') {
+                    timestamp = moment.utc(dateTimeString).unix();
+                } else {
+                    timestamp = moment.tz(dateTimeString, timezone).unix();
+                }
+                
+                // Display result
+                dateResultValue.textContent = timestamp;
+                dateResult.style.display = 'block';
+                dateCopyBtn.disabled = false;
+                
+                // Add to conversion history
+                const formattedDateTime = moment(dateTimeString).format('YYYY-MM-DD HH:mm:ss');
+                addToHistory(`${formattedDateTime} → ${timestamp}`);
+            }
+            
+            // Copy results to clipboard
+            function copyTimestampResult() {
+                navigator.clipboard.writeText(timestampResultValue.textContent)
+                    .then(() => {
+                        showNotification('Copied to clipboard', 'success');
+                    })
+                    .catch(err => {
+                        showNotification('Failed to copy', 'error');
+                    });
+            }
+            
+            function copyDateResult() {
+                navigator.clipboard.writeText(dateResultValue.textContent)
+                    .then(() => {
+                        showNotification('Copied to clipboard', 'success');
+                    })
+                    .catch(err => {
+                        showNotification('Failed to copy', 'error');
+                    });
+            }
+            
+            // Clear forms
+            function clearTimestampForm() {
+                timestampInput.value = '';
+                timestampResult.style.display = 'none';
+                timestampCopyBtn.disabled = true;
+            }
+            
+            function clearDateForm() {
+                dateInput.value = '';
+                timeInput.value = '';
+                dateResult.style.display = 'none';
+                dateCopyBtn.disabled = true;
+            }
+            
+            // Set current date and time
+            function setCurrentDateTime() {
+                const now = moment();
+                currentTimestamp.textContent = now.unix();
+                currentDateUtc.textContent = now.utc().format('YYYY-MM-DD HH:mm:ss');
+                currentDateLocal.textContent = now.format('YYYY-MM-DD HH:mm:ss');
+            }
+            
+            // Set default date/time inputs
+            function setDefaultDateTimeInputs() {
+                const now = moment();
+                dateInput.value = now.format('YYYY-MM-DD');
+                timeInput.value = now.format('HH:mm:ss');
+            }
+            
+            // Populate timezone dropdowns
+            function populateTimezones() {
+                const commonTimezones = [
+                    'America/New_York',
+                    'America/Chicago',
+                    'America/Denver',
+                    'America/Los_Angeles',
+                    'Europe/London',
+                    'Europe/Berlin',
+                    'Europe/Moscow',
+                    'Asia/Tokyo',
+                    'Asia/Shanghai',
+                    'Australia/Sydney',
+                    'Pacific/Auckland'
+                ];
+                
+                // Add common timezones to both selects
+                commonTimezones.forEach(tz => {
+                    const option1 = document.createElement('option');
+                    option1.value = tz;
+                    option1.textContent = tz;
+                    timezoneSelect.appendChild(option1);
+                    
+                    const option2 = document.createElement('option');
+                    option2.value = tz;
+                    option2.textContent = tz;
+                    dateTimezoneSelect.appendChild(option2);
+                });
+                
+                // Set default to local timezone
+                timezoneSelect.value = 'local';
+                dateTimezoneSelect.value = 'local';
+            }
+            
+            // Conversion history management
+            function addToHistory(conversion) {
+                // Remove empty state if present
+                const emptyState = conversionList.querySelector('.empty-list');
+                if (emptyState) {
+                    conversionList.removeChild(emptyState);
+                }
+                
+                // Create conversion item
+                const conversionItem = document.createElement('div');
+                conversionItem.className = 'conversion-item';
+                
+                const conversionText = document.createElement('span');
+                conversionText.className = 'conversion-text';
+                conversionText.textContent = conversion;
+                
+                conversionItem.appendChild(conversionText);
+                
+                // Add to the list (at the top)
+                if (conversionList.firstChild) {
+                    conversionList.insertBefore(conversionItem, conversionList.firstChild);
+                } else {
+                    conversionList.appendChild(conversionItem);
+                }
+                
+                // Limit list to 10 items
+                while (conversionList.children.length > 10) {
+                    conversionList.removeChild(conversionList.lastChild);
+                }
+                
+                // Save to local storage
+                saveConversionHistory();
+            }
+            
+            function saveConversionHistory() {
+                const conversions = [];
+                const items = conversionList.querySelectorAll('.conversion-text');
+                
+                items.forEach(item => {
+                    conversions.push(item.textContent);
+                });
+                
+                localStorage.setItem('timestampConversions', JSON.stringify(conversions));
+            }
+            
+            function loadConversionHistory() {
+                const savedConversions = localStorage.getItem('timestampConversions');
+                
+                if (savedConversions) {
+                    const conversions = JSON.parse(savedConversions);
+                    
+                    if (conversions.length > 0) {
+                        // Clear empty state
+                        conversionList.innerHTML = '';
+                        
+                        // Add saved conversions
+                        conversions.forEach(conversion => {
+                            const conversionItem = document.createElement('div');
+                            conversionItem.className = 'conversion-item';
+                            
+                            const conversionText = document.createElement('span');
+                            conversionText.className = 'conversion-text';
+                            conversionText.textContent = conversion;
+                            
+                            conversionItem.appendChild(conversionText);
+                            conversionList.appendChild(conversionItem);
+                        });
+                    }
+                }
+            }
+            
+            function clearConversionHistory() {
+                conversionList.innerHTML = '';
+                conversionList.appendChild(createEmptyState());
+                
+                // Clear local storage
+                localStorage.removeItem('timestampConversions');
+                
+                showNotification('Conversion history cleared', 'success');
+            }
+            
+            function createEmptyState() {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'empty-list';
+                if (window.translations && window.translations.ui && window.translations.ui.no_recent_conversions) {
+                    emptyState.textContent = window.translations.ui.no_recent_conversions;
+                } else {
+                    emptyState.textContent = 'No recent conversions';
+                }
+                return emptyState;
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

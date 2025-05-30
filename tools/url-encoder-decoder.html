@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encoder/Decoder | Encode & Decode URL Parameters | Tool-ify</title>
+    <meta name="description" content="Free online URL encoder and decoder. Safely encode special characters for URLs or decode URL-encoded strings. No installation required.">
+    <meta name="keywords" content="url encoder, url decoder, url converter, encode url, decode url, url parameters, url special characters, url component">
+    <link rel="canonical" href="https://tool-ify.com/tools/url-encoder-decoder.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "URL Encoder/Decoder",
+        "url": "https://tool-ify.com/tools/url-encoder-decoder.html",
+        "description": "Encode or decode URL parameters and special characters",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            margin-right: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .encoder-container, .decoder-container, .bulk-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .option-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .option-label input[type="radio"] {
+            margin-right: 6px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .url-parts {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+        }
+        
+        .url-part {
+            margin-bottom: 10px;
+        }
+        
+        .url-part-label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .url-part-value {
+            font-family: 'Monaco', 'Consolas', monospace;
+            word-break: break-all;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">URL Encoder/Decoder</h1>
+                <p id="tool-description">Encode or decode URL parameters and special characters</p>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="url-encoder" id="encode-tab">Encode URL</div>
+                    <div class="tab" data-tab="url-decoder" id="decode-tab">Decode URL</div>
+                    <div class="tab" data-tab="url-parser" id="parser-tab">URL Parser</div>
+                </div>
+                
+                <!-- URL Encoder Tab -->
+                <div class="tab-content active" id="url-encoder">
+                    <div class="encoder-container">
+                        <div class="option-group">
+                            <label class="option-label">
+                                <input type="radio" name="encode-type" value="component" checked> <span id="encode-component-label">encodeURIComponent (Encode all special characters)</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="encode-type" value="uri"> <span id="encode-uri-label">encodeURI (Preserve URI structure)</span>
+                            </label>
+                        </div>
+                        
+                        <textarea id="url-input" placeholder="Enter the text you want to encode for URL use..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="encode-btn">
+                                <i class="fas fa-code"></i> Encode URL
+                            </button>
+                            <button id="copy-encoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> Copy Result
+                            </button>
+                            <button id="clear-encoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                        
+                        <textarea id="encoded-output" placeholder="URL encoded result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- URL Decoder Tab -->
+                <div class="tab-content" id="url-decoder">
+                    <div class="decoder-container">
+                        <div class="option-group">
+                            <label class="option-label">
+                                <input type="radio" name="decode-type" value="component" checked> <span id="decode-component-label">decodeURIComponent (Decode all encoded characters)</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="decode-type" value="uri"> <span id="decode-uri-label">decodeURI (Preserve URI structure)</span>
+                            </label>
+                        </div>
+                        
+                        <textarea id="encoded-input" placeholder="Enter the URL encoded text you want to decode..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="decode-btn">
+                                <i class="fas fa-code"></i> Decode URL
+                            </button>
+                            <button id="copy-decoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> Copy Result
+                            </button>
+                            <button id="clear-decoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                        
+                        <textarea id="decoded-output" placeholder="URL decoded result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- URL Parser Tab -->
+                <div class="tab-content" id="url-parser">
+                    <div class="parser-container">
+                        <div class="parser-input-group">
+                            <textarea id="url-to-parse" placeholder="Enter a URL to parse..."></textarea>
+                            
+                            <div class="button-group">
+                                <button id="parse-btn">
+                                    <i class="fas fa-code-branch"></i> Parse URL
+                                </button>
+                                <button id="clear-parser-btn" class="secondary">
+                                    <i class="fas fa-trash"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="url-parts">
+                            <div class="url-part">
+                                <div class="url-part-label" id="protocol-label">Protocol:</div>
+                                <div class="url-part-value" id="url-protocol">-</div>
+                            </div>
+                            
+                            <div class="url-part">
+                                <div class="url-part-label" id="hostname-label">Hostname:</div>
+                                <div class="url-part-value" id="url-hostname">-</div>
+                            </div>
+                            
+                            <div class="url-part">
+                                <div class="url-part-label" id="port-label">Port:</div>
+                                <div class="url-part-value" id="url-port">-</div>
+                            </div>
+                            
+                            <div class="url-part">
+                                <div class="url-part-label" id="pathname-label">Path:</div>
+                                <div class="url-part-value" id="url-pathname">-</div>
+                            </div>
+                            
+                            <div class="url-part">
+                                <div class="url-part-label" id="parameters-label">Parameters:</div>
+                                <div class="url-part-value" id="url-search">-</div>
+                            </div>
+                            
+                            <div class="url-part">
+                                <div class="url-part-label" id="hash-label">Hash/Fragment:</div>
+                                <div class="url-part-value" id="url-hash">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // URL Encoder elements
+            const urlInput = document.getElementById('url-input');
+            const encodedOutput = document.getElementById('encoded-output');
+            const encodeBtn = document.getElementById('encode-btn');
+            const copyEncodedBtn = document.getElementById('copy-encoded-btn');
+            const clearEncodedBtn = document.getElementById('clear-encoded-btn');
+            const encodeTypeRadios = document.getElementsByName('encode-type');
+            
+            // URL Decoder elements
+            const encodedInput = document.getElementById('encoded-input');
+            const decodedOutput = document.getElementById('decoded-output');
+            const decodeBtn = document.getElementById('decode-btn');
+            const copyDecodedBtn = document.getElementById('copy-decoded-btn');
+            const clearDecodedBtn = document.getElementById('clear-decoded-btn');
+            const decodeTypeRadios = document.getElementsByName('decode-type');
+            
+            // URL Parser elements
+            const urlToParseInput = document.getElementById('url-to-parse');
+            const parseBtn = document.getElementById('parse-btn');
+            const clearParserBtn = document.getElementById('clear-parser-btn');
+            const urlProtocol = document.getElementById('url-protocol');
+            const urlHostname = document.getElementById('url-hostname');
+            const urlPort = document.getElementById('url-port');
+            const urlPathname = document.getElementById('url-pathname');
+            const urlSearch = document.getElementById('url-search');
+            const urlHash = document.getElementById('url-hash');
+            
+            // Notification element
+            const notification = document.getElementById('notification');
+            
+            // Encode URL
+            encodeBtn.addEventListener('click', function() {
+                try {
+                    const text = urlInput.value;
+                    if (!text) {
+                        showNotification('Please enter text to encode', 'error');
+                        return;
+                    }
+                    
+                    // Get selected encode type
+                    const encodeType = getSelectedRadioValue(encodeTypeRadios);
+                    
+                    // Encode based on selected type
+                    let encodedText;
+                    if (encodeType === 'component') {
+                        encodedText = encodeURIComponent(text);
+                    } else {
+                        encodedText = encodeURI(text);
+                    }
+                    
+                    encodedOutput.value = encodedText;
+                    showNotification('URL encoded successfully', 'success');
+                } catch (error) {
+                    showNotification('Error encoding URL: ' + error.message, 'error');
+                }
+            });
+            
+            // Decode URL
+            decodeBtn.addEventListener('click', function() {
+                try {
+                    const text = encodedInput.value;
+                    if (!text) {
+                        showNotification('Please enter URL encoded text to decode', 'error');
+                        return;
+                    }
+                    
+                    // Get selected decode type
+                    const decodeType = getSelectedRadioValue(decodeTypeRadios);
+                    
+                    // Decode based on selected type
+                    let decodedText;
+                    if (decodeType === 'component') {
+                        decodedText = decodeURIComponent(text);
+                    } else {
+                        decodedText = decodeURI(text);
+                    }
+                    
+                    decodedOutput.value = decodedText;
+                    showNotification('URL decoded successfully', 'success');
+                } catch (error) {
+                    showNotification('Error decoding URL: ' + error.message, 'error');
+                }
+            });
+            
+            // Parse URL
+            parseBtn.addEventListener('click', function() {
+                try {
+                    const urlToParse = urlToParseInput.value.trim();
+                    if (!urlToParse) {
+                        showNotification('Please enter a URL to parse', 'error');
+                        return;
+                    }
+                    
+                    // Create URL object to parse components
+                    const url = new URL(urlToParse);
+                    
+                    // Display parsed URL components
+                    urlProtocol.textContent = url.protocol || '-';
+                    urlHostname.textContent = url.hostname || '-';
+                    urlPort.textContent = url.port || '(default)';
+                    urlPathname.textContent = url.pathname || '-';
+                    
+                    // Parse and display query parameters
+                    if (url.search) {
+                        const params = new URLSearchParams(url.search);
+                        let paramsHtml = '';
+                        
+                        for (const [key, value] of params.entries()) {
+                            paramsHtml += `<div><strong>${key}</strong>: ${value}</div>`;
+                        }
+                        
+                        urlSearch.innerHTML = paramsHtml;
+                    } else {
+                        urlSearch.textContent = '-';
+                    }
+                    
+                    urlHash.textContent = url.hash || '-';
+                    
+                    showNotification('URL parsed successfully', 'success');
+                } catch (error) {
+                    showNotification('Invalid URL: ' + error.message, 'error');
+                }
+            });
+            
+            // Copy and clear functions
+            copyEncodedBtn.addEventListener('click', function() {
+                copyToClipboard(encodedOutput);
+            });
+            
+            clearEncodedBtn.addEventListener('click', function() {
+                urlInput.value = '';
+                encodedOutput.value = '';
+            });
+            
+            copyDecodedBtn.addEventListener('click', function() {
+                copyToClipboard(decodedOutput);
+            });
+            
+            clearDecodedBtn.addEventListener('click', function() {
+                encodedInput.value = '';
+                decodedOutput.value = '';
+            });
+            
+            clearParserBtn.addEventListener('click', function() {
+                urlToParseInput.value = '';
+                urlProtocol.textContent = '-';
+                urlHostname.textContent = '-';
+                urlPort.textContent = '-';
+                urlPathname.textContent = '-';
+                urlSearch.textContent = '-';
+                urlHash.textContent = '-';
+            });
+            
+            // Helper function to get selected radio button value
+            function getSelectedRadioValue(radioButtons) {
+                for (const radioButton of radioButtons) {
+                    if (radioButton.checked) {
+                        return radioButton.value;
+                    }
+                }
+                return null;
+            }
+            
+            // Helper function to copy to clipboard
+            function copyToClipboard(element) {
+                if (!element.value) {
+                    showNotification('Nothing to copy', 'error');
+                    return;
+                }
+                
+                element.select();
+                document.execCommand('copy');
+                showNotification('Copied to clipboard', 'success');
+            }
+            
+            // Helper function to show notifications
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

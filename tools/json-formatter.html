@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Formatter | Free Online JSON Beautifier & Validator | Tool-ify</title>
+    <meta name="description" content="Format, beautify, and validate your JSON data with this free online JSON formatter tool. Indent, minify, and check for syntax errors instantly.">
+    <meta name="keywords" content="json formatter, json validator, json beautifier, pretty json, minify json, json indent, json syntax checker">
+    <link rel="canonical" href="https://tool-ify.com/tools/json-formatter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Formatter",
+        "url": "https://tool-ify.com/tools/json-formatter.html",
+        "description": "Format, beautify, and validate your JSON data",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        /* 修复布局，确保页面至少占满整个视口高度 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+        
+        .tool-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .editor-container {
+                flex-direction: row;
+                gap: 20px;
+            }
+            
+            .input-container, .output-container {
+                flex: 1;
+            }
+        }
+        
+        .input-container, .output-container {
+            margin-bottom: 20px;
+        }
+        
+        .input-label, .output-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .input-label h3, .output-label h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        textarea, .output-display {
+            width: 100%;
+            height: 350px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            resize: vertical;
+            line-height: 1.5;
+            overflow: auto;
+        }
+        
+        .output-display {
+            white-space: pre-wrap;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .indent-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .indent-option label {
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .indent-option select {
+            padding: 5px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .error-line {
+            background-color: rgba(229, 62, 62, 0.2);
+        }
+        
+        .key {
+            color: #3182ce;
+        }
+        
+        .string {
+            color: #38a169;
+        }
+        
+        .number {
+            color: #d69e2e;
+        }
+        
+        .boolean {
+            color: #d53f8c;
+        }
+        
+        .null {
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">JSON Formatter</h1>
+                <p id="tool-description">Format, beautify, and validate your JSON data</p>
+                
+                <div class="options-group">
+                    <div class="indent-option">
+                        <label for="indent-size" id="indent-label">Indent Size:</label>
+                        <select id="indent-size">
+                            <option value="2" id="spaces-2">2 spaces</option>
+                            <option value="4" selected id="spaces-4">4 spaces</option>
+                            <option value="6" id="spaces-6">6 spaces</option>
+                            <option value="tab" id="spaces-tab">Tab</option>
+                        </select>
+                    </div>
+                    
+                    <button id="format-btn">
+                        <i class="fas fa-code"></i> <span id="format-text">Format JSON</span>
+                    </button>
+                    <button id="minify-btn" class="secondary">
+                        <i class="fas fa-compress"></i> <span id="minify-text">Minify JSON</span>
+                    </button>
+                    <button id="copy-output-btn" class="secondary">
+                        <i class="fas fa-copy"></i> <span id="copy-text">Copy Output</span>
+                    </button>
+                    <button id="clear-btn" class="secondary">
+                        <i class="fas fa-trash"></i> <span id="clear-text">Clear All</span>
+                    </button>
+                </div>
+                
+                <div class="editor-container">
+                    <div class="input-container">
+                        <div class="input-label">
+                            <h3 id="input-title">Input JSON</h3>
+                        </div>
+                        <textarea id="json-input" placeholder='Paste or type your JSON here, e.g.:
+{
+    "name": "John Doe",
+    "age": 30,
+    "isActive": true,
+    "hobbies": ["reading", "swimming", "coding"],
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown"
+    }
+}'></textarea>
+                    </div>
+                    
+                    <div class="output-container">
+                        <div class="output-label">
+                            <h3 id="output-title">Output</h3>
+                        </div>
+                        <div id="json-output" class="output-display"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const jsonInput = document.getElementById('json-input');
+            const jsonOutput = document.getElementById('json-output');
+            const formatBtn = document.getElementById('format-btn');
+            const minifyBtn = document.getElementById('minify-btn');
+            const copyOutputBtn = document.getElementById('copy-output-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const indentSize = document.getElementById('indent-size');
+            const notification = document.getElementById('notification');
+            
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 更新按钮文本
+                    updateButtonTexts();
+                    
+                    // 更新占位符文本和标签
+                    updateLabels();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 更新按钮文本
+            function updateButtonTexts() {
+                if (window.translations && window.translations.ui) {
+                    // 复制按钮
+                    if (window.translations.ui.copy_result) {
+                        const copyBtnText = document.getElementById('copy-text');
+                        if (copyBtnText) {
+                            copyBtnText.textContent = window.translations.ui.copy_result;
+                        }
+                    }
+                    
+                    // 清除按钮
+                    if (window.translations.ui.clear_all) {
+                        const clearBtnText = document.getElementById('clear-text');
+                        if (clearBtnText) {
+                            clearBtnText.textContent = window.translations.ui.clear_all;
+                        }
+                    }
+                    
+                    // 格式化按钮
+                    if (window.translations.ui.format) {
+                        const formatBtnText = document.getElementById('format-text');
+                        if (formatBtnText) {
+                            formatBtnText.textContent = window.translations.ui.format + ' JSON';
+                        }
+                    }
+                    
+                    // 压缩按钮
+                    if (window.translations.ui.minify) {
+                        const minifyBtnText = document.getElementById('minify-text');
+                        if (minifyBtnText) {
+                            minifyBtnText.textContent = window.translations.ui.minify + ' JSON';
+                        }
+                    }
+                }
+            }
+            
+            // 更新标签和占位符
+            function updateLabels() {
+                if (window.translations) {
+                    // 输入标题
+                    if (window.translations.ui && window.translations.ui.original_text) {
+                        const inputTitle = document.getElementById('input-title');
+                        if (inputTitle) {
+                            inputTitle.textContent = window.translations.ui.original_text;
+                        }
+                    }
+                    
+                    // 输出标题
+                    if (window.translations.ui && window.translations.ui.result) {
+                        const outputTitle = document.getElementById('output-title');
+                        if (outputTitle) {
+                            outputTitle.textContent = window.translations.ui.result;
+                        }
+                    }
+                    
+                    // 缩进标签
+                    if (window.translations.ui && window.translations.ui.indent_size) {
+                        const indentLabel = document.getElementById('indent-label');
+                        if (indentLabel) {
+                            indentLabel.textContent = window.translations.ui.indent_size + ':';
+                        }
+                    }
+                    
+                    // 更新返回文本
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                }
+            }
+            
+            // 获取翻译文本
+            function getTranslatedText(key, defaultText) {
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                
+                return defaultText;
+            }
+            
+            // Format JSON
+            formatBtn.addEventListener('click', function() {
+                formatJSON();
+            });
+            
+            // Minify JSON
+            minifyBtn.addEventListener('click', function() {
+                minifyJSON();
+            });
+            
+            // Copy output
+            copyOutputBtn.addEventListener('click', function() {
+                copyOutput();
+            });
+            
+            // Clear all
+            clearBtn.addEventListener('click', function() {
+                jsonInput.value = '';
+                jsonOutput.innerHTML = '';
+            });
+            
+            // Format JSON function
+            function formatJSON() {
+                try {
+                    // Parse JSON to ensure it's valid
+                    const parsedJSON = JSON.parse(jsonInput.value);
+                    
+                    // Get indent
+                    let indent;
+                    if (indentSize.value === 'tab') {
+                        indent = '\t';
+                    } else {
+                        indent = ' '.repeat(parseInt(indentSize.value));
+                    }
+                    
+                    // Format with specified indent
+                    const formattedJSON = JSON.stringify(parsedJSON, null, indent);
+                    
+                    // Apply syntax highlighting
+                    jsonOutput.innerHTML = highlightJSON(formattedJSON);
+                    
+                    // Show success notification
+                    showNotification(getTranslatedText('json_formatted', 'JSON formatted successfully'), 'success');
+                } catch (error) {
+                    // Handle error and show line number if possible
+                    const errorMatch = error.message.match(/position (\d+)/);
+                    let errorPosition = errorMatch ? parseInt(errorMatch[1]) : null;
+                    
+                    if (errorPosition) {
+                        // Highlight error line
+                        const jsonLines = jsonInput.value.substring(0, errorPosition).split('\n');
+                        const errorLine = jsonLines.length;
+                        const errorMessage = `Error at line ${errorLine}: ${error.message}`;
+                        jsonOutput.innerHTML = `<div class="error-line">${errorMessage}</div>`;
+                    } else {
+                        jsonOutput.innerHTML = `<div class="error-line">Invalid JSON: ${error.message}</div>`;
+                    }
+                    
+                    // Show error notification
+                    showNotification(getTranslatedText('invalid_json', 'Invalid JSON: ') + error.message, 'error');
+                }
+            }
+            
+            // Minify JSON function
+            function minifyJSON() {
+                try {
+                    // Parse JSON to ensure it's valid
+                    const parsedJSON = JSON.parse(jsonInput.value);
+                    
+                    // Minify by removing all whitespace
+                    const minifiedJSON = JSON.stringify(parsedJSON);
+                    
+                    // Apply minimal syntax highlighting to minified JSON
+                    jsonOutput.innerHTML = highlightJSON(minifiedJSON);
+                    
+                    // Show success notification
+                    showNotification(getTranslatedText('json_minified', 'JSON minified successfully'), 'success');
+                } catch (error) {
+                    jsonOutput.innerHTML = `<div class="error-line">Invalid JSON: ${error.message}</div>`;
+                    
+                    // Show error notification
+                    showNotification(getTranslatedText('invalid_json', 'Invalid JSON: ') + error.message, 'error');
+                }
+            }
+            
+            // Copy output function
+            function copyOutput() {
+                // Create a temporary textarea
+                const textarea = document.createElement('textarea');
+                textarea.value = jsonOutput.textContent;
+                document.body.appendChild(textarea);
+                
+                // Select and copy
+                textarea.select();
+                document.execCommand('copy');
+                
+                // Remove the temporary textarea
+                document.body.removeChild(textarea);
+                
+                // Show notification
+                showNotification(getTranslatedText('copied_clipboard', 'Copied to clipboard'), 'success');
+            }
+            
+            // Syntax highlighting function
+            function highlightJSON(json) {
+                // Replace tokens with highlighted spans
+                return json
+                    .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+                        let cls = 'number';
+                        if (/^"/.test(match)) {
+                            if (/:$/.test(match)) {
+                                cls = 'key';
+                                // Remove the colon for proper highlighting
+                                match = match.replace(/:$/, '');
+                            } else {
+                                cls = 'string';
+                            }
+                        } else if (/true|false/.test(match)) {
+                            cls = 'boolean';
+                        } else if (/null/.test(match)) {
+                            cls = 'null';
+                        }
+                        
+                        // Special handling for key-value pairs
+                        if (cls === 'key') {
+                            return `<span class="${cls}">${match}</span>:`;
+                        }
+                        
+                        return `<span class="${cls}">${match}</span>`;
+                    });
+            }
+            
+            // Show notification function
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Listen for paste events
+            jsonInput.addEventListener('paste', function() {
+                // Short delay to let the paste complete
+                setTimeout(formatJSON, 100);
+            });
+            
+            // Implement keyboard shortcuts (Ctrl+Enter to format)
+            jsonInput.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    formatJSON();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

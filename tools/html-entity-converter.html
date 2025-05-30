@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Entity Converter | Convert HTML Special Characters & Entities | Tool-ify</title>
+    <meta name="description" content="Free online HTML entity converter. Convert HTML special characters to entities or decode HTML entities to characters. Perfect for web developers and content creators.">
+    <meta name="keywords" content="html entity converter, html encoder, html decoder, html special characters, html entities, html escape, html unescape, encode html, decode html">
+    <link rel="canonical" href="https://tool-ify.com/tools/html-entity-converter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "HTML Entity Converter",
+        "url": "https://tool-ify.com/tools/html-entity-converter.html",
+        "description": "Convert between HTML entities and special characters",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        /* 修复布局，确保页面至少占满整个视口高度 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+        
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            margin-right: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .encoder-container, .decoder-container, .reference-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .option-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .option-label input[type="checkbox"] {
+            margin-right: 6px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .reference-table th,
+        .reference-table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+        }
+        
+        .reference-table th {
+            background-color: var(--bg-secondary);
+            font-weight: 600;
+        }
+        
+        .reference-table tr:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+        
+        .reference-search {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+        }
+        
+        .entity-code {
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">HTML Entity Converter</h1>
+                <p id="tool-description">Convert between HTML entities and special characters</p>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="html-encoder"><span id="tab-encode-html">Encode HTML</span></div>
+                    <div class="tab" data-tab="html-decoder"><span id="tab-decode-html">Decode HTML</span></div>
+                    <div class="tab" data-tab="entity-reference"><span id="tab-entity-reference">Entity Reference</span></div>
+                </div>
+                
+                <!-- HTML Encoder Tab -->
+                <div class="tab-content active" id="html-encoder">
+                    <div class="encoder-container">
+                        <div class="option-group">
+                            <label class="option-label">
+                                <input type="checkbox" id="encode-quotes" checked> <span id="encode-quotes-label">Encode Quotes (' and ")</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" id="encode-apostrophes" checked> <span id="encode-apostrophes-label">Encode Apostrophes (')</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="checkbox" id="encode-basic-latin" checked> <span id="encode-basic-latin-label">Encode Basic Latin Characters</span>
+                            </label>
+                        </div>
+                        
+                        <textarea id="html-input" placeholder="Enter the HTML or text with special characters to encode..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="encode-btn">
+                                <i class="fas fa-code"></i> <span id="encode-btn-text">Encode to HTML Entities</span>
+                            </button>
+                            <button id="copy-encoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> <span id="copy-encoded-text">Copy Result</span>
+                            </button>
+                            <button id="clear-encoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> <span id="clear-encoded-text">Clear</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="encoded-output" placeholder="HTML encoded result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- HTML Decoder Tab -->
+                <div class="tab-content" id="html-decoder">
+                    <div class="decoder-container">
+                        <textarea id="entity-input" placeholder="Enter the HTML with entities to decode..."></textarea>
+                        
+                        <div class="button-group">
+                            <button id="decode-btn">
+                                <i class="fas fa-code"></i> <span id="decode-btn-text">Decode HTML Entities</span>
+                            </button>
+                            <button id="copy-decoded-btn" class="secondary">
+                                <i class="fas fa-copy"></i> <span id="copy-decoded-text">Copy Result</span>
+                            </button>
+                            <button id="clear-decoded-btn" class="secondary">
+                                <i class="fas fa-trash"></i> <span id="clear-decoded-text">Clear</span>
+                            </button>
+                        </div>
+                        
+                        <textarea id="decoded-output" placeholder="Decoded HTML result will appear here..." readonly></textarea>
+                    </div>
+                </div>
+                
+                <!-- Entity Reference Tab -->
+                <div class="tab-content" id="entity-reference">
+                    <div class="reference-container">
+                        <input type="text" id="entity-search" class="reference-search" placeholder="Search for an entity or character...">
+                        
+                        <table class="reference-table" id="entity-table">
+                            <thead>
+                                <tr>
+                                    <th id="table-header-character">Character</th>
+                                    <th id="table-header-entity-name">Entity Name</th>
+                                    <th id="table-header-entity-number">Entity Number</th>
+                                    <th id="table-header-description">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>&lt;</td>
+                                    <td class="entity-code">&amp;lt;</td>
+                                    <td class="entity-code">&amp;#60;</td>
+                                    <td>Less than sign</td>
+                                </tr>
+                                <tr>
+                                    <td>&gt;</td>
+                                    <td class="entity-code">&amp;gt;</td>
+                                    <td class="entity-code">&amp;#62;</td>
+                                    <td>Greater than sign</td>
+                                </tr>
+                                <tr>
+                                    <td>&amp;</td>
+                                    <td class="entity-code">&amp;amp;</td>
+                                    <td class="entity-code">&amp;#38;</td>
+                                    <td>Ampersand</td>
+                                </tr>
+                                <tr>
+                                    <td>&quot;</td>
+                                    <td class="entity-code">&amp;quot;</td>
+                                    <td class="entity-code">&amp;#34;</td>
+                                    <td>Double quote</td>
+                                </tr>
+                                <tr>
+                                    <td>'</td>
+                                    <td class="entity-code">&amp;apos;</td>
+                                    <td class="entity-code">&amp;#39;</td>
+                                    <td>Apostrophe</td>
+                                </tr>
+                                <tr>
+                                    <td>&#169;</td>
+                                    <td class="entity-code">&amp;copy;</td>
+                                    <td class="entity-code">&amp;#169;</td>
+                                    <td>Copyright symbol</td>
+                                </tr>
+                                <tr>
+                                    <td>&#174;</td>
+                                    <td class="entity-code">&amp;reg;</td>
+                                    <td class="entity-code">&amp;#174;</td>
+                                    <td>Registered trademark</td>
+                                </tr>
+                                <tr>
+                                    <td>&#8364;</td>
+                                    <td class="entity-code">&amp;euro;</td>
+                                    <td class="entity-code">&amp;#8364;</td>
+                                    <td>Euro sign</td>
+                                </tr>
+                                <tr>
+                                    <td>&#8482;</td>
+                                    <td class="entity-code">&amp;trade;</td>
+                                    <td class="entity-code">&amp;#8482;</td>
+                                    <td>Trademark symbol</td>
+                                </tr>
+                                <tr>
+                                    <td>&#160;</td>
+                                    <td class="entity-code">&amp;nbsp;</td>
+                                    <td class="entity-code">&amp;#160;</td>
+                                    <td>Non-breaking space</td>
+                                </tr>
+                                <tr>
+                                    <td>&#8212;</td>
+                                    <td class="entity-code">&amp;mdash;</td>
+                                    <td class="entity-code">&amp;#8212;</td>
+                                    <td>Em dash</td>
+                                </tr>
+                                <tr>
+                                    <td>&#8211;</td>
+                                    <td class="entity-code">&amp;ndash;</td>
+                                    <td class="entity-code">&amp;#8211;</td>
+                                    <td>En dash</td>
+                                </tr>
+                                <tr>
+                                    <td>&#171;</td>
+                                    <td class="entity-code">&amp;laquo;</td>
+                                    <td class="entity-code">&amp;#171;</td>
+                                    <td>Left double angle quotes</td>
+                                </tr>
+                                <tr>
+                                    <td>&#187;</td>
+                                    <td class="entity-code">&amp;raquo;</td>
+                                    <td class="entity-code">&amp;#187;</td>
+                                    <td>Right double angle quotes</td>
+                                </tr>
+                                <tr>
+                                    <td>&#176;</td>
+                                    <td class="entity-code">&amp;deg;</td>
+                                    <td class="entity-code">&amp;#176;</td>
+                                    <td>Degree sign</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 更新按钮文本和标签
+                    updateTexts();
+                    
+                    // 更新占位符文本
+                    updatePlaceholders();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 更新按钮文本和标签
+            function updateTexts() {
+                if (window.translations) {
+                    // 更新返回链接
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // 更新标签页
+                    if (window.translations.ui) {
+                        const textMappings = {
+                            'tab-encode-html': 'encode_html',
+                            'tab-decode-html': 'decode_html',
+                            'tab-entity-reference': 'entity_reference',
+                            'encode-btn-text': 'encode_to_entities',
+                            'decode-btn-text': 'decode_from_entities',
+                            'copy-encoded-text': 'copy_result',
+                            'copy-decoded-text': 'copy_result',
+                            'clear-encoded-text': 'clear',
+                            'clear-decoded-text': 'clear',
+                            'encode-quotes-label': 'encode_quotes',
+                            'encode-apostrophes-label': 'encode_apostrophes',
+                            'encode-basic-latin-label': 'encode_basic_latin',
+                            'table-header-character': 'character',
+                            'table-header-entity-name': 'entity_name',
+                            'table-header-entity-number': 'entity_number',
+                            'table-header-description': 'description'
+                        };
+                        
+                        for (const [id, key] of Object.entries(textMappings)) {
+                            if (window.translations.ui[key]) {
+                                const element = document.getElementById(id);
+                                if (element) {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 更新占位符
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    const placeholders = {
+                        'html-input': 'enter_html_to_encode',
+                        'encoded-output': 'encoded_result',
+                        'entity-input': 'enter_html_to_decode',
+                        'decoded-output': 'decoded_result',
+                        'entity-search': 'search_entity'
+                    };
+                    
+                    for (const [id, key] of Object.entries(placeholders)) {
+                        if (window.translations.placeholders[key]) {
+                            const element = document.getElementById(id);
+                            if (element) {
+                                element.placeholder = window.translations.placeholders[key];
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 获取翻译文本
+            function getTranslatedText(key, defaultText) {
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                
+                return defaultText;
+            }
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // HTML Encoder elements
+            const htmlInput = document.getElementById('html-input');
+            const encodedOutput = document.getElementById('encoded-output');
+            const encodeBtn = document.getElementById('encode-btn');
+            const copyEncodedBtn = document.getElementById('copy-encoded-btn');
+            const clearEncodedBtn = document.getElementById('clear-encoded-btn');
+            const encodeQuotes = document.getElementById('encode-quotes');
+            const encodeApostrophes = document.getElementById('encode-apostrophes');
+            const encodeBasicLatin = document.getElementById('encode-basic-latin');
+            
+            // HTML Decoder elements
+            const entityInput = document.getElementById('entity-input');
+            const decodedOutput = document.getElementById('decoded-output');
+            const decodeBtn = document.getElementById('decode-btn');
+            const copyDecodedBtn = document.getElementById('copy-decoded-btn');
+            const clearDecodedBtn = document.getElementById('clear-decoded-btn');
+            
+            // Entity Reference elements
+            const entitySearch = document.getElementById('entity-search');
+            const entityTable = document.getElementById('entity-table');
+            
+            // Notification element
+            const notification = document.getElementById('notification');
+            
+            // Encode HTML
+            encodeBtn.addEventListener('click', function() {
+                try {
+                    const html = htmlInput.value;
+                    if (!html) {
+                        showNotification(getTranslatedText('text_required', 'Please enter text to encode'), 'error');
+                        return;
+                    }
+                    
+                    // Get encoding options
+                    const options = {
+                        encodeQuotes: encodeQuotes.checked,
+                        encodeApostrophes: encodeApostrophes.checked,
+                        encodeBasicLatin: encodeBasicLatin.checked
+                    };
+                    
+                    const encodedHtml = encodeHTML(html, options);
+                    encodedOutput.value = encodedHtml;
+                    showNotification(getTranslatedText('html_encoded', 'HTML encoded successfully'), 'success');
+                } catch (error) {
+                    showNotification(getTranslatedText('encode_error', 'Error encoding HTML: ') + error.message, 'error');
+                }
+            });
+            
+            // Decode HTML
+            decodeBtn.addEventListener('click', function() {
+                try {
+                    const html = entityInput.value;
+                    if (!html) {
+                        showNotification(getTranslatedText('html_required', 'Please enter HTML entities to decode'), 'error');
+                        return;
+                    }
+                    
+                    const decodedHtml = decodeHTML(html);
+                    decodedOutput.value = decodedHtml;
+                    showNotification(getTranslatedText('html_decoded', 'HTML decoded successfully'), 'success');
+                } catch (error) {
+                    showNotification(getTranslatedText('decode_error', 'Error decoding HTML: ') + error.message, 'error');
+                }
+            });
+            
+            // Search entity reference table
+            entitySearch.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const rows = entityTable.querySelectorAll('tbody tr');
+                
+                rows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+            });
+            
+            // Copy and clear functions
+            copyEncodedBtn.addEventListener('click', function() {
+                copyToClipboard(encodedOutput);
+            });
+            
+            clearEncodedBtn.addEventListener('click', function() {
+                htmlInput.value = '';
+                encodedOutput.value = '';
+            });
+            
+            copyDecodedBtn.addEventListener('click', function() {
+                copyToClipboard(decodedOutput);
+            });
+            
+            clearDecodedBtn.addEventListener('click', function() {
+                entityInput.value = '';
+                decodedOutput.value = '';
+            });
+            
+            // HTML Encoder function
+            function encodeHTML(html, options) {
+                // Create a temporary element
+                const textArea = document.createElement('textarea');
+                textArea.textContent = html;
+                
+                // Replace characters with entities
+                let encoded = textArea.innerHTML;
+                
+                // Always encode these characters
+                encoded = encoded
+                    .replace(/&/g, '&amp;')  // Must be first to avoid double encoding
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+                
+                // Conditionally encode quotes
+                if (options.encodeQuotes) {
+                    encoded = encoded.replace(/"/g, '&quot;');
+                }
+                
+                // Conditionally encode apostrophes
+                if (options.encodeApostrophes) {
+                    encoded = encoded.replace(/'/g, '&#39;');
+                }
+                
+                // Conditionally encode basic Latin characters
+                if (options.encodeBasicLatin) {
+                    // Extended ASCII and special characters
+                    encoded = encoded
+                        .replace(/¢/g, '&cent;')
+                        .replace(/£/g, '&pound;')
+                        .replace(/¥/g, '&yen;')
+                        .replace(/€/g, '&euro;')
+                        .replace(/©/g, '&copy;')
+                        .replace(/®/g, '&reg;')
+                        .replace(/™/g, '&trade;')
+                        .replace(/°/g, '&deg;')
+                        .replace(/±/g, '&plusmn;')
+                        .replace(/×/g, '&times;')
+                        .replace(/÷/g, '&divide;')
+                        .replace(/µ/g, '&micro;');
+                }
+                
+                return encoded;
+            }
+            
+            // HTML Decoder function
+            function decodeHTML(html) {
+                // Create a temporary element
+                const textArea = document.createElement('textarea');
+                textArea.innerHTML = html;
+                return textArea.value;
+            }
+            
+            // Helper function to copy to clipboard
+            function copyToClipboard(element) {
+                if (!element.value) {
+                    showNotification(getTranslatedText('nothing_to_copy', 'Nothing to copy'), 'error');
+                    return;
+                }
+                
+                element.select();
+                document.execCommand('copy');
+                showNotification(getTranslatedText('copied_clipboard', 'Copied to clipboard'), 'success');
+            }
+            
+            // Helper function to show notifications
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html> 

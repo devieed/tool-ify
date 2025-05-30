@@ -1,0 +1,922 @@
+{
+    "hero": {
+        "title": "简单实用的在线工具",
+        "subtitle": "免费、快速、易用的实用工具 — 无需安装"
+    },
+    "categories": {
+        "text": "文本处理工具",
+        "image": "图片处理工具",
+        "dev": "开发与设计工具",
+        "utility": "实用小工具"
+    },
+    "tools": {
+        "word-counter": {
+            "name": "字数统计器",
+            "description": "统计文本中的字符、单词和行数"
+        },
+        "case-converter": {
+            "name": "大小写转换器",
+            "description": "将文本转换为大写、小写或标题格式"
+        },
+        "json-formatter": {
+            "name": "JSON 格式化工具",
+            "description": "格式化和验证 JSON 数据"
+        },
+        "base64-encoder-decoder": {
+            "name": "Base64 编码/解码器",
+            "description": "将文本编码为 Base64 或解码 Base64 字符串"
+        },
+        "url-encoder-decoder": {
+            "name": "URL 编码/解码器",
+            "description": "编码或解码 URL 参数"
+        },
+        "html-entity-converter": {
+            "name": "HTML 实体转换器",
+            "description": "在 HTML 实体和字符之间转换"
+        },
+        "hash-generator": {
+            "name": "哈希生成器",
+            "description": "生成 MD5、SHA-1、SHA-256 哈希值"
+        },
+        "image-converter": {
+            "name": "图片格式转换器",
+            "description": "在 JPG、PNG、WebP 格式之间转换"
+        },
+        "image-compressor": {
+            "name": "图片压缩器",
+            "description": "在不损失质量的情况下减小图片文件大小"
+        },
+        "image-to-base64": {
+            "name": "图片转 Base64",
+            "description": "将图片转换为 Base64 编码"
+        },
+        "image-resizer": {
+            "name": "图片尺寸调整器",
+            "description": "轻松调整和缩放图片大小"
+        },
+        "color-converter": {
+            "name": "颜色格式转换器",
+            "description": "在 HEX、RGB、HSL、CMYK 之间转换"
+        },
+        "password-generator": {
+            "name": "密码生成器",
+            "description": "生成安全的随机密码"
+        },
+        "uuid-generator": {
+            "name": "UUID 生成器",
+            "description": "生成随机 UUID/GUID"
+        },
+        "unix-timestamp-converter": {
+            "name": "Unix 时间戳转换器",
+            "description": "在 Unix 时间戳和日期之间转换"
+        },
+        "css-formatter": {
+            "name": "CSS 格式化工具",
+            "description": "格式化和压缩 CSS 代码"
+        },
+        "qr-code-generator": {
+            "name": "二维码生成器",
+            "description": "从文本或 URL 生成二维码"
+        },
+        "unit-converter": {
+            "name": "单位换算器",
+            "description": "在不同度量单位之间转换"
+        },
+        "timer-stopwatch": {
+            "name": "计时器和秒表",
+            "description": "精确跟踪时间"
+        }
+    },
+    "ui": {
+        "copy": "复制",
+        "download": "下载",
+        "clear": "清除",
+        "copied": "已复制！",
+        "error": "错误",
+        "success": "成功",
+        "convert": "转换",
+        "generate": "生成",
+        "encode": "编码",
+        "decode": "解码",
+        "format": "格式化",
+        "validate": "验证",
+        "minify": "压缩",
+        "upload": "上传",
+        "choose_file": "选择文件",
+        "reset": "重置",
+        "save": "保存",
+        "cancel": "取消",
+        "apply": "应用",
+        "close": "关闭",
+        "settings": "设置",
+        "options": "选项",
+        "output_format": "输出格式",
+        "quality": "质量",
+        "no_file": "未选择文件",
+        "original_image": "原始图片",
+        "converted_image": "转换后的图片",
+        "compressed_image": "压缩后的图片",
+        "original_text": "原始文本",
+        "converted_text": "转换后的文本",
+        "drag_drop": "拖放文件到这里或",
+        "choose_image": "选择图片",
+        "enter_text": "在此输入文本...",
+        "result": "结果",
+        "copy_result": "复制结果",
+        "clear_all": "全部清除",
+        "processing": "处理中...",
+        "back_to_tools": "返回工具页",
+        "characters": "字符数",
+        "characters_no_spaces": "字符数（不含空格）",
+        "words": "单词数",
+        "lines": "行数",
+        "paragraphs": "段落数",
+        "start": "开始",
+        "pause": "暂停",
+        "resume": "继续",
+        "stop": "停止",
+        "lap": "计圈",
+        "timer": "计时器",
+        "stopwatch": "秒表",
+        "hours": "小时",
+        "minutes": "分钟",
+        "seconds": "秒",
+        "milliseconds": "毫秒",
+        "hours_short": "时",
+        "minutes_short": "分",
+        "seconds_short": "秒",
+        "milliseconds_short": "毫秒",
+        "hour": "小时",
+        "minute": "分钟",
+        "second": "秒",
+        "encode_url": "编码URL",
+        "decode_url": "解码URL",
+        "url_parser": "URL解析器",
+        "parse": "解析",
+        "laps": "圈数",
+        "clear_laps": "清除圈数",
+        "no_laps": "未记录圈数",
+        "encode_component_label": "encodeURIComponent (编码所有特殊字符)",
+        "encode_uri_label": "encodeURI (保留URI结构)",
+        "decode_component_label": "decodeURIComponent (解码所有编码字符)",
+        "decode_uri_label": "decodeURI (保留URI结构)",
+        "protocol_label": "协议:",
+        "hostname_label": "主机名:",
+        "port_label": "端口:",
+        "pathname_label": "路径:",
+        "parameters_label": "参数:",
+        "hash_label": "哈希/片段:",
+        "preset_1min": "1 分钟",
+        "preset_5min": "5 分钟",
+        "preset_10min": "10 分钟",
+        "preset_30min": "30 分钟",
+        "preset_1hour": "1 小时",
+        "sound_option_text": "计时结束时播放声音",
+        "timer_time_label": "时 : 分 : 秒",
+        "stopwatch_time_label": "时 : 分 : 秒 . 毫秒",
+        "uppercase": "大写",
+        "lowercase": "小写",
+        "titlecase": "标题格式",
+        "sentencecase": "句子格式",
+        "alternatingcase": "交替格式",
+        "inversecase": "反转格式",
+        "indent_size": "缩进大小",
+        "encode_text": "编码文本",
+        "decode_text": "解码文本",
+        "encode_file": "编码文件",
+        "encode_to_base64": "编码为 Base64",
+        "decode_from_base64": "从 Base64 解码",
+        "convert_to_base64": "转换为 Base64",
+        "download_data_url": "下载为 Data URL",
+        "encode_html": "编码 HTML",
+        "decode_html": "解码 HTML",
+        "entity_reference": "实体参考",
+        "encode_to_entities": "编码为 HTML 实体",
+        "decode_from_entities": "解码 HTML 实体",
+        "encode_quotes": "编码引号 (' 和 \")",
+        "encode_apostrophes": "编码撇号 (')",
+        "encode_basic_latin": "编码基本拉丁字符",
+        "character": "字符",
+        "entity_name": "实体名称",
+        "entity_number": "实体编号",
+        "description": "描述",
+        "generate_hash": "生成哈希",
+        "md5": "MD5",
+        "sha1": "SHA-1",
+        "sha256": "SHA-256",
+        "sha512": "SHA-512",
+        "uppercase_output": "输出大写字母",
+        "about_crypto_hashes": "关于加密哈希",
+        "crypto_hash_description": "加密哈希函数是一种数学算法，可将任意大小的数据映射为固定大小的比特串。它被设计为单向函数，难以逆转。",
+        "common_uses": "加密哈希的常见用途包括：",
+        "password_storage": "密码存储（使用安全的密码哈希算法）",
+        "file_integrity": "文件完整性验证",
+        "digital_signatures": "数字签名",
+        "message_authentication": "消息认证码",
+        "security_note": "注意：对于安全敏感的应用，始终使用最强大的哈希函数（如SHA-256或SHA-512），并为密码存储实施适当的盐值技术。",
+        "convert_image": "转换图片",
+        "batch_convert_coming_soon": "批量转换（即将推出）",
+        "conversion_options": "转换选项",
+        "download_result": "下载结果",
+        "batch_conversion_coming_soon": "批量转换功能即将推出",
+        "feature_under_development": "此功能正在开发中",
+        "compression_options": "压缩选项",
+        "max_width": "最大宽度 (px, 可选)",
+        "format_auto": "自动 (与输入相同)",
+        "compress_image": "压缩图片",
+        "download_compressed_image": "下载压缩图片",
+        "original_size": "原始大小",
+        "compressed_size": "压缩后大小",
+        "size_reduction": "减小比例",
+        "original_dimensions": "原始尺寸",
+        "compressed_dimensions": "压缩后尺寸",
+        "options": "选项",
+        "base64_string_only": "仅 Base64 字符串",
+        "data_url_with_mime": "Data URL (带 MIME 类型)",
+        "include_html_example": "包含 HTML 代码示例",
+        "include_css_example": "包含 CSS 代码示例",
+        "html_preview": "HTML 预览 (使用 Base64)",
+        "embedded_image_info": "上方图片使用 Base64 数据嵌入",
+        "base64_output": "Base64 输出",
+        "html_code_example": "HTML 代码示例",
+        "css_code_example": "CSS 代码示例",
+        "why_use_base64": "为什么使用 Base64 图片？",
+        "base64_explanation": "Base64 编码允许你将图片直接嵌入到 HTML、CSS 或 JavaScript 文件中，无需额外的 HTTP 请求。这对以下情况非常有用：",
+        "use_case_icons": "小图标和 UI 元素",
+        "use_case_http": "减少 HTTP 请求以提高性能",
+        "use_case_single_file": "在单文件应用中嵌入图片",
+        "use_case_json": "在 JSON 数据中包含图片",
+        "usage_examples": "使用示例",
+        "html": "HTML",
+        "css": "CSS",
+        "javascript": "JavaScript",
+        "resize_options": "调整大小选项",
+        "by_dimensions": "按尺寸调整",
+        "by_percentage": "按百分比调整",
+        "presets": "预设尺寸",
+        "width_px": "宽度 (像素)",
+        "height_px": "高度 (像素)",
+        "maintain_aspect_ratio": "保持宽高比",
+        "scale_percent": "缩放比例 (%)",
+        "quality_range": "质量 (1-100)",
+        "resize_image": "调整图片大小",
+        "resized_image": "调整后的图片",
+        "preset_fullhd": "全高清 (1920×1080)",
+        "preset_hd": "高清 (1280×720)",
+        "preset_svga": "SVGA (800×600)",
+        "preset_vga": "VGA (640×480)",
+        "preset_qvga": "QVGA (320×240)",
+        "preset_instagram": "Instagram (1080×1080)",
+        "preset_facebook": "Facebook (1200×630)",
+        "preset_twitter": "Twitter 头图 (1500×500)",
+        "pick_a_color": "选择颜色",
+        "hex": "十六进制",
+        "rgb": "RGB",
+        "hsl": "HSL",
+        "cmyk": "CMYK",
+        "format_jpg": "JPG",
+        "format_png": "PNG",
+        "format_webp": "WebP",
+        "color_schemes": "配色方案",
+        "monochromatic": "单色",
+        "complementary": "互补色",
+        "analogous": "类似色",
+        "triadic": "三色",
+        "password_generator_title": "密码生成器",
+        "password_generator_description": "生成安全的随机密码",
+        "password_length": "密码长度",
+        "password_strength": "密码强度",
+        "include_uppercase": "包含大写字母 (A-Z)",
+        "include_lowercase": "包含小写字母 (a-z)",
+        "include_numbers": "包含数字 (0-9)",
+        "include_symbols": "包含符号 (!@#$%^&*)",
+        "exclude_similar": "排除相似字符 (i, l, 1, L, o, 0, O)",
+        "exclude_ambiguous": "排除歧义符号 ({ } [ ] ( ) / \\ ' \" ` ~ , ; : . < >)",
+        "password_security_tips": "密码安全提示",
+        "recently_generated_passwords": "最近生成的密码",
+        "generate_password": "生成密码",
+        "weak": "弱",
+        "moderate": "中等",
+        "strong": "强",
+        "very_strong": "非常强",
+        "no_password_generated": "尚未生成密码",
+        "no_passwords_generated": "尚未生成密码",
+        "password_copied": "密码已复制到剪贴板！",
+        "no_password_to_copy": "没有密码可复制",
+        "one_char_type_required": "至少需要选择一种字符类型",
+        "no_chars_available": "当前设置下没有可用字符",
+        "password_history_cleared": "密码历史已清除",
+        "copy_failed": "复制失败",
+        "uuid_generator_title": "UUID 生成器",
+        "uuid_generator_description": "生成随机 UUID/GUID",
+        "uuid_version": "UUID 版本",
+        "uuid_count": "UUID 数量",
+        "format_options": "格式选项",
+        "uppercase": "大写",
+        "add_braces": "添加花括号 { }",
+        "include_hyphens": "包含连字符",
+        "generate_uuids": "生成 UUID",
+        "copy_all": "复制全部",
+        "generated_uuids": "已生成的 UUID",
+        "uuid_count_single": "1 个 UUID",
+        "uuid_count_multiple": "{count} 个 UUID",
+        "what_is_uuid": "什么是 UUID/GUID？",
+        "uuid_version_4_random": "版本 4 (随机) - 推荐",
+        "uuid_version_1_time": "版本 1 (基于时间)",
+        "unix_timestamp_converter_title": "Unix 时间戳转换器",
+        "unix_timestamp_converter_description": "在 Unix 时间戳和日期之间转换",
+        "current_unix_timestamp": "当前 Unix 时间戳",
+        "current_date_time_utc": "当前日期和时间 (UTC)",
+        "current_date_time_local": "当前日期和时间 (本地)",
+        "timestamp_to_date": "时间戳转日期",
+        "date_to_timestamp": "日期转时间戳",
+        "unix_timestamp_input": "Unix 时间戳 (从 1970 年 1 月 1 日起的秒数)",
+        "timezone": "时区",
+        "utc": "UTC",
+        "local_timezone": "本地时区",
+        "date_format": "日期格式",
+        "convert_to_date": "转换为日期",
+        "convert_to_timestamp": "转换为时间戳",
+        "date": "日期",
+        "time": "时间",
+        "converted_date": "转换后的日期:",
+        "unix_timestamp_seconds": "Unix 时间戳 (秒):",
+        "recent_conversions": "最近的转换",
+        "no_recent_conversions": "没有最近的转换",
+        "clear_history": "清除历史记录",
+        "css_formatter_title": "CSS 格式化工具",
+        "css_formatter_description": "格式化和压缩 CSS 代码",
+        "format_css": "格式化 CSS",
+        "minify_css": "压缩 CSS",
+        "upload_css_file": "上传 CSS 文件",
+        "input_css": "输入 CSS",
+        "formatted_css": "格式化后的 CSS",
+        "formatting_options": "格式化选项",
+        "minification_options": "压缩选项",
+        "indentation_size": "缩进大小",
+        "brace_style": "花括号样式",
+        "remove_comments": "移除注释",
+        "remove_whitespace": "移除空白",
+        "spaces": "空格",
+        "tab": "制表符",
+        "same_line": "同一行",
+        "new_line": "新行",
+        "processed_size": "处理后大小",
+        "processing_time": "处理时间",
+        "qr_code_generator_title": "二维码生成器",
+        "qr_code_generator_description": "从文本或 URL 生成二维码",
+        "generate_qr_code": "生成二维码",
+        "share": "分享",
+        "text_url": "文本 / 网址",
+        "vcard_contact": "名片 (联系人)",
+        "wifi_network": "WiFi 网络",
+        "enter_text_or_url": "输入文本或网址",
+        "full_name": "姓名",
+        "company_optional": "公司 (可选)",
+        "phone_number": "电话号码",
+        "email": "电子邮箱",
+        "website_optional": "网站 (可选)",
+        "network_name_ssid": "网络名称 (SSID)",
+        "encryption_type": "加密类型",
+        "password": "密码",
+        "hidden_network": "隐藏网络",
+        "wpa_wpa2": "WPA/WPA2",
+        "wep": "WEP",
+        "none": "无",
+        "yes": "是",
+        "no": "否",
+        "appearance": "外观",
+        "format_error_correction": "格式与纠错",
+        "size": "大小",
+        "margin": "边距",
+        "foreground_color": "前景色",
+        "background_color": "背景色",
+        "format": "格式",
+        "error_correction_level": "纠错级别",
+        "png": "PNG",
+        "svg": "SVG",
+        "jpeg": "JPEG",
+        "error_correction_low": "低 (7%)",
+        "error_correction_medium": "中 (15%)",
+        "error_correction_quartile": "四分之一 (25%)",
+        "error_correction_high": "高 (30%)",
+        "your_qr_code": "您的二维码",
+        "unit_converter_title": "单位换算器",
+        "unit_converter_description": "在不同的度量单位之间转换",
+        "value": "数值",
+        "from_unit": "转换自",
+        "to_unit": "转换至",
+        "conversion_formula": "换算公式：",
+        "category_length": "长度",
+        "category_area": "面积",
+        "category_volume": "体积",
+        "category_weight": "重量/质量",
+        "category_temperature": "温度",
+        "category_speed": "速度",
+        "category_time": "时间",
+        "category_data": "数据大小",
+        "invalid_input": "无效输入",
+        "recent_conversions": "最近转换记录",
+        "no_recent_conversions": "暂无转换记录"
+    },
+    "footer": {
+        "copyright": "© 2024 Tool-ify.com - 所有工具均免费且在浏览器中运行",
+        "contact": "联系我们",
+        "privacy": "隐私政策",
+        "terms": "使用条款",
+        "back": "返回工具页"
+    },
+    "contact": {
+        "title": "联系我们",
+        "description": "感谢使用 Tool-ify！我们重视您的反馈和建议，以帮助我们改进服务。",
+        "contact_heading": "与我们联系",
+        "contact_intro": "如果您对我们的工具有任何问题、建议或反馈，请随时通过电子邮件联系我们：",
+        "response_time": "我们会尽力在48小时内回复所有询问。",
+        "about_heading": "关于 Tool-ify",
+        "about_text1": "Tool-ify 是一系列免费的在线实用工具，旨在帮助您完成日常任务。我们的工具完全在您的浏览器中运行 - 无需安装、不收集数据、无需创建账户。",
+        "about_text2": "我们不断添加新工具并改进现有工具。如果您有希望添加到我们工具集合中的想法，请告诉我们！"
+    },
+    "privacy": {
+        "title": "隐私政策",
+        "highlight_title": "我们的隐私承诺",
+        "highlight_text": "Tool-ify 的设计将您的隐私放在首位。我们的工具完全在您的浏览器内运行，我们不收集、存储或处理您的任何个人数据或您输入到我们工具中的内容。"
+    },
+    "terms": {
+        "title": "使用条款",
+        "highlight_title": "概述",
+        "highlight_text": "Tool-ify 提供免费的基于浏览器的工具，无需用户注册。虽然我们的工具可用于个人和专业用途，但我们要求您负责任地使用它们，并遵守适用的法律。"
+    },
+    "notifications": {
+        "copied_clipboard": "已复制到剪贴板！",
+        "conversion_success": "转换成功！",
+        "file_required": "请先选择一个文件",
+        "text_required": "请先输入一些文本",
+        "invalid_format": "无效的格式",
+        "invalid_json": "无效的 JSON 格式",
+        "json_formatted": "JSON 格式化成功",
+        "json_minified": "JSON 压缩成功",
+        "invalid_base64": "无效的 Base64 字符串",
+        "empty_input": "输入不能为空",
+        "image_converted": "图片转换成功",
+        "image_compressed": "图片压缩成功",
+        "original_used": "已使用原始图片 - 压缩处理会导致文件变大",
+        "size_increased": "图片已处理，但文件大小略有增加",
+        "download_started": "下载已开始",
+        "operation_failed": "操作失败",
+        "timer_complete": "计时完成！",
+        "please_enter_time": "请输入大于零的时间",
+        "qr_code_generated": "二维码生成成功",
+        "uuid_generated": "UUID 生成成功",
+        "password_generated": "密码生成成功",
+        "time_converted": "时间转换成功",
+        "css_formatted": "CSS 格式化成功",
+        "css_minified": "CSS 压缩成功",
+        "image_resized": "图片尺寸调整成功",
+        "encode_success": "文本编码成功",
+        "decode_success": "文本解码成功",
+        "encode_error": "编码错误: ",
+        "base64_required": "请输入要解码的 Base64 文本",
+        "file_encode_success": "文件编码成功",
+        "file_read_error": "读取文件错误",
+        "nothing_to_copy": "没有内容可复制",
+        "html_encoded": "HTML 编码成功",
+        "html_decoded": "HTML 解码成功",
+        "html_required": "请输入要解码的 HTML 实体",
+        "decode_error": "解码错误: ",
+        "hash_generated": "哈希生成成功",
+        "algorithm_required": "请至少选择一种哈希算法",
+        "nothing_to_download": "没有可下载的转换图片",
+        "max_width_limit": "最大宽度不能超过原始图片宽度",
+        "max_width_adjusted": "最大宽度已调整为与原始图片宽度相匹配",
+        "copy_failed": "复制失败",
+        "password_copied": "密码已复制到剪贴板！",
+        "no_password_to_copy": "没有密码可复制",
+        "one_char_type_required": "至少需要选择一种字符类型",
+        "no_chars_available": "当前设置下没有可用字符",
+        "password_history_cleared": "密码历史已清除",
+        "uuid_copied": "UUID 已复制到剪贴板",
+        "uuids_copied": "{count} 个 UUID 已复制到剪贴板",
+        "no_uuids_to_copy": "没有 UUID 可复制",
+        "enter_number_between": "请输入 1 到 100 之间的数字",
+        "enter_valid_timestamp": "请输入有效的时间戳",
+        "enter_date": "请输入日期",
+        "conversion_history_cleared": "转换历史已清除",
+        "no_css_to_copy": "没有可复制的 CSS",
+        "enter_css_to_format": "请输入要格式化的 CSS",
+        "enter_css_to_minify": "请输入要压缩的 CSS",
+        "css_file_loaded": "CSS 文件加载成功",
+        "css_file_downloaded": "CSS 文件已下载",
+        "no_css_to_download": "没有可下载的 CSS",
+        "select_css_file": "请选择一个 CSS 文件",
+        "enter_text_or_url": "请输入文本或网址",
+        "fill_required_vcard_fields": "请填写所有必填的名片字段",
+        "fill_required_wifi_fields": "请填写所有必填的 WiFi 字段",
+        "form_reset": "表单已重置",
+        "no_qr_code_to_share": "没有二维码可分享",
+        "shared_successfully": "分享成功",
+        "failed_to_share": "分享失败",
+        "sharing_not_supported": "此浏览器不支持分享功能"
+    },
+    "placeholders": {
+        "enter_text": "在此输入文本...",
+        "enter_json": "在此输入 JSON...",
+        "enter_base64": "在此输入 Base64 文本...",
+        "enter_url": "在此输入 URL...",
+        "result_placeholder": "结果将显示在这里...",
+        "encoded_result": "Base64 编码结果将显示在这里...",
+        "decoded_result": "解码结果将显示在这里...",
+        "url_to_parse": "输入要解析的 URL...",
+        "url_input": "输入要编码的文本...",
+        "encoded_output": "URL编码结果将显示在这里...",
+        "encoded_input": "输入要解码的URL编码文本...",
+        "decoded_output": "URL解码结果将显示在这里...",
+        "enter_text_to_encode": "在此输入要编码为 Base64 的文本...",
+        "file_encoded_result": "Base64 编码文件结果将显示在这里...",
+        "enter_html_to_encode": "在此输入要编码的 HTML 或含特殊字符的文本...",
+        "enter_html_to_decode": "在此输入要解码的 HTML 实体...",
+        "search_entity": "搜索实体或字符...",
+        "enter_text_to_hash": "输入要生成哈希的文本...",
+        "original_width": "原始宽度",
+        "enter_width": "输入宽度",
+        "enter_height": "输入高度",
+        "enter_percentage": "输入百分比",
+        "hex_placeholder": "#RRGGBB",
+        "rgb_placeholder": "rgb(R, G, B)",
+        "hsl_placeholder": "hsl(H, S%, L%)",
+        "cmyk_placeholder": "cmyk(C%, M%, Y%, K%)",
+        "generated_password": "生成的密码将显示在这里",
+        "enter_timestamp": "输入 Unix 时间戳 (例如, 1609459200)",
+        "enter_css": "在此粘贴您的 CSS 代码...",
+        "formatted_css_placeholder": "格式化后的 CSS 将显示在这里...",
+        "text_url_placeholder": "https://example.com 或任何文本...",
+        "vcard_name_placeholder": "张三",
+        "vcard_company_placeholder": "示例公司",
+        "vcard_phone_placeholder": "+86 123 4567 8901",
+        "vcard_email_placeholder": "zhangsan@example.com",
+        "vcard_website_placeholder": "https://example.com",
+        "wifi_ssid_placeholder": "我的 WiFi 网络",
+        "wifi_password_placeholder": "WiFi 密码"
+    },
+    "timer_stopwatch": {
+        "about_tool_title": "关于计时器和秒表",
+        "about_tool_intro": "计时器和秒表工具提供两个基本的时间跟踪功能：",
+        
+        "about_timer_title": "计时器",
+        "about_timer_desc": "倒计时器允许您设置特定的时间间隔，并在时间到期时收到通知。常见用途包括：",
+        "about_timer_uses": [
+            "烹饪和烘焙",
+            "使用番茄工作法等技术的工作会话",
+            "锻炼间隔",
+            "演讲或演示计时",
+            "设置短任务提醒"
+        ],
+        "about_timer_features_intro": "计时器功能包括：",
+        "about_timer_features": [
+            "设置小时、分钟和秒",
+            "常用时间预设",
+            "暂停和继续功能",
+            "计时结束时可选声音提醒"
+        ],
+        
+        "about_stopwatch_title": "秒表",
+        "about_stopwatch_desc": "秒表以高精度测量经过的时间。常见用途包括：",
+        "about_stopwatch_uses": [
+            "计时体育活动和锻炼",
+            "科学实验",
+            "性能测试",
+            "竞赛计时",
+            "生产力跟踪"
+        ],
+        "about_stopwatch_features_intro": "秒表功能包括：",
+        "about_stopwatch_features": [
+            "带毫秒的高精度计时",
+            "记录圈数以跟踪多个时间段",
+            "暂停和继续功能",
+            "圈数之间的分段时间"
+        ]
+    },
+    "password_tips": {
+        "tips": [
+            "<strong>使用长密码</strong> - 至少12个字符。通常，更长的密码更安全。",
+            "<strong>使用混合字符</strong> - 结合使用大写字母、小写字母、数字和符号。",
+            "<strong>避免个人信息</strong> - 不要使用容易被猜到的姓名、生日或常用词。",
+            "<strong>使用不同的密码</strong> - 每个账户应该使用唯一的密码，以防一个密码泄露导致多处被入侵。",
+            "<strong>使用密码管理器</strong> - 在安全可靠的密码管理器中存储复杂密码。",
+            "<strong>启用双因素认证</strong> - 在可用时，使用双因素认证来提供密码之外的额外安全层。"
+        ]
+    },
+    "uuid_info": {
+        "intro": "UUID（通用唯一标识符）或 GUID（全局唯一标识符）是一个在空间和时间上都唯一的 128 位标识符。它们在软件开发中常用于：",
+        "uses": [
+            "数据库主键",
+            "分布式系统通信",
+            "会话标识符",
+            "唯一资源标识符"
+        ],
+        "versions_title": "UUID 版本",
+        "version_4_desc": "版本 4（随机）：使用随机数生成。这是最常见的版本，适用于大多数需要唯一性的应用。",
+        "version_1_desc": "版本 1（基于时间）：使用当前时间戳和计算机的 MAC 地址生成。这个版本可能会泄露有关 UUID 创建时间和地点的信息。",
+        "examples_title": "代码示例",
+        "js_example_title": "在 JavaScript 中生成 UUID：",
+        "python_example_title": "在 Python 中生成 UUID："
+    },
+    "timestamp_info": {
+        "title": "什么是 Unix 时间戳？",
+        "content": {
+            "intro": "Unix 时间戳（也称为 Epoch 时间、POSIX 时间或 Unix 时间）是描述时间点的系统。它是自 1970 年 1 月 1 日（UTC/GMT 午夜）以来经过的秒数，不计闰秒。",
+            "reasons_intro": "Unix 时间戳在计算机系统和编程中被广泛使用，原因如下：",
+            "reasons": [
+                "它们易于存储为单个数字",
+                "它们与时区无关（始终使用 UTC）",
+                "日期计算变成简单的加减运算",
+                "它们在不同的操作系统和编程语言中通用"
+            ],
+            "uses_intro": "Unix 时间戳的常见用途包括：",
+            "uses": [
+                "数据库记录时间戳",
+                "文件修改时间",
+                "会话过期时间",
+                "事件调度",
+                "API 数据交换"
+            ],
+            "representations_intro": "请注意，Unix 时间戳可以用不同的方式表示：",
+            "representations": [
+                {
+                    "title": "秒",
+                    "description": "标准 Unix 时间戳 (例如, 1609459200)"
+                },
+                {
+                    "title": "毫秒",
+                    "description": "在 JavaScript/Java 中使用 (例如, 1609459200000)"
+                },
+                {
+                    "title": "微秒",
+                    "description": "在某些数据库系统中使用"
+                },
+                {
+                    "title": "纳秒",
+                    "description": "在高精度应用中使用"
+                }
+            ],
+            "conclusion": "此工具主要使用基于秒的标准 Unix 时间戳。"
+        }
+    },
+    "css_formatter_info": {
+        "title": "关于 CSS 格式化工具",
+        "content": {
+            "main_desc": "CSS 格式化工具可以帮助您清理和组织 CSS 代码，使其更具可读性和可维护性。它还可以压缩您的 CSS 以减小生产环境中的文件大小。",
+            "formatting_features_title": "格式化功能",
+            "formatting_features": [
+                {
+                    "title": "缩进",
+                    "description": "使用空格或制表符应用一致的缩进"
+                },
+                {
+                    "title": "花括号放置",
+                    "description": "根据您的偏好在同一行或新行上格式化花括号"
+                },
+                {
+                    "title": "属性排序",
+                    "description": "以一致的顺序组织属性"
+                },
+                {
+                    "title": "空白",
+                    "description": "在选择器、属性和值周围添加适当的间距"
+                }
+            ],
+            "minification_features_title": "压缩功能",
+            "minification_features": [
+                {
+                    "title": "注释移除",
+                    "description": "去除注释以减小文件大小"
+                },
+                {
+                    "title": "空白移除",
+                    "description": "消除不必要的空格、制表符和换行符"
+                },
+                {
+                    "title": "分号移除",
+                    "description": "在可能的情况下移除每条规则中的最后一个分号"
+                }
+            ],
+            "example_title": "示例",
+            "unformatted_css": "未格式化的 CSS:",
+            "formatted_css": "格式化后的 CSS:",
+            "minified_css": "压缩后的 CSS:"
+        }
+    },
+    "qr_code_info": {
+        "title": "关于二维码",
+        "content": {
+            "main_desc": "二维码（Quick Response code）是一种二维条形码，可以通过智能手机摄像头和其他设备扫描，快速获取信息或执行操作。",
+            "common_uses_title": "二维码的常见用途",
+            "common_uses": [
+                {
+                    "title": "网站链接",
+                    "description": "无需输入网址即可将用户引导至您的网站"
+                },
+                {
+                    "title": "联系信息",
+                    "description": "分享可以直接保存到手机中的联系方式"
+                },
+                {
+                    "title": "WiFi 接入",
+                    "description": "无需输入密码即可快速连接到 WiFi 网络"
+                },
+                {
+                    "title": "产品信息",
+                    "description": "链接到产品详情、说明书或真伪验证"
+                },
+                {
+                    "title": "营销材料",
+                    "description": "用于名片、传单、海报和包装上"
+                },
+                {
+                    "title": "数字支付",
+                    "description": "便捷的支付方式"
+                }
+            ],
+            "qr_code_types_title": "二维码类型",
+            "qr_code_types_desc": "此工具支持多种二维码类型：",
+            "qr_code_types": [
+                {
+                    "title": "文本/网址",
+                    "description": "标准文本或网站链接"
+                },
+                {
+                    "title": "名片",
+                    "description": "可添加到通讯录的联系信息"
+                },
+                {
+                    "title": "WiFi",
+                    "description": "便于 WiFi 接入的网络连接详情"
+                }
+            ],
+            "error_correction_title": "纠错级别",
+            "error_correction_desc": "二维码包含纠错功能，即使部分损坏或被遮挡也能读取：",
+            "error_correction_levels": [
+                {
+                    "title": "L（低）",
+                    "description": "可恢复 7% 的数据"
+                },
+                {
+                    "title": "M（中）",
+                    "description": "可恢复 15% 的数据"
+                },
+                {
+                    "title": "Q（四分之一）",
+                    "description": "可恢复 25% 的数据"
+                },
+                {
+                    "title": "H（高）",
+                    "description": "可恢复 30% 的数据"
+                }
+            ],
+            "error_correction_note": "更高的纠错级别使二维码更可靠，但也更复杂（具有更多的模块/像素）。"
+        }
+    },
+    "unit_converter_info": {
+        "title": "关于单位换算器",
+        "content": {
+            "main_desc": "单位换算器工具可帮助您在各种类别的不同计量单位之间进行转换。无论您是在做项目、学习、烹饪还是旅行，这个工具都能让单位转换变得快速而简便。",
+            "categories_title": "测量类别",
+            "categories": [
+                {
+                    "title": "长度",
+                    "description": "在米、英尺、英寸、公里、英里等单位之间转换"
+                },
+                {
+                    "title": "面积",
+                    "description": "在平方米、平方英尺、英亩、公顷等单位之间转换"
+                },
+                {
+                    "title": "体积",
+                    "description": "在升、加仑、立方米、立方英尺等单位之间转换"
+                },
+                {
+                    "title": "重量/质量",
+                    "description": "在公斤、磅、克、盎司、吨等单位之间转换"
+                },
+                {
+                    "title": "温度",
+                    "description": "在摄氏度、华氏度和开尔文之间转换"
+                },
+                {
+                    "title": "速度",
+                    "description": "在英里每小时、公里每小时、米每秒等单位之间转换"
+                },
+                {
+                    "title": "时间",
+                    "description": "在秒、分钟、小时、天、周等单位之间转换"
+                },
+                {
+                    "title": "数据大小",
+                    "description": "在字节、千字节、兆字节、吉字节等单位之间转换"
+                }
+            ],
+            "systems_title": "公制和英制系统",
+            "systems_desc": "此转换器支持公制（大多数国家使用）和英制/美制单位（主要在美国使用）。公制系统基于10的幂，使系统内的转换变得简单明了。英制/美制系统则在单位之间使用各种不同的转换因子。",
+            "tips_title": "准确转换的技巧",
+            "tips": [
+                "始终仔细检查您要转换的单位",
+                "注意某些单位（如加仑）在美制和英制之间的差异",
+                "对于科学工作，考虑所需的有效数字位数",
+                "温度转换使用不同于简单乘法的公式"
+            ]
+        }
+    },
+    "units": {
+        "length": {
+            "nm": "纳米",
+            "um": "微米",
+            "mm": "毫米",
+            "cm": "厘米",
+            "m": "米",
+            "km": "公里",
+            "in": "英寸",
+            "ft": "英尺",
+            "yd": "码",
+            "mi": "英里",
+            "nmi": "海里"
+        },
+        "area": {
+            "mm2": "平方毫米",
+            "cm2": "平方厘米",
+            "m2": "平方米",
+            "ha": "公顷",
+            "km2": "平方公里",
+            "in2": "平方英寸",
+            "ft2": "平方英尺",
+            "yd2": "平方码",
+            "ac": "英亩",
+            "mi2": "平方英里"
+        },
+        "volume": {
+            "ml": "毫升",
+            "cl": "厘升",
+            "l": "升",
+            "m3": "立方米",
+            "gal_us": "美制加仑",
+            "gal_uk": "英制加仑",
+            "qt_us": "美制夸脱",
+            "pt_us": "美制品脱",
+            "fl_oz_us": "美制液量盎司",
+            "fl_oz_uk": "英制液量盎司",
+            "cup_us": "美制杯",
+            "tbsp_us": "美制汤匙",
+            "tsp_us": "美制茶匙",
+            "in3": "立方英寸",
+            "ft3": "立方英尺"
+        },
+        "weight": {
+            "mcg": "微克",
+            "mg": "毫克",
+            "g": "克",
+            "kg": "公斤",
+            "mt": "公吨",
+            "oz": "盎司",
+            "lb": "磅",
+            "st": "英石",
+            "ton_us": "美制吨",
+            "ton_uk": "英制吨"
+        },
+        "temperature": {
+            "c": "摄氏度",
+            "f": "华氏度",
+            "k": "开尔文"
+        },
+        "speed": {
+            "m_s": "米/秒",
+            "km_h": "公里/小时",
+            "mph": "英里/小时",
+            "kn": "节",
+            "ft_s": "英尺/秒"
+        },
+        "time": {
+            "ns": "纳秒",
+            "us": "微秒",
+            "ms": "毫秒",
+            "s": "秒",
+            "min": "分钟",
+            "h": "小时",
+            "d": "天",
+            "wk": "周",
+            "mo": "月 (平均)",
+            "yr": "年"
+        },
+        "data": {
+            "b": "比特",
+            "B": "字节",
+            "KB": "千字节",
+            "MB": "兆字节",
+            "GB": "吉字节",
+            "TB": "太字节",
+            "PB": "拍字节",
+            "KiB": "千比字节",
+            "MiB": "兆比字节",
+            "GiB": "吉比字节",
+            "TiB": "太比字节",
+            "PiB": "拍比字节"
+        }
+    }
+} 

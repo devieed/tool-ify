@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID Generator | Generate Random UUIDs/GUIDs | Tool-ify</title>
+    <meta name="description" content="Generate random UUIDs and GUIDs online for free. Create multiple UUIDs at once with this easy-to-use UUID generator tool.">
+    <meta name="keywords" content="uuid generator, guid generator, random uuid, uuid, guid, unique identifier, generate uuid">
+    <link rel="canonical" href="https://tool-ify.com/tools/uuid-generator.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "UUID Generator",
+        "url": "https://tool-ify.com/tools/uuid-generator.html",
+        "description": "Generate random UUIDs/GUIDs",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .generator-container {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .option-group {
+            margin-bottom: 20px;
+        }
+        
+        .option-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .option-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        .option-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 14px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-label input {
+            margin-right: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .generate-btn {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .generate-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .copy-all-btn {
+            padding: 10px 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copy-all-btn:hover {
+            background-color: var(--border-color);
+        }
+        
+        .result-container {
+            margin-top: 25px;
+        }
+        
+        .result-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .uuid-list {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .uuid-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .uuid-item:last-child {
+            border-bottom: none;
+        }
+        
+        .uuid-text {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .uuid-copy {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+        
+        .uuid-copy:hover {
+            color: var(--accent-color);
+        }
+        
+        .info-box {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .info-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">UUID Generator</h1>
+                <p id="tool-description">Generate random UUIDs/GUIDs</p>
+                
+                <div class="generator-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="option-label" for="uuid-version">UUID Version</label>
+                            <select id="uuid-version" class="option-select">
+                                <option value="4">Version 4 (Random) - Recommended</option>
+                                <option value="1">Version 1 (Time-based)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="option-label" for="uuid-count">Number of UUIDs</label>
+                            <input type="number" id="uuid-count" class="option-input" min="1" max="100" value="5">
+                        </div>
+                    </div>
+                    
+                    <div class="option-group">
+                        <label class="option-label">Format Options</label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="uppercase-option">
+                            Uppercase
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="braces-option">
+                            Add Braces { }
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="hyphens-option" checked>
+                            Include Hyphens
+                        </label>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button id="generate-btn" class="generate-btn">
+                            <i class="fas fa-sync-alt"></i> Generate UUIDs
+                        </button>
+                        <button id="copy-all-btn" class="copy-all-btn">
+                            <i class="fas fa-copy"></i> Copy All
+                        </button>
+                    </div>
+                    
+                    <div class="result-container">
+                        <div class="result-title">
+                            <span>Generated UUIDs</span>
+                            <span id="uuid-count-display">0 UUIDs</span>
+                        </div>
+                        <div id="uuid-list" class="uuid-list">
+                            <!-- UUIDs will be listed here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h2 class="info-title">What is a UUID/GUID?</h2>
+                    <div class="info-text">
+                        <p>UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier) is a 128-bit identifier that is unique across both space and time. They are commonly used in software development for:</p>
+                        <ul>
+                            <li>Database primary keys</li>
+                            <li>Distributed systems communication</li>
+                            <li>Session identifiers</li>
+                            <li>Unique resource identifiers</li>
+                        </ul>
+                        
+                        <h3>UUID Versions</h3>
+                        <p><strong>Version 4 (Random):</strong> Generated using random numbers. This is the most common version and is suitable for most applications where uniqueness is required.</p>
+                        
+                        <p><strong>Version 1 (Time-based):</strong> Generated using the current timestamp and MAC address of the computer. This version can potentially expose information about when and where the UUID was created.</p>
+                        
+                        <h3>Code Examples</h3>
+                        <p>Generate UUID in JavaScript:</p>
+                        <pre class="code-example">// Using the crypto API
+const uuid = crypto.randomUUID();
+
+// Or using a library like uuid
+import { v4 as uuidv4 } from 'uuid';
+const uuid = uuidv4();</pre>
+                        
+                        <p>Generate UUID in Python:</p>
+                        <pre class="code-example">import uuid
+
+# Version 4 (random)
+random_uuid = uuid.uuid4()
+
+# Version 1 (time-based)
+time_based_uuid = uuid.uuid1()</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script src="../js/loading.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for translations to load
+            function applyTranslations() {
+                if (window.translations) {
+                    // Update page elements with translations
+                    updateTexts();
+                    
+                    // Update placeholders
+                    updatePlaceholders();
+                    
+                    // Setup notification translation
+                    setupNotifications();
+                    
+                    // 强制重新渲染所有已翻译元素
+                    document.body.style.zoom = "1.00001";
+                    setTimeout(function() {
+                        document.body.style.zoom = "1";
+                    }, 10);
+                } else {
+                    // If translations not loaded yet, try again after a short delay
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // Start trying to apply translations
+            applyTranslations();
+            
+            // Update UI text elements with translations
+            function updateTexts() {
+                if (window.translations) {
+                    // Update back link
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // Update UI text elements
+                    if (window.translations.ui) {
+                        // UUID Generator UI elements
+                        const uiElements = {
+                            'tool-title': 'uuid_generator_title',
+                            'tool-description': 'uuid_generator_description',
+                            'generate-btn': 'generate_uuids',
+                            'copy-all-btn': 'copy_all'
+                        };
+                        
+                        for (const [id, key] of Object.entries(uiElements)) {
+                            const element = document.getElementById(id);
+                            if (element && window.translations.ui[key]) {
+                                // Special case for buttons with icons
+                                if (id === 'generate-btn') {
+                                    element.innerHTML = '<i class="fas fa-sync-alt"></i> ' + window.translations.ui[key];
+                                } else if (id === 'copy-all-btn') {
+                                    element.innerHTML = '<i class="fas fa-copy"></i> ' + window.translations.ui[key];
+                                } else {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                        
+                        // Update option labels
+                        const optionLabels = document.querySelectorAll('.option-label');
+                        optionLabels.forEach(label => {
+                            const forAttr = label.getAttribute('for');
+                            if (forAttr === 'uuid-version' && window.translations.ui.uuid_version) {
+                                label.textContent = window.translations.ui.uuid_version;
+                            } else if (forAttr === 'uuid-count' && window.translations.ui.uuid_count) {
+                                label.textContent = window.translations.ui.uuid_count;
+                            } else if (label.textContent === 'Format Options' && window.translations.ui.format_options) {
+                                label.textContent = window.translations.ui.format_options;
+                            }
+                        });
+                        
+                        // Update checkbox labels
+                        const checkboxLabels = document.querySelectorAll('.checkbox-label');
+                        checkboxLabels.forEach(label => {
+                            const input = label.querySelector('input');
+                            if (input) {
+                                const id = input.id;
+                                if (id === 'uppercase-option' && window.translations.ui.uppercase) {
+                                    // 更新文本节点
+                                    updateLabelText(label, window.translations.ui.uppercase);
+                                } else if (id === 'braces-option' && window.translations.ui.add_braces) {
+                                    updateLabelText(label, window.translations.ui.add_braces);
+                                } else if (id === 'hyphens-option' && window.translations.ui.include_hyphens) {
+                                    updateLabelText(label, window.translations.ui.include_hyphens);
+                                }
+                            }
+                        });
+                        
+                        // Update UUID version options
+                        const versionSelect = document.getElementById('uuid-version');
+                        if (versionSelect && window.translations.ui.uuid_version_4_random && window.translations.ui.uuid_version_1_time) {
+                            const options = versionSelect.options;
+                            options[0].textContent = window.translations.ui.uuid_version_4_random;
+                            options[1].textContent = window.translations.ui.uuid_version_1_time;
+                        }
+                        
+                        // Update result title
+                        const resultTitle = document.querySelector('.result-title span:first-child');
+                        if (resultTitle && window.translations.ui.generated_uuids) {
+                            resultTitle.textContent = window.translations.ui.generated_uuids;
+                        }
+                        
+                        // Update info box titles and content
+                        const infoTitle = document.querySelector('.info-title');
+                        if (infoTitle && window.translations.ui.what_is_uuid) {
+                            infoTitle.textContent = window.translations.ui.what_is_uuid;
+                        }
+                        
+                        // 更新UUID信息文本（如果有翻译）
+                        if (window.translations.uuid_info) {
+                            // 定义需要更新的元素选择器和对应的翻译键
+                            const infoTextElements = [
+                                {selector: '.info-text p:first-child', key: 'intro'},
+                                {selector: '.info-text h3:first-of-type', key: 'versions_title'},
+                                {selector: '.info-text p:nth-of-type(2)', key: 'version_4_desc'},
+                                {selector: '.info-text p:nth-of-type(3)', key: 'version_1_desc'},
+                                {selector: '.info-text h3:last-of-type', key: 'examples_title'},
+                                {selector: '.info-text p:nth-of-type(4)', key: 'js_example_title'},
+                                {selector: '.info-text p:nth-of-type(5)', key: 'python_example_title'}
+                            ];
+                            
+                            // 遍历并更新文本
+                            infoTextElements.forEach(item => {
+                                const element = document.querySelector(item.selector);
+                                if (element && window.translations.uuid_info[item.key]) {
+                                    element.textContent = window.translations.uuid_info[item.key];
+                                }
+                            });
+                            
+                            // 更新列表项
+                            if (window.translations.uuid_info.uses && Array.isArray(window.translations.uuid_info.uses)) {
+                                const listItems = document.querySelectorAll('.info-text ul li');
+                                for (let i = 0; i < Math.min(listItems.length, window.translations.uuid_info.uses.length); i++) {
+                                    listItems[i].textContent = window.translations.uuid_info.uses[i];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 更新标签文本的辅助函数
+            function updateLabelText(label, translatedText) {
+                // 删除原有文本节点
+                for (let i = 0; i < label.childNodes.length; i++) {
+                    const node = label.childNodes[i];
+                    if (node.nodeType === 3) { // Text node
+                        node.remove();
+                        i--; // 调整索引
+                    }
+                }
+                // 添加翻译后的文本
+                label.appendChild(document.createTextNode(' ' + translatedText));
+            }
+            
+            // 更新占位符文本
+            function updatePlaceholders() {
+                // UUID生成器没有需要翻译的占位符
+            }
+            
+            // 设置通知消息翻译
+            function setupNotifications() {
+                // 保存原始的showNotification函数引用
+                const originalShowNotification = showNotification;
+                
+                // 重新定义showNotification函数
+                window.showNotification = function(message, type) {
+                    // 尝试获取翻译
+                    let translatedMessage = getTranslatedNotification(message);
+                    
+                    // 调用原始函数，但使用翻译后的消息
+                    originalShowNotification(translatedMessage, type);
+                };
+            }
+            
+            // 获取翻译后的通知文本
+            function getTranslatedNotification(message) {
+                if (window.translations && window.translations.notifications) {
+                    // 检查通知消息匹配
+                    if (message.includes('UUID') && message.includes('copied')) {
+                        if (message.includes('UUIDs')) {
+                            // 多个UUID复制消息
+                            const count = parseInt(message.split(' ')[0]);
+                            if (!isNaN(count) && window.translations.notifications.uuids_copied) {
+                                return window.translations.notifications.uuids_copied.replace('{count}', count);
+                            }
+                        } else {
+                            // 单个UUID复制消息
+                            return window.translations.notifications.uuid_copied || message;
+                        }
+                    } else if (message === 'No UUIDs to copy') {
+                        return window.translations.notifications.no_uuids_to_copy || message;
+                    } else if (message === 'Failed to copy UUID') {
+                        return window.translations.notifications.copy_failed || message;
+                    } else if (message === 'Failed to copy UUIDs') {
+                        return window.translations.notifications.copy_failed || message;
+                    } else if (message.includes('Please enter a number')) {
+                        return window.translations.notifications.enter_number_between || message;
+                    }
+                }
+                return message;
+            }
+            
+            // 更新UUID计数显示
+            function updateUUIDCountDisplay(count) {
+                if (window.translations && window.translations.ui) {
+                    const uuidCountDisplay = document.getElementById('uuid-count-display');
+                    if (uuidCountDisplay) {
+                        if (count === 1 && window.translations.ui.uuid_count_single) {
+                            uuidCountDisplay.textContent = window.translations.ui.uuid_count_single;
+                        } else if (window.translations.ui.uuid_count_multiple) {
+                            uuidCountDisplay.textContent = window.translations.ui.uuid_count_multiple.replace('{count}', count);
+                        } else {
+                            uuidCountDisplay.textContent = `${count} UUID${count !== 1 ? 's' : ''}`;
+                        }
+                    }
+                }
+            }
+
+            // DOM elements
+            const uuidVersionSelect = document.getElementById('uuid-version');
+            const uuidCountInput = document.getElementById('uuid-count');
+            const uppercaseOption = document.getElementById('uppercase-option');
+            const bracesOption = document.getElementById('braces-option');
+            const hyphensOption = document.getElementById('hyphens-option');
+            const generateBtn = document.getElementById('generate-btn');
+            const copyAllBtn = document.getElementById('copy-all-btn');
+            const uuidList = document.getElementById('uuid-list');
+            const uuidCountDisplay = document.getElementById('uuid-count-display');
+            const notification = document.getElementById('notification');
+            
+            // Apply translations first
+            applyTranslations();
+            
+            // Initialize with some UUIDs
+            generateUUIDs();
+            
+            // Event listeners
+            generateBtn.addEventListener('click', generateUUIDs);
+            copyAllBtn.addEventListener('click', copyAllUUIDs);
+            
+            // Generate UUIDs
+            function generateUUIDs() {
+                const version = parseInt(uuidVersionSelect.value);
+                const count = parseInt(uuidCountInput.value);
+                
+                // Validate count
+                if (isNaN(count) || count < 1 || count > 100) {
+                    showNotification('Please enter a number between 1 and 100', 'error');
+                    return;
+                }
+                
+                // Clear existing UUIDs
+                uuidList.innerHTML = '';
+                
+                // Generate UUIDs
+                const uuids = [];
+                for (let i = 0; i < count; i++) {
+                    let uuid;
+                    if (version === 4) {
+                        uuid = generateUUIDv4();
+                    } else if (version === 1) {
+                        uuid = generateUUIDv1();
+                    }
+                    
+                    uuids.push(formatUUID(uuid));
+                }
+                
+                // Add UUIDs to the list
+                uuids.forEach(uuid => {
+                    addUUIDToList(uuid);
+                });
+                
+                // Update count display with translations
+                updateUUIDCountDisplay(count);
+            }
+            
+            // Generate UUID v4 (random)
+            function generateUUIDv4() {
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    const r = Math.random() * 16 | 0;
+                    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                    return v.toString(16);
+                });
+            }
+            
+            // Generate UUID v1 (time-based)
+            function generateUUIDv1() {
+                // This is a simplified version that mimics v1 UUIDs
+                // For a real implementation, use a library
+                const now = new Date();
+                const timestamp = now.getTime();
+                
+                // Create a pseudo-random node ID (last 12 hex digits)
+                const nodeId = Math.floor(Math.random() * 0xffffffffffff).toString(16).padStart(12, '0');
+                
+                // Generate time low, mid, and hi
+                const timeLow = ((timestamp & 0xffffffff) >>> 0).toString(16).padStart(8, '0');
+                const timeMid = ((timestamp & 0xffff00000000) >>> 32).toString(16).padStart(4, '0');
+                const timeHi = ((timestamp & 0xfff000000000000) >>> 48).toString(16).padStart(3, '0');
+                
+                // Version 1
+                const version = '1';
+                
+                // Clock sequence (random)
+                const clockSeq = (Math.random() * 0x3fff | 0x8000).toString(16).padStart(4, '0');
+                
+                return `${timeLow}-${timeMid}-${version}${timeHi}-${clockSeq}-${nodeId}`;
+            }
+            
+            // Format UUID based on options
+            function formatUUID(uuid) {
+                // Remove hyphens if option is unchecked
+                if (!hyphensOption.checked) {
+                    uuid = uuid.replace(/-/g, '');
+                }
+                
+                // Convert to uppercase if option is checked
+                if (uppercaseOption.checked) {
+                    uuid = uuid.toUpperCase();
+                }
+                
+                // Add braces if option is checked
+                if (bracesOption.checked) {
+                    uuid = `{${uuid}}`;
+                }
+                
+                return uuid;
+            }
+            
+            // Add UUID to the list
+            function addUUIDToList(uuid) {
+                const uuidItem = document.createElement('div');
+                uuidItem.className = 'uuid-item';
+                
+                const uuidText = document.createElement('span');
+                uuidText.className = 'uuid-text';
+                uuidText.textContent = uuid;
+                
+                const copyButton = document.createElement('button');
+                copyButton.className = 'uuid-copy';
+                copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+                copyButton.addEventListener('click', function() {
+                    navigator.clipboard.writeText(uuid)
+                        .then(() => {
+                            showNotification('UUID copied to clipboard', 'success');
+                        })
+                        .catch(err => {
+                            showNotification('Failed to copy UUID', 'error');
+                        });
+                });
+                
+                uuidItem.appendChild(uuidText);
+                uuidItem.appendChild(copyButton);
+                uuidList.appendChild(uuidItem);
+            }
+            
+            // Copy all UUIDs
+            function copyAllUUIDs() {
+                const uuidElements = uuidList.querySelectorAll('.uuid-text');
+                if (uuidElements.length === 0) {
+                    showNotification('No UUIDs to copy', 'error');
+                    return;
+                }
+                
+                const uuids = Array.from(uuidElements).map(el => el.textContent);
+                const text = uuids.join('\n');
+                
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        showNotification(`${uuids.length} UUIDs copied to clipboard`, 'success');
+                    })
+                    .catch(err => {
+                        showNotification('Failed to copy UUIDs', 'error');
+                    });
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

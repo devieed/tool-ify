@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter | Free Character, Word & Line Count Tool | Tool-ify</title>
+    <meta name="description" content="Count characters, words, lines, and paragraphs in your text with this free online word counter tool. No login or installation required.">
+    <meta name="keywords" content="word counter, character counter, text statistics, count characters, count words, count lines, count paragraphs, text analysis">
+    <link rel="canonical" href="https://tool-ify.com/tools/word-counter.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Word Counter",
+        "url": "https://tool-ify.com/tools/word-counter.html",
+        "description": "Count characters, words, lines, and paragraphs in your text",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <style>
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .textarea-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 250px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-card .label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .back-link i {
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">Word Counter</h1>
+                <p id="tool-description">Count characters, words, lines, and paragraphs in your text</p>
+                
+                <div class="textarea-container">
+                    <textarea id="text-input" placeholder="Paste or type your text here..."></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button id="copy-btn">
+                        <i class="fas fa-copy"></i> <span>Copy</span>
+                    </button>
+                    <button id="clear-btn" class="secondary">
+                        <i class="fas fa-trash"></i> <span>Clear</span>
+                    </button>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="value" id="character-count">0</div>
+                        <div class="label" id="character-label">Characters</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="character-no-spaces-count">0</div>
+                        <div class="label" id="character-no-spaces-label">Characters (no spaces)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="word-count">0</div>
+                        <div class="label" id="word-label">Words</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="line-count">0</div>
+                        <div class="label" id="line-label">Lines</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value" id="paragraph-count">0</div>
+                        <div class="label" id="paragraph-label">Paragraphs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text-input');
+            const copyBtn = document.getElementById('copy-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const characterCount = document.getElementById('character-count');
+            const characterNoSpacesCount = document.getElementById('character-no-spaces-count');
+            const wordCount = document.getElementById('word-count');
+            const lineCount = document.getElementById('line-count');
+            const paragraphCount = document.getElementById('paragraph-count');
+            
+            // Update counts when text changes
+            textInput.addEventListener('input', updateCounts);
+            
+            // Copy text button
+            copyBtn.addEventListener('click', function() {
+                textInput.select();
+                document.execCommand('copy');
+                
+                // 显示已复制提示
+                showNotification(getTranslatedText('copied_clipboard', 'Copied to clipboard!'), 'success');
+            });
+            
+            // Clear text button
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+                updateCounts();
+            });
+            
+            function updateCounts() {
+                const text = textInput.value;
+                
+                // Character count
+                characterCount.textContent = text.length;
+                
+                // Character count (no spaces)
+                characterNoSpacesCount.textContent = text.replace(/\s/g, '').length;
+                
+                // Word count
+                wordCount.textContent = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                
+                // Line count
+                lineCount.textContent = text === '' ? 0 : text.split('\n').length;
+                
+                // Paragraph count
+                paragraphCount.textContent = text === '' ? 0 : text.replace(/\n+/g, '\n').split('\n').filter(para => para.trim() !== '').length;
+            }
+            
+            // Initialize with empty counts
+            updateCounts();
+            
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 统计标签文本国际化
+                    updateStatLabels();
+                    
+                    // 更新占位符文本
+                    updatePlaceholders();
+                    
+                    // 更新按钮文本
+                    updateButtonTexts();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 统计标签的国际化
+            function updateStatLabels() {
+                if (window.translations && window.translations.ui) {
+                    const labels = {
+                        'character-label': { text: 'Characters', key: 'characters' },
+                        'character-no-spaces-label': { text: 'Characters (no spaces)', key: 'characters_no_spaces' },
+                        'word-label': { text: 'Words', key: 'words' },
+                        'line-label': { text: 'Lines', key: 'lines' },
+                        'paragraph-label': { text: 'Paragraphs', key: 'paragraphs' }
+                    };
+                    
+                    for (const [id, info] of Object.entries(labels)) {
+                        const element = document.getElementById(id);
+                        if (element) {
+                            // 直接从ui对象获取翻译
+                            const translation = window.translations.ui[info.key];
+                            if (translation) {
+                                element.textContent = translation;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 获取翻译的文本
+            function getTranslatedText(key, defaultText) {
+                // 首先尝试从隐藏元素获取
+                const hiddenElement = document.getElementById(`ui-${key}`) || 
+                                      document.getElementById(`notification-${key}`);
+                
+                if (hiddenElement) {
+                    return hiddenElement.textContent;
+                }
+                
+                // 其次尝试从window.translations中获取
+                if (window.translations && window.translations.ui && window.translations.ui[key]) {
+                    return window.translations.ui[key];
+                }
+                
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                
+                // 如果没找到翻译，返回默认文本
+                return defaultText;
+            }
+            
+            // 显示通知
+            function showNotification(message, type) {
+                // 检查是否有通知元素
+                let notification = document.getElementById('notification');
+                
+                // 如果没有通知元素，则创建一个
+                if (!notification) {
+                    notification = document.createElement('div');
+                    notification.id = 'notification';
+                    notification.className = 'notification';
+                    document.body.appendChild(notification);
+                    
+                    // 添加样式
+                    notification.style.position = 'fixed';
+                    notification.style.bottom = '20px';
+                    notification.style.right = '20px';
+                    notification.style.padding = '12px 20px';
+                    notification.style.borderRadius = '4px';
+                    notification.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                    notification.style.transform = 'translateY(100px)';
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                    notification.style.zIndex = '1000';
+                }
+                
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                
+                // 添加显示样式
+                notification.style.transform = 'translateY(0)';
+                notification.style.opacity = '1';
+                
+                if (type === 'success') {
+                    notification.style.backgroundColor = 'var(--accent-color)';
+                    notification.style.color = 'white';
+                } else if (type === 'error') {
+                    notification.style.backgroundColor = '#e53e3e';
+                    notification.style.color = 'white';
+                }
+                
+                // 3秒后隐藏
+                setTimeout(() => {
+                    notification.style.transform = 'translateY(100px)';
+                    notification.style.opacity = '0';
+                }, 3000);
+            }
+            
+            // 更新占位符
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    // 更新文本输入框的占位符
+                    if (window.translations.placeholders.enter_text) {
+                        textInput.placeholder = window.translations.placeholders.enter_text;
+                    }
+                }
+            }
+            
+            // 更新按钮文本
+            function updateButtonTexts() {
+                if (window.translations && window.translations.ui) {
+                    // 复制按钮
+                    if (window.translations.ui.copy) {
+                        const copyBtnText = copyBtn.querySelector('span');
+                        if (copyBtnText) {
+                            copyBtnText.textContent = window.translations.ui.copy;
+                        }
+                    }
+                    
+                    // 清除按钮
+                    if (window.translations.ui.clear) {
+                        const clearBtnText = clearBtn.querySelector('span');
+                        if (clearBtnText) {
+                            clearBtnText.textContent = window.translations.ui.clear;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

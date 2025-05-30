@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator | MD5, SHA-1, SHA-256, SHA-512 Hash Calculator | Tool-ify</title>
+    <meta name="description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text instantly. Free online hash calculator for cryptographic verification and security purposes.">
+    <meta name="keywords" content="hash generator, hash calculator, md5 generator, sha1 generator, sha256 generator, sha512 generator, crypto hash, fingerprint generator">
+    <link rel="canonical" href="https://tool-ify.com/tools/hash-generator.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RDHJFH4L0J"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RDHJFH4L0J');
+    </script>
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Hash Generator",
+        "url": "https://tool-ify.com/tools/hash-generator.html",
+        "description": "Generate MD5, SHA-1, SHA-256, SHA-512 hashes from text",
+        "applicationCategory": "UtilityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0"
+        }
+    }
+    </script>
+    <!-- Load crypto-js for hash generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+        /* 修复布局，确保页面至少占满整个视口高度 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex: 1 0 auto;
+        }
+        
+        footer {
+            flex-shrink: 0;
+            margin-top: 20px;
+        }
+        
+        .tool-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hash-input-container {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .hash-options {
+            margin-bottom: 20px;
+        }
+        
+        .hash-options label {
+            margin-right: 15px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .hash-options input[type="checkbox"] {
+            margin-right: 6px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        button.secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        button.secondary:hover {
+            background-color: var(--border-color);
+        }
+        
+        .hash-results-container {
+            margin-bottom: 30px;
+        }
+        
+        .hash-result {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+        }
+        
+        .hash-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .hash-type {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .copy-hash {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .copy-hash:hover {
+            text-decoration: underline;
+        }
+        
+        .hash-value {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+            word-break: break-all;
+            color: var(--text-color);
+            padding: 10px;
+            background-color: var(--bg-color);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            user-select: all;
+        }
+        
+        .info-box {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .info-box h3 {
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .info-box ul {
+            font-size: 14px;
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .info-box li {
+            margin-bottom: 5px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-link i {
+            margin-right: 6px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification.success {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .notification.error {
+            background-color: #e53e3e;
+            color: white;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">Tool-ify</a>
+            </div>
+            <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" id="language-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="zh">中文</a>
+                        <a href="#" data-lang="es">Español</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="tool-container">
+                <a href="../index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> <span id="back-text">Back to tools</span>
+                </a>
+                
+                <h1 id="tool-title">Hash Generator</h1>
+                <p id="tool-description">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text</p>
+                
+                <div class="hash-input-container">
+                    <textarea id="input-text" placeholder="Enter the text you want to hash..."></textarea>
+                </div>
+                
+                <div class="hash-options">
+                    <label>
+                        <input type="checkbox" id="md5-option" checked> <span id="md5-label">MD5</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sha1-option" checked> <span id="sha1-label">SHA-1</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sha256-option" checked> <span id="sha256-label">SHA-256</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sha512-option" checked> <span id="sha512-label">SHA-512</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="uppercase-option"> <span id="uppercase-label">Output in UPPERCASE</span>
+                    </label>
+                </div>
+                
+                <div class="button-group">
+                    <button id="generate-btn">
+                        <i class="fas fa-fingerprint"></i> <span id="generate-btn-text">Generate Hash</span>
+                    </button>
+                    <button id="clear-btn" class="secondary">
+                        <i class="fas fa-trash"></i> <span id="clear-btn-text">Clear</span>
+                    </button>
+                </div>
+                
+                <div id="hash-results" class="hash-results-container"></div>
+                
+                <div class="info-box">
+                    <h3 id="info-title">About Cryptographic Hashes</h3>
+                    <p id="info-p1">A cryptographic hash function is a mathematical algorithm that maps data of arbitrary size to a fixed-size bit string. It is designed to be a one-way function, infeasible to invert.</p>
+                    <p id="info-p2">Common uses of cryptographic hashes include:</p>
+                    <ul>
+                        <li id="info-li1">Password storage (using secure password hashing algorithms)</li>
+                        <li id="info-li2">File integrity verification</li>
+                        <li id="info-li3">Digital signatures</li>
+                        <li id="info-li4">Message authentication codes</li>
+                    </ul>
+                    <p id="info-note"><strong>Note:</strong> For security-sensitive applications, always use the strongest hash function available (e.g., SHA-256 or SHA-512) and implement proper salting techniques for password storage.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2023 Tool-ify.com - All tools are free and work in your browser</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../contact.html">Contact</a>
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="notification" id="notification">Notification message</div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待翻译加载完成
+            function applyTranslations() {
+                if (window.translations) {
+                    // 更新按钮文本和标签
+                    updateTexts();
+                    
+                    // 更新占位符文本
+                    updatePlaceholders();
+                } else {
+                    // 如果翻译尚未加载，等待100毫秒后再次尝试
+                    setTimeout(applyTranslations, 100);
+                }
+            }
+            
+            // 开始尝试应用翻译
+            applyTranslations();
+            
+            // 更新按钮文本和标签
+            function updateTexts() {
+                if (window.translations) {
+                    // 更新返回链接
+                    if (window.translations.footer && window.translations.footer.back) {
+                        const backText = document.getElementById('back-text');
+                        if (backText) {
+                            backText.textContent = window.translations.footer.back;
+                        }
+                    }
+                    
+                    // 更新标签和按钮文本
+                    if (window.translations.ui) {
+                        const textMappings = {
+                            'generate-btn-text': 'generate_hash',
+                            'clear-btn-text': 'clear',
+                            'md5-label': 'md5',
+                            'sha1-label': 'sha1',
+                            'sha256-label': 'sha256',
+                            'sha512-label': 'sha512',
+                            'uppercase-label': 'uppercase_output',
+                            'info-title': 'about_crypto_hashes',
+                            'info-p1': 'crypto_hash_description',
+                            'info-p2': 'common_uses',
+                            'info-li1': 'password_storage',
+                            'info-li2': 'file_integrity',
+                            'info-li3': 'digital_signatures',
+                            'info-li4': 'message_authentication',
+                            'info-note': 'security_note'
+                        };
+                        
+                        for (const [id, key] of Object.entries(textMappings)) {
+                            if (window.translations.ui[key]) {
+                                const element = document.getElementById(id);
+                                if (element) {
+                                    element.textContent = window.translations.ui[key];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 更新占位符
+            function updatePlaceholders() {
+                if (window.translations && window.translations.placeholders) {
+                    const placeholders = {
+                        'input-text': 'enter_text_to_hash'
+                    };
+                    
+                    for (const [id, key] of Object.entries(placeholders)) {
+                        if (window.translations.placeholders[key]) {
+                            const element = document.getElementById(id);
+                            if (element) {
+                                element.placeholder = window.translations.placeholders[key];
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // 获取翻译文本
+            function getTranslatedText(key, defaultText) {
+                if (window.translations && window.translations.notifications && window.translations.notifications[key]) {
+                    return window.translations.notifications[key];
+                }
+                return defaultText;
+            }
+
+            // Get DOM elements
+            const inputText = document.getElementById('input-text');
+            const md5Option = document.getElementById('md5-option');
+            const sha1Option = document.getElementById('sha1-option');
+            const sha256Option = document.getElementById('sha256-option');
+            const sha512Option = document.getElementById('sha512-option');
+            const uppercaseOption = document.getElementById('uppercase-option');
+            const generateBtn = document.getElementById('generate-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const hashResults = document.getElementById('hash-results');
+            const notification = document.getElementById('notification');
+            
+            // Generate hash
+            generateBtn.addEventListener('click', function() {
+                const text = inputText.value.trim();
+                
+                if (!text) {
+                    showNotification(getTranslatedText('text_required', 'Please enter text to hash'), 'error');
+                    return;
+                }
+                
+                if (!md5Option.checked && !sha1Option.checked && !sha256Option.checked && !sha512Option.checked) {
+                    showNotification(getTranslatedText('algorithm_required', 'Please select at least one hash algorithm'), 'error');
+                    return;
+                }
+                
+                // Clear previous results
+                hashResults.innerHTML = '';
+                
+                // Generate selected hashes
+                if (md5Option.checked) {
+                    generateHashResult('MD5', CryptoJS.MD5(text).toString(), uppercaseOption.checked);
+                }
+                
+                if (sha1Option.checked) {
+                    generateHashResult('SHA-1', CryptoJS.SHA1(text).toString(), uppercaseOption.checked);
+                }
+                
+                if (sha256Option.checked) {
+                    generateHashResult('SHA-256', CryptoJS.SHA256(text).toString(), uppercaseOption.checked);
+                }
+                
+                if (sha512Option.checked) {
+                    generateHashResult('SHA-512', CryptoJS.SHA512(text).toString(), uppercaseOption.checked);
+                }
+                
+                showNotification(getTranslatedText('hash_generated', 'Hashes generated successfully'), 'success');
+            });
+            
+            // Clear input and results
+            clearBtn.addEventListener('click', function() {
+                inputText.value = '';
+                hashResults.innerHTML = '';
+            });
+            
+            // Generate a hash result card
+            function generateHashResult(hashType, hashValue, uppercase) {
+                const displayValue = uppercase ? hashValue.toUpperCase() : hashValue;
+                
+                const hashResultElement = document.createElement('div');
+                hashResultElement.className = 'hash-result';
+                
+                // 使用翻译的"复制"文本
+                const copyText = window.translations && window.translations.ui && window.translations.ui.copy ? 
+                    window.translations.ui.copy : 'Copy';
+                
+                hashResultElement.innerHTML = `
+                    <div class="hash-result-header">
+                        <div class="hash-type">${hashType}</div>
+                        <button class="copy-hash" data-hash="${displayValue}">
+                            <i class="fas fa-copy"></i> ${copyText}
+                        </button>
+                    </div>
+                    <div class="hash-value">${displayValue}</div>
+                `;
+                
+                hashResults.appendChild(hashResultElement);
+                
+                // Add copy event listener
+                const copyBtn = hashResultElement.querySelector('.copy-hash');
+                copyBtn.addEventListener('click', function() {
+                    const hash = this.getAttribute('data-hash');
+                    copyToClipboard(hash);
+                    showNotification(getTranslatedText('copied_clipboard', 'Hash copied to clipboard'), 'success');
+                });
+            }
+            
+            // Copy text to clipboard
+            function copyToClipboard(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                notification.textContent = message;
+                notification.className = 'notification ' + type;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Process hash on Enter key press
+            inputText.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    generateBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
