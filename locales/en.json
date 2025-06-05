@@ -11,80 +11,80 @@
     },
     "tools": {
         "word-counter": {
-            "name": "Word Counter",
-            "description": "Count characters, words, and lines in your text"
+            "name": "Online Word Counter & Character Counter Tool",
+            "description": "Count characters, words, and lines in your text easily with our free online word and character counter tool."
         },
         "case-converter": {
-            "name": "Case Converter",
-            "description": "Convert text to UPPERCASE, lowercase, Title Case"
+            "name": "Online Case Converter | UPPERCASE, lowercase, Title Case",
+            "description": "Convert text to UPPERCASE, lowercase, Title Case, and more with our versatile online case converter."
         },
         "json-formatter": {
-            "name": "JSON Formatter",
-            "description": "Format and validate your JSON data"
+            "name": "JSON Formatter | Online JSON Beautifier & Validator",
+            "description": "Format, beautify, and validate your JSON data online for improved readability and error checking."
         },
         "base64-encoder-decoder": {
-            "name": "Base64 Encoder/Decoder",
-            "description": "Encode or decode text to/from Base64"
+            "name": "Base64 Encoder Decoder | Online Base64 Converter",
+            "description": "Encode or decode text to/from Base64 easily with our online Base64 converter tool."
         },
         "url-encoder-decoder": {
-            "name": "URL Encoder/Decoder",
-            "description": "Encode or decode URL parameters"
+            "name": "URL Encoder Decoder | Online URL Converter",
+            "description": "Encode or decode URL parameters online for secure data transmission and clean URLs."
         },
         "html-entity-converter": {
-            "name": "HTML Entity Converter",
-            "description": "Convert between HTML entities and characters"
+            "name": "HTML Entity Converter | HTML Special Character Encoding",
+            "description": "Convert between HTML entities and characters to fix rendering issues and ensure proper display."
         },
         "hash-generator": {
-            "name": "Hash Generator",
-            "description": "Generate MD5, SHA-1, SHA-256 hashes"
+            "name": "MD5 SHA256 Generator | Online Hash Generator",
+            "description": "Generate MD5, SHA-1, SHA-256, and other cryptographic hashes online for data integrity."
         },
         "image-converter": {
-            "name": "Image Converter",
-            "description": "Convert between JPG, PNG, WebP formats"
+            "name": "Image Format Converter | JPG PNG WebP Converter",
+            "description": "Convert images between popular formats like JPG, PNG, and WebP with our free online tool."
         },
         "image-compressor": {
-            "name": "Image Compressor",
-            "description": "Reduce image file size without losing quality"
+            "name": "Online Image Compressor | Image Optimization",
+            "description": "Reduce image file size without losing quality using our online image compressor for faster loading."
         },
         "image-to-base64": {
-            "name": "Image to Base64",
-            "description": "Convert images to Base64 encoding"
+            "name": "Image to Base64 Converter | Online Image to Base64",
+            "description": "Convert images to Base64 encoding online, perfect for embedding images directly into HTML or CSS."
         },
         "image-resizer": {
-            "name": "Image Resizer",
-            "description": "Resize and scale images easily"
+            "name": "Online Image Resizer | Image Size Adjuster",
+            "description": "Easily resize and scale images online to fit any dimension with our free image resizer tool."
         },
         "color-converter": {
-            "name": "Color Converter",
-            "description": "Convert between HEX, RGB, HSL, CMYK"
+            "name": "Color Format Converter | HEX to RGB Converter Online",
+            "description": "Convert between HEX, RGB, HSL, CMYK, and other color formats with our online color converter."
         },
         "password-generator": {
-            "name": "Password Generator",
-            "description": "Generate secure random passwords"
+            "name": "Random Password Generator | Online Secure Password Tool",
+            "description": "Generate strong, random, and secure passwords online to protect your accounts."
         },
         "uuid-generator": {
-            "name": "UUID Generator",
-            "description": "Generate random UUIDs/GUIDs"
+            "name": "Online UUID Generator | GUID Generator Tool",
+            "description": "Generate random UUIDs (Universally Unique Identifiers) or GUIDs (Globally Unique Identifiers) instantly online."
         },
         "unix-timestamp-converter": {
-            "name": "Unix Timestamp Converter",
-            "description": "Convert between Unix timestamps and dates"
+            "name": "Unix Timestamp Converter | Online Timestamp to Date",
+            "description": "Convert between Unix timestamps and readable dates instantly with our online converter."
         },
         "css-formatter": {
-            "name": "CSS Formatter",
-            "description": "Format and compress CSS code"
+            "name": "CSS Formatter | Online CSS Beautifier & Compressor",
+            "description": "Format, beautify, and compress your CSS code online for better readability and faster load times."
         },
         "qr-code-generator": {
-            "name": "QR Code Generator",
-            "description": "Generate QR codes from text or URLs"
+            "name": "QR Code Generator | URL to QR Code Online",
+            "description": "Generate QR codes from any text or URL quickly and for free with our online QR code generator."
         },
         "unit-converter": {
-            "name": "Unit Converter",
-            "description": "Convert between different units of measurement"
+            "name": "Online Unit Converter | Unit Conversion Tool",
+            "description": "Convert between different units of measurement, including length, weight, temperature, and more, with our online unit converter."
         },
         "timer-stopwatch": {
-            "name": "Timer & Stopwatch",
-            "description": "Track time with precision"
+            "name": "Online Timer & Stopwatch | Free Countdown Timer",
+            "description": "Track time with precision using our free online timer, stopwatch, and countdown timer."
         }
     },
     "ui": {

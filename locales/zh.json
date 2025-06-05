@@ -11,80 +11,80 @@
     },
     "tools": {
         "word-counter": {
-            "name": "字数统计器",
-            "description": "统计文本中的字符、单词和行数"
+            "name": "字数统计工具 | 在线字符计数器",
+            "description": "精确统计文本字数、字符数和行数，实用的在线字数统计工具和字符计数器。"
         },
         "case-converter": {
-            "name": "大小写转换器",
-            "description": "将文本转换为大写、小写或标题格式"
+            "name": "大小写转换工具 | 在线大小写转换",
+            "description": "轻松将文本转换为大写、小写或标题格式，便捷的在线大小写转换工具。"
         },
         "json-formatter": {
-            "name": "JSON 格式化工具",
-            "description": "格式化和验证 JSON 数据"
+            "name": "JSON格式化工具 | JSON美化工具与校验",
+            "description": "在线格式化、美化和校验JSON数据，提升JSON可读性与准确性。"
         },
         "base64-encoder-decoder": {
-            "name": "Base64 编码/解码器",
-            "description": "将文本编码为 Base64 或解码 Base64 字符串"
+            "name": "Base64编码解码器 | 在线Base64转换工具",
+            "description": "在线进行文本Base64编码或解码Base64字符串，便捷的Base64转换工具。"
         },
         "url-encoder-decoder": {
-            "name": "URL 编码/解码器",
-            "description": "编码或解码 URL 参数"
+            "name": "URL编码解码器 | URL在线转换工具",
+            "description": "在线编码或解码URL参数，实现URL字符的安全传输与解析。"
         },
         "html-entity-converter": {
-            "name": "HTML 实体转换器",
-            "description": "在 HTML 实体和字符之间转换"
+            "name": "HTML实体转换器 | HTML特殊字符编码解码",
+            "description": "在线转换HTML实体和特殊字符，解决HTML编码显示问题。"
         },
         "hash-generator": {
-            "name": "哈希生成器",
-            "description": "生成 MD5、SHA-1、SHA-256 哈希值"
+            "name": "哈希生成器 | MD5 SHA256 在线生成",
+            "description": "在线生成MD5、SHA-1、SHA-256等多种哈希值，确保数据完整性与安全。"
         },
         "image-converter": {
-            "name": "图片格式转换器",
-            "description": "在 JPG、PNG、WebP 格式之间转换"
+            "name": "图片格式转换器 | JPG PNG WebP 在线转换",
+            "description": "在线转换图片格式，支持JPG、PNG、WebP等多种主流图片格式互转。"
         },
         "image-compressor": {
-            "name": "图片压缩器",
-            "description": "在不损失质量的情况下减小图片文件大小"
+            "name": "图片压缩工具 | 图片瘦身与优化",
+            "description": "在线无损压缩图片文件大小，高效图片瘦身工具，提升网页加载速度。"
         },
         "image-to-base64": {
-            "name": "图片转 Base64",
-            "description": "将图片转换为 Base64 编码"
+            "name": "图片转Base64 | 图片在线编码Base64",
+            "description": "在线将图片转换为Base64编码，方便图片在网页中嵌入或传输。"
         },
         "image-resizer": {
-            "name": "图片尺寸调整器",
-            "description": "轻松调整和缩放图片大小"
+            "name": "图片尺寸调整 | 在线修改图片大小",
+            "description": "在线轻松调整和缩放图片尺寸，满足不同平台与场景的图片大小需求。"
         },
         "color-converter": {
-            "name": "颜色格式转换器",
-            "description": "在 HEX、RGB、HSL、CMYK 之间转换"
+            "name": "颜色格式转换器 | 在线颜色转换HEX RGB",
+            "description": "在线转换HEX、RGB、HSL、CMYK等多种颜色格式，方便设计师与开发者使用。"
         },
         "password-generator": {
-            "name": "密码生成器",
-            "description": "生成安全的随机密码"
+            "name": "密码生成器 | 在线随机强密码生成",
+            "description": "在线生成高强度随机密码，保障您的账户安全，免费强密码生成器。"
         },
         "uuid-generator": {
-            "name": "UUID 生成器",
-            "description": "生成随机 UUID/GUID"
+            "name": "UUID生成器 | 在线GUID生成工具",
+            "description": "在线生成随机UUID/GUID，为您的开发提供唯一标识符。"
         },
         "unix-timestamp-converter": {
-            "name": "Unix 时间戳转换器",
-            "description": "在 Unix 时间戳和日期之间转换"
+            "name": "Unix时间戳转换器 | 在线时间戳转日期",
+            "description": "在线进行Unix时间戳与日期之间的相互转换，方便时间数据处理。"
         },
         "css-formatter": {
-            "name": "CSS 格式化工具",
-            "description": "格式化和压缩 CSS 代码"
+            "name": "CSS格式化工具 | 在线CSS美化与压缩",
+            "description": "在线格式化和压缩CSS代码，提升CSS可读性与加载速度。"
         },
         "qr-code-generator": {
-            "name": "二维码生成器",
-            "description": "从文本或 URL 生成二维码"
+            "name": "二维码生成器 | URL转二维码在线生成",
+            "description": "在线从文本或URL快速生成二维码，支持免费二维码生成。"
         },
         "unit-converter": {
-            "name": "单位换算器",
-            "description": "在不同度量单位之间转换"
+            "name": "在线单位换算器 | 常用单位转换",
+            "description": "在线进行长度、重量、温度等常用单位之间的精确转换，便捷的单位换算工具。"
         },
         "timer-stopwatch": {
-            "name": "计时器和秒表",
-            "description": "精确跟踪时间"
+            "name": "计时器和秒表 | 在线免费倒计时器",
+            "description": "在线计时器和秒表，提供精确的时间跟踪，包含免费倒计时功能。"
         }
     },
     "ui": {

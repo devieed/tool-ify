@@ -11,80 +11,80 @@
     },
     "tools": {
         "word-counter": {
-            "name": "Contador de palabras",
-            "description": "Cuenta caracteres, palabras y líneas en tu texto"
+            "name": "Contador de Palabras Online | Contador de Caracteres",
+            "description": "Cuenta caracteres, palabras y líneas en tu texto fácilmente con nuestro contador online."
         },
         "case-converter": {
-            "name": "Conversor de mayúsculas y minúsculas",
-            "description": "Convierte texto a MAYÚSCULAS, minúsculas, Tipo Título"
+            "name": "Conversor de Mayúsculas y Minúsculas Online",
+            "description": "Convierte texto a MAYÚSCULAS, minúsculas o Tipo Título de forma rápida y sencilla."
         },
         "json-formatter": {
-            "name": "Formateador de JSON",
-            "description": "Formatea y valida tus datos JSON"
+            "name": "Formateador de JSON Online | Embellecedor y Validador",
+            "description": "Formatea, embellece y valida tus datos JSON online para mejorar la legibilidad."
         },
         "base64-encoder-decoder": {
-            "name": "Codificador/Decodificador Base64",
-            "description": "Codifica o decodifica texto desde/hacia Base64"
+            "name": "Codificador y Decodificador Base64 Online",
+            "description": "Codifica o decodifica texto desde/hacia Base64 con nuestra herramienta online gratuita."
         },
         "url-encoder-decoder": {
-            "name": "Codificador/Decodificador URL",
-            "description": "Codifica o decodifica parámetros URL"
+            "name": "Codificador y Decodificador de URL Online",
+            "description": "Codifica o decodifica parámetros de URL para compartir enlaces de forma segura."
         },
         "html-entity-converter": {
-            "name": "Conversor de entidades HTML",
-            "description": "Convierte entre entidades HTML y caracteres"
+            "name": "Conversor de Entidades HTML | Caracteres Especiales",
+            "description": "Convierte entre entidades HTML y caracteres especiales para tu código web."
         },
         "hash-generator": {
-            "name": "Generador de Hash",
-            "description": "Genera hashes MD5, SHA-1, SHA-256"
+            "name": "Generador de Hash Online | MD5 SHA256",
+            "description": "Genera hashes MD5, SHA-1 y SHA-256 de forma rápida y segura para verificar la integridad de datos."
         },
         "image-converter": {
-            "name": "Conversor de imágenes",
-            "description": "Convierte entre formatos JPG, PNG, WebP"
+            "name": "Conversor de Imágenes Online | JPG, PNG, WebP",
+            "description": "Convierte entre formatos de imagen populares como JPG, PNG y WebP con nuestro conversor online."
         },
         "image-compressor": {
-            "name": "Compresor de imágenes",
-            "description": "Reduce el tamaño de archivo sin perder calidad"
+            "name": "Compresor de Imágenes Online | Reduce el Tamaño",
+            "description": "Reduce el tamaño de tus imágenes sin perder calidad con nuestra herramienta de compresión online."
         },
         "image-to-base64": {
-            "name": "Imagen a Base64",
-            "description": "Convierte imágenes a codificación Base64"
+            "name": "Imagen a Base64 Online | Codificador de Imágenes",
+            "description": "Convierte tus imágenes a codificación Base64 online para usar en código HTML o CSS."
         },
         "image-resizer": {
-            "name": "Redimensionador de imágenes",
-            "description": "Redimensiona y escala imágenes fácilmente"
+            "name": "Redimensionador de Imágenes Online | Cambiar Tamaño",
+            "description": "Redimensiona y escala tus imágenes fácilmente online para cualquier plataforma o uso."
         },
         "color-converter": {
-            "name": "Conversor de colores",
-            "description": "Convierte entre HEX, RGB, HSL, CMYK"
+            "name": "Conversor de Colores Online | HEX a RGB",
+            "description": "Convierte entre formatos de color como HEX, RGB, HSL y CMYK con nuestra herramienta online."
         },
         "password-generator": {
-            "name": "Generador de contraseñas",
-            "description": "Genera contraseñas aleatorias seguras"
+            "name": "Generador de Contraseñas Seguras Online",
+            "description": "Genera contraseñas aleatorias y seguras online para proteger tus cuentas."
         },
         "uuid-generator": {
-            "name": "Generador de UUID",
-            "description": "Genera UUIDs/GUIDs aleatorios"
+            "name": "Generador de UUID Online | Generar GUID",
+            "description": "Genera UUIDs/GUIDs aleatorios y únicos al instante con nuestra herramienta online."
         },
         "unix-timestamp-converter": {
-            "name": "Conversor de marca de tiempo Unix",
-            "description": "Convierte entre marcas de tiempo Unix y fechas"
+            "name": "Conversor de Marca de Tiempo Unix Online | Fecha a Timestamp",
+            "description": "Convierte fácilmente entre marcas de tiempo Unix y fechas legibles online."
         },
         "css-formatter": {
-            "name": "Formateador de CSS",
-            "description": "Formatea y comprime código CSS"
+            "name": "Formateador de CSS Online | Embellecedor y Compresor",
+            "description": "Formatea y comprime tu código CSS online para una mejor legibilidad y rendimiento."
         },
         "qr-code-generator": {
-            "name": "Generador de códigos QR",
-            "description": "Genera códigos QR desde texto o URLs"
+            "name": "Generador de Códigos QR Online | Crear QR desde URL",
+            "description": "Genera códigos QR personalizados desde texto o URLs con nuestro generador online gratuito."
         },
         "unit-converter": {
-            "name": "Conversor de unidades",
-            "description": "Convierte entre diferentes unidades de medida"
+            "name": "Conversor de Unidades Online | Convertir Medidas",
+            "description": "Convierte entre diferentes unidades de medida (longitud, peso, temperatura) con facilidad online."
         },
         "timer-stopwatch": {
-            "name": "Temporizador y cronómetro",
-            "description": "Mide el tiempo con precisión"
+            "name": "Temporizador y Cronómetro Online | Temporizador de Cuenta Regresiva",
+            "description": "Mide el tiempo con precisión usando nuestro temporizador online, cronómetro y cuenta regresiva."
         }
     },
     "ui": {
